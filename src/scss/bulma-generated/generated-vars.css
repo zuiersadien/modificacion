@@ -1,0 +1,40 @@
+:root {
+  --black: #0a0a0a;
+  --danger: #fc0362;
+  --dark: #252e3c;
+  --info: #1677df;
+  --link: #7703fc;
+  --primary: #7703fc;
+  --success: #16df95;
+  --warning: #f2b736;
+  --white: white; }
+
+:root {
+  --black--10--rgba: rgba(10, 10, 10, 0.1);
+  --black--2--rgba: rgba(10, 10, 10, 0.02);
+  --black--20--rgba: rgba(10, 10, 10, 0.2);
+  --black--5--rgba: rgba(10, 10, 10, 0.05);
+  --black--800--lighten: #1e1e1e;
+  --danger--color-invert: white;
+  --danger--dark-color: #e30358;
+  --danger--light-color: #ffebf2;
+  --dark--800--lighten: #354155;
+  --dark--color-invert: white;
+  --info--color-invert: white;
+  --info--dark-color: #1570d1;
+  --info--light-color: #ecf5fd;
+  --link--color-invert: white;
+  --link--dark-color: #7a08fc;
+  --link--light-color: #f4ebff;
+  --primary--color-invert: white;
+  --primary--dark-color: #7a08fc;
+  --primary--light-color: #f4ebff;
+  --success--color-invert: rgba(0, 0, 0, 0.7);
+  --success--dark-color: #0d875a;
+  --success--light-color: #ecfdf7;
+  --warning--color-invert: rgba(0, 0, 0, 0.7);
+  --warning--dark-color: #8b6209;
+  --warning--light-color: #fef8ec;
+  --white--800--lighten: white; }
+
+/*# sourceMappingURL=generated-vars.css.map */

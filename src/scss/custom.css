@@ -1,0 +1,287 @@
+h1.head {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 90px;
+  line-height: 100px;
+  font-weight: 700; }
+
+h2.title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 60px;
+  line-height: 70px; }
+
+h3.subtitle {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 600; }
+
+h4.lasthead {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 600; }
+
+p.text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400; }
+
+/* Banners Start */
+.banner {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding: 223px 0 225px;
+  position: relative; }
+  .banner .illustration .one {
+    position: absolute;
+    top: 15%;
+    right: -5%;
+    z-index: 0;
+    -webkit-animation: trantani 6s ease-in-out infinite;
+    animation: trantani 6s ease-in-out infinite; }
+  .banner .illustration .two {
+    position: absolute;
+    top: 21%;
+    left: -5%;
+    z-index: 1;
+    -webkit-animation: upornis 6s ease-in-out infinite;
+    animation: upornis 6s ease-in-out infinite;
+    max-width: 16%; }
+  .banner .illustration .three {
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    z-index: 1; }
+  .banner .hero-area {
+    position: relative;
+    z-index: 2; }
+    .banner .hero-area .banner-content h3.subtitle {
+      color: #6342ff; }
+    .banner .hero-area .banner-content h1.head {
+      color: #33276a;
+      font-weight: 700;
+      padding: 23px 0 13px; }
+    .banner .hero-area .banner-content p.text {
+      font-family: "Open Sans", sans-serif;
+      font-size: 24px;
+      line-height: 34px;
+      font-weight: 500;
+      color: #4f457c; }
+    .banner .hero-area .banner-content a.button {
+      margin-top: 38px; }
+    .banner .hero-area .exchange {
+      background-color: #fff;
+      border-radius: 20px;
+      -webkit-box-shadow: -1.361px 25.964px 40px 0px rgba(104, 67, 255, 0.2);
+      box-shadow: -1.361px 25.964px 40px 0px rgba(104, 67, 255, 0.2);
+      padding: 40px 40px 40px 40px;
+      background-image: url("../img/exchange-bg.png");
+      background-repeat: no-repeat;
+      background-size: 100% 144px, cover;
+      background-position: left 0px top 0px; }
+      .banner .hero-area .exchange h5.ex-head {
+        font-size: 28px;
+        font-family: "Josefin Sans", sans-serif;
+        color: white;
+        font-weight: 700;
+        line-height: 1.357;
+        text-align: center;
+        padding-bottom: 40px; }
+      .banner .hero-area .exchange .exchange-box {
+        padding-top: 20px; }
+        .banner .hero-area .exchange .exchange-box .selector {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          padding-bottom: 8px; }
+          .banner .hero-area .exchange .exchange-box .selector p.text {
+            font-size: 18px;
+            font-family: "Open Sans", sans-serif;
+            color: #6342ff;
+            line-height: 1.556; }
+          .banner .hero-area .exchange .exchange-box .selector .coin {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center; }
+            .banner .hero-area .exchange .exchange-box .selector .coin img {
+              margin-right: 5px; }
+            .banner .hero-area .exchange .exchange-box .selector .coin .language-select .nice-select {
+              border: 0;
+              width: 85px;
+              font-family: "Open Sans", sans-serif;
+              font-size: 18px;
+              line-height: 28px;
+              font-weight: 600;
+              color: #777777;
+              height: auto;
+              padding: 3px 0px 0px;
+              background: transparent; }
+              .banner .hero-area .exchange .exchange-box .selector .coin .language-select .nice-select:after {
+                border-bottom: 2px solid #777777;
+                border-right: 2px solid #777777;
+                width: 14px;
+                height: 14px;
+                top: 40%; }
+              .banner .hero-area .exchange .exchange-box .selector .coin .language-select .nice-select .list {
+                width: 100px; }
+                .banner .hero-area .exchange .exchange-box .selector .coin .language-select .nice-select .list li {
+                  text-align: center;
+                  font-family: "Open Sans", sans-serif;
+                  font-size: 18px;
+                  line-height: 28px;
+                  font-weight: 600;
+                  color: #777777; }
+            .banner .hero-area .exchange .exchange-box .selector .coin span.current {
+              color: #777777; }
+        .banner .hero-area .exchange .exchange-box .form-group input {
+          border: 1px solid #d2c8ec;
+          background-color: white;
+          border-radius: 30px;
+          padding: 10px 20px 10px;
+          font-size: 24px;
+          font-family: "Open Sans", sans-serif;
+          color: #4938a2; }
+          .banner .hero-area .exchange .exchange-box .form-group input::-webkit-input-placeholder {
+            font-size: 24px;
+            font-family: "Open Sans", sans-serif;
+            color: #4938a2; }
+          .banner .hero-area .exchange .exchange-box .form-group input::-moz-placeholder {
+            font-size: 24px;
+            font-family: "Open Sans", sans-serif;
+            color: #4938a2; }
+          .banner .hero-area .exchange .exchange-box .form-group input:-ms-input-placeholder {
+            font-size: 24px;
+            font-family: "Open Sans", sans-serif;
+            color: #4938a2; }
+          .banner .hero-area .exchange .exchange-box .form-group input::-ms-input-placeholder {
+            font-size: 24px;
+            font-family: "Open Sans", sans-serif;
+            color: #4938a2; }
+          .banner .hero-area .exchange .exchange-box .form-group input::placeholder {
+            font-size: 24px;
+            font-family: "Open Sans", sans-serif;
+            color: #4938a2; }
+        .banner .hero-area .exchange .exchange-box span {
+          display: block;
+          font-size: 16px;
+          font-family: "Open Sans", sans-serif;
+          color: #4938a2;
+          text-transform: uppercase;
+          line-height: 1.75;
+          padding-top: 6px; }
+      .banner .hero-area .exchange a.rotate {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-top: 10px; }
+      .banner .hero-area .exchange a.button.button-1 {
+        width: 100%;
+        margin-top: 30px;
+        border-radius: 20px;
+        -webkit-box-shadow: 0px 7px 13px 0px rgba(153, 99, 255, 0.59);
+        box-shadow: 0px 7px 13px 0px rgba(153, 99, 255, 0.59);
+        font-size: 18px;
+        font-weight: 700;
+        font-family: "Open Sans", sans-serif;
+        line-height: normal; }
+
+/* statistic Start */
+.statistic {
+  position: relative;
+  background: #fff;
+  padding: 30px 0 120px; }
+  .statistic .platfrom-box {
+    padding-top: 30px; }
+    .statistic .platfrom-box .icon {
+      border-radius: 50%;
+      background-color: ghostwhite;
+      -webkit-box-shadow: 2.847px 10.625px 54px 0px rgba(172, 137, 248, 0.25);
+      box-shadow: 2.847px 10.625px 54px 0px rgba(172, 137, 248, 0.25);
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      .statistic .platfrom-box .icon img {
+        -webkit-transition: 0.6s;
+        transition: 0.6s; }
+    .statistic .platfrom-box p.text {
+      font-size: 24px;
+      font-family: "Josefin Sans", sans-serif;
+      color: #33276a;
+      font-weight: 700;
+      line-height: 1.417;
+      padding-top: 25px;
+      text-align: center; }
+    .statistic .platfrom-box:hover .icon img {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg); }
+  .statistic .content {
+    margin: 114px 0 0px;
+    padding: 170px 0 200px;
+    position: relative; }
+    .statistic .content .bg-pic img {
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      height: 100%; }
+    .statistic .content .section-head {
+      position: relative; }
+      .statistic .content .section-head h4.lasthead {
+        color: #e1dbff; }
+      .statistic .content .section-head h2.title {
+        color: #ffffff;
+        padding: 22px 0 16px; }
+      .statistic .content .section-head p.text {
+        color: #d6cff8; }
+  .statistic .statis-boxx {
+    margin-top: 30px;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+    -webkit-box-shadow: 2.099px 10.798px 24px 0px rgba(22, 36, 96, 0.25);
+    box-shadow: 2.099px 10.798px 24px 0px rgba(22, 36, 96, 0.25);
+    padding: 30px 30px 30px; }
+    .statistic .statis-boxx .icon {
+      margin-right: 30px; }
+    .statistic .statis-boxx .statis-content h3.subtitle {
+      color: #6342ff; }
+    .statistic .statis-boxx .statis-content p.text {
+      font-size: 18px;
+      font-family: "Open Sans", sans-serif;
+      color: #5d5779;
+      line-height: 1.556; }
+
+/*# sourceMappingURL=custom.css.map */
