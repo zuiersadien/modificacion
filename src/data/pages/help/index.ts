@@ -71,7 +71,7 @@ export const helpCenterCategories = [
         picture: 'data:image/gif;base64,replace_with_your_image',
       },
       {
-        name: 'Jake Rowland',
+        name: 'Jake columnsland',
         picture: 'data:image/gif;base64,replace_with_your_image',
       },
     ],
@@ -84,7 +84,7 @@ export const helpCenterCategories = [
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quorum altera prosunt, nocent altera. Restinguet citius, si ardentem acceperit inde igitur inquit.',
         updated: 'one week ago',
         author: {
-          name: 'Jake Rowland',
+          name: 'Jake columnsland',
           picture: 'data:image/gif;base64,replace_with_your_image',
         },
         content: markdownObject,
@@ -138,7 +138,7 @@ export const helpCenterCategories = [
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quorum altera prosunt, nocent altera. Restinguet citius, si ardentem acceperit inde igitur inquit.',
     contributors: [
       {
-        name: 'Jake Rowland',
+        name: 'Jake columnsland',
         picture: 'data:image/gif;base64,replace_with_your_image',
       },
       {
@@ -155,7 +155,7 @@ export const helpCenterCategories = [
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quorum altera prosunt, nocent altera. Restinguet citius, si ardentem acceperit inde igitur inquit.',
         updated: 'one month ago',
         author: {
-          name: 'Jake Rowland',
+          name: 'Jake columnsland',
           picture: 'data:image/gif;base64,replace_with_your_image',
         },
         content: markdownObject,
@@ -194,7 +194,7 @@ export const helpCenterCategories = [
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quorum altera prosunt, nocent altera. Restinguet citius, si ardentem acceperit inde igitur inquit.',
         updated: 'one week ago',
         author: {
-          name: 'Jake Rowland',
+          name: 'Jake columnsland',
           picture: 'data:image/gif;base64,replace_with_your_image',
         },
         content: markdownObject,
@@ -207,7 +207,7 @@ export const helpCenterCategories = [
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quorum altera prosunt, nocent altera. Restinguet citius, si ardentem acceperit inde igitur inquit.',
         updated: 'one week ago',
         author: {
-          name: 'Jake Rowland',
+          name: 'Jake columnsland',
           picture: 'data:image/gif;base64,replace_with_your_image',
         },
         content: markdownObject,
@@ -318,7 +318,7 @@ export const helpCenterCategories = [
         picture: 'data:image/gif;base64,replace_with_your_image',
       },
       {
-        name: 'Jake Rowland',
+        name: 'Jake columnsland',
         picture: 'data:image/gif;base64,replace_with_your_image',
       },
     ],
@@ -370,7 +370,7 @@ export const helpCenterCategories = [
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quorum altera prosunt, nocent altera. Restinguet citius, si ardentem acceperit inde igitur inquit.',
         updated: 'one week ago',
         author: {
-          name: 'Jake Rowland',
+          name: 'Jake columnsland',
           picture: 'data:image/gif;base64,replace_with_your_image',
         },
         content: markdownObject,
@@ -426,7 +426,7 @@ export const helpCenterCategories = [
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quorum altera prosunt, nocent altera. Restinguet citius, si ardentem acceperit inde igitur inquit.',
     contributors: [
       {
-        name: 'Jake Rowland',
+        name: 'Jake columnsland',
         picture: 'data:image/gif;base64,replace_with_your_image',
       },
       {
@@ -460,7 +460,7 @@ export const helpCenterCategories = [
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quorum altera prosunt, nocent altera. Restinguet citius, si ardentem acceperit inde igitur inquit.',
         updated: 'one week ago',
         author: {
-          name: 'Jake Rowland',
+          name: 'Jake columnsland',
           picture: 'data:image/gif;base64,replace_with_your_image',
         },
         content: markdownObject,

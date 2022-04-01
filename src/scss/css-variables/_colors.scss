@@ -29,7 +29,7 @@
   --placeload-dark-nuance-to: var(--night-light-16);
 
   // primary HSL (#7703fc) // hsl(268, 98%, 50%)
-  @include colorHsl('primary', 268, 98%, 50%);
+  @include colorHsl('primary', 255, 75%, 32%);
   // secondary HSL (#e32b6b) // hsl(339, 77%, 53%)
   @include colorHsl('secondary', 339, 77%, 53%);
   // success HSL (#38c79c) // hsl(162, 56%, 50%)
@@ -45,7 +45,7 @@
   // dark HSL (#252e3c) // hsl(217, 24%, 19%)
   @include colorHsl('dark', 217, 24%, 19%);
   // night HSL (#0a0a14) // hsl(240, 33%, 6%)
-  @include colorHsl('night', 240, 33%, 6%);
+  @include colorHsl('night', 240, 28%, 13%);
   // purple HSL (#8269b2) // hsl(261, 32%, 55%)
   @include colorHsl('purple', 261, 32%, 55%);
   // blue HSL (#37c3ff) // hsl(198, 100%, 61%)

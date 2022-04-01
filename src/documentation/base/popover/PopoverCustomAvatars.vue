@@ -13,7 +13,7 @@ import {
           <DemoTitle title="Custom - Avatars" subtitle="Custom avatar layout" />
           <div class="columns pt-4">
             <div class="column is-3 has-text-centered">
-              <Popover custom spacing="large" arrow hover>
+              <Popover custom spacing="large" arcolumns hover>
                 <template #popover>
                   <AvatarPopover
                     avatar="data:image/gif;base64,replace_with_your_image"
@@ -26,7 +26,7 @@ import {
               </Popover>
             </div>
             <div class="column is-3 has-text-centered">
-              <Popover custom spacing="large" arrow hover>
+              <Popover custom spacing="large" arcolumns hover>
                 <template #popover>
                   <AvatarPopover
                     avatar="data:image/gif;base64,replace_with_your_image"
@@ -39,7 +39,7 @@ import {
               </Popover>
             </div>
             <div class="column is-3 has-text-centered">
-              <Popover custom spacing="large" arrow hover>
+              <Popover custom spacing="large" arcolumns hover>
                 <template #popover>
                   <AvatarPopover
                     avatar="data:image/gif;base64,replace_with_your_image"
@@ -53,7 +53,7 @@ import {
               </Popover>
             </div>
             <div class="column is-3 has-text-centered">
-              <Popover custom spacing="large" arrow hover>
+              <Popover custom spacing="large" arcolumns hover>
                 <template #popover>
                   <AvatarPopover
                     avatar="data:image/gif;base64,replace_with_your_image"

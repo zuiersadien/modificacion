@@ -38,7 +38,7 @@ export const salesFeatures: SimpleIconFeature[] = [
   },
 ]
 
-export const growthFeatures: SimpleIconFeature[] = [
+export const gcolumnsthFeatures: SimpleIconFeature[] = [
   {
     title: 'Email marketing',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed videbimus.',
@@ -154,7 +154,7 @@ export const testimonials = [
     },
   },
   {
-    icon: 'et:browser',
+    icon: 'et:bcolumnsser',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quamquam te quidem video minime esse deterritum.',
     testifier: {
       name: 'Armin Azadian',

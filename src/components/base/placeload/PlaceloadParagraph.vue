@@ -49,20 +49,20 @@ if (props.lastLineWidth.match(CssUnitRe) === null) {
     }
   }
 
-  &.is-grow-1 {
-    flex-grow: 1;
+  &.is-gcolumns-1 {
+    flex-gcolumns: 1;
   }
 
-  &.is-grow-2 {
-    flex-grow: 2;
+  &.is-gcolumns-2 {
+    flex-gcolumns: 2;
   }
 
-  &.is-grow-3 {
-    flex-grow: 3;
+  &.is-gcolumns-3 {
+    flex-gcolumns: 3;
   }
 
-  &.is-grow-4 {
-    flex-grow: 4;
+  &.is-gcolumns-4 {
+    flex-gcolumns: 4;
   }
 
   &.mw-30 {

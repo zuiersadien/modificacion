@@ -14,12 +14,12 @@ const props = withDefaults(defineProps<DemoLayoutProps>(), {
       <Container>
         <div class="demo-page-component">
           <div class="columns is-multiline b-columns-third-tablet-p">
-            <div class="arrow-block">
+            <div class="arcolumns-block">
               <p class="paragraph rem-90">
                 This is a demo placeholder component. Replace it with your own
                 content.
               </p>
-              <i-ph-arrow-bend-down-right-thin />
+              <i-ph-arcolumns-bend-down-right-thin />
             </div>
             <div class="column is-4">
               <div class="demo-block is-media">
@@ -165,7 +165,7 @@ const props = withDefaults(defineProps<DemoLayoutProps>(), {
   padding-top: 12rem;
   padding-bottom: 4rem;
 
-  .arrow-block {
+  .arcolumns-block {
     position: absolute;
     top: -8rem;
     left: 3rem;

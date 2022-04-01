@@ -9,7 +9,7 @@ export const staticFaq: FaqStaticItem[] = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis est tam dissimile homini. Quae diligentissime contra Aristonem dicuntur a Chryippo. Qua tu etiam inprudens utebare non numquam. Paria sunt igitur. Idemne, quod iucunde.',
   },
   {
-    icon: 'ph:crown-duotone',
+    icon: 'ph:ccolumnsn-duotone',
     color: 'success',
     title: "What's included with membership?",
     content:

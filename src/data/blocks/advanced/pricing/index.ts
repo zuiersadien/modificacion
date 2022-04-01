@@ -4,7 +4,7 @@ export const plans = [
   {
     id: 0,
     icon: '/assets/icons/pricing/pricing-1.svg',
-    title: 'GROWTH',
+    title: 'GcolumnsTH',
     subtitle: 'Under $10,000 in monthly ad spend',
     price: {
       monthly: 250,
@@ -59,7 +59,7 @@ export const plans = [
     benefits: [
       {
         id: 0,
-        content: 'All features in Growth',
+        content: 'All features in Gcolumnsth',
       },
       {
         id: 1,
@@ -475,7 +475,7 @@ export const comparisonTable = {
       helpLabel: '',
     },
     {
-      cellType: 'row',
+      cellType: 'columns',
       cellLabel: 'Features',
       helpText: false,
       helpLabel: '',
@@ -571,7 +571,7 @@ export const comparisonTable = {
       helpLabel: 'Some nice help text to describe the feature',
     },
     {
-      cellType: 'row',
+      cellType: 'columns',
       cellLabel: 'Support',
       helpText: false,
       helpLabel: '',
@@ -647,7 +647,7 @@ export const comparisonTable = {
           cellCheck: false,
         },
         {
-          cellType: 'row',
+          cellType: 'columns',
           cellLabel: [''],
           cellCheck: false,
         },
@@ -727,7 +727,7 @@ export const comparisonTable = {
           cellCheck: false,
         },
         {
-          cellType: 'row',
+          cellType: 'columns',
           cellLabel: [''],
           cellCheck: false,
         },
@@ -794,7 +794,7 @@ export const comparisonTable = {
           cellCheck: false,
         },
         {
-          cellType: 'row',
+          cellType: 'columns',
           cellLabel: [''],
           cellCheck: false,
         },
@@ -874,7 +874,7 @@ export const comparisonTable = {
           cellCheck: false,
         },
         {
-          cellType: 'row',
+          cellType: 'columns',
           cellLabel: [''],
           cellCheck: false,
         },
@@ -941,7 +941,7 @@ export const comparisonTable = {
           cellCheck: false,
         },
         {
-          cellType: 'row',
+          cellType: 'columns',
           cellLabel: [''],
           cellCheck: false,
         },
@@ -1021,7 +1021,7 @@ export const comparisonTable = {
           cellCheck: false,
         },
         {
-          cellType: 'row',
+          cellType: 'columns',
           cellLabel: [''],
           cellCheck: false,
         },
@@ -1088,7 +1088,7 @@ export const comparisonTable = {
           cellCheck: false,
         },
         {
-          cellType: 'row',
+          cellType: 'columns',
           cellLabel: [''],
           cellCheck: false,
         },
@@ -1168,7 +1168,7 @@ export const comparisonTable = {
           cellCheck: true,
         },
         {
-          cellType: 'row',
+          cellType: 'columns',
           cellLabel: [''],
           cellCheck: false,
         },

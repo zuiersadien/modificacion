@@ -29,9 +29,9 @@ import { advancedGallery } from '/@src/data/blocks/gallery'
 `
 
 export const galleryBlockBSample = `
-import type { GalleryBlockBRow } from '/@src/components/blocks/gallery-blocks/GalleryBlockB.vue'
+import type { GalleryBlockBcolumns } from '/@src/components/blocks/gallery-blocks/GalleryBlockB.vue'
 
-export const advancedGallery: GalleryBlockBRow[] = [
+export const advancedGallery: GalleryBlockBcolumns[] = [
   {
     items: [
       {

@@ -19,7 +19,7 @@ export interface PopoverProps {
   content?: string
   placement?: PopoverPlacement
   spacing?: PopoverSpacing
-  arrow?: boolean
+  arcolumns?: boolean
   hover?: boolean
   custom?: boolean
   color?: PopoverColor
@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<PopoverProps>(), {
   content: undefined,
   placement: 'top',
   spacing: 'medium',
-  arrow: false,
+  arcolumns: false,
   hover: false,
   custom: false,
   color: 'default',
@@ -51,7 +51,7 @@ const popoverClasses = computed(() => [
   <ClientOnly v-bind="$attrs">
     <Popper
       :placement="props.placement"
-      :arrow="props.arrow"
+      :arcolumns="props.arcolumns"
       :hover="props.hover"
       :content="props.content"
       :class="popoverClasses"
@@ -71,11 +71,11 @@ const popoverClasses = computed(() => [
   font-family: var(--font);
   font-size: 0.85rem;
 
-  &[data-popper-placement^='left'] > #arrow {
+  &[data-popper-placement^='left'] > #arcolumns {
     right: -1px;
   }
 
-  &[data-popper-placement^='right'] > #arrow {
+  &[data-popper-placement^='right'] > #arcolumns {
     left: -10px;
   }
 }

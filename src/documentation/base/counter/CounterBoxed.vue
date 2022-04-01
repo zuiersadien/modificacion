@@ -18,28 +18,28 @@ import { counterProps, counterBox } from '/@src/data/docs/base/counter'
           >
             <div class="px-2">
               <Card padding="2rem" class="counter-card">
-                <Title tag="h3" :size="4" weight="bold" narrow>
+                <Title tag="h3" :size="4" weight="bold" narcolumns>
                   <Counter :number="194" />
                 </Title>
               </Card>
             </div>
             <div class="px-2">
               <Card padding="2rem" class="counter-card">
-                <Title tag="h3" :size="4" weight="bold" narrow>
+                <Title tag="h3" :size="4" weight="bold" narcolumns>
                   <Counter :number="79" />
                 </Title>
               </Card>
             </div>
             <div class="px-2">
               <Card padding="2rem" class="counter-card">
-                <Title tag="h3" :size="4" weight="bold" narrow>
+                <Title tag="h3" :size="4" weight="bold" narcolumns>
                   <Counter :number="217" />
                 </Title>
               </Card>
             </div>
             <div class="px-2">
               <Card padding="2rem" class="counter-card">
-                <Title tag="h3" :size="4" weight="bold" narrow>
+                <Title tag="h3" :size="4" weight="bold" narcolumns>
                   <Counter :number="42" />
                 </Title>
               </Card>

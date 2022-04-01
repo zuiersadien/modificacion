@@ -15,22 +15,22 @@ import { table } from '/@src/data/blocks/table/index'
 
 <template>
   <SimpleTable :bordered="false">
-    <SimpleTableRow>
+    <SimpleTablecolumns>
       <SimpleTableHeader>Employee</SimpleTableHeader>
       <SimpleTableHeader>Location</SimpleTableHeader>
       <SimpleTableHeader>Skills</SimpleTableHeader>
       <SimpleTableHeader>Status</SimpleTableHeader>
       <SimpleTableHeader>Experience</SimpleTableHeader>
       <SimpleTableHeader>Action</SimpleTableHeader>
-    </SimpleTableRow>
-    <SimpleTableRow v-for="(item, index) in table" :key="index">
+    </SimpleTablecolumns>
+    <SimpleTablecolumns v-for="(item, index) in table" :key="index">
       <SimpleTableCell>
         <SimpleTableCellFlex>
           <template #media>
             <AvatarSimple :picture="item.employee.picture" />
           </template>
           <template #content>
-            <Title tag="h3" :size="7" weight="semi" narrow>{ item.employee.name }</Title>
+            <Title tag="h3" :size="7" weight="semi" narcolumns>{ item.employee.name }</Title>
             <p class="paragraph rem-75">{ item.employee.position }</p>
           </template>
         </SimpleTableCellFlex>
@@ -60,7 +60,7 @@ import { table } from '/@src/data/blocks/table/index'
           class="link has-underline is-reversed rem-90"
         >View Profile</RouterLink>
       </SimpleTableCell>
-    </SimpleTableRow>
+    </SimpleTablecolumns>
   </SimpleTable>
 </template>
 `
@@ -72,22 +72,22 @@ import { table } from '/@src/data/blocks/table/index'
 
 <template>
   <SimpleTable :bordered="false" striped>
-    <SimpleTableRow>
+    <SimpleTablecolumns>
       <SimpleTableHeader>Employee</SimpleTableHeader>
       <SimpleTableHeader>Location</SimpleTableHeader>
       <SimpleTableHeader>Skills</SimpleTableHeader>
       <SimpleTableHeader>Status</SimpleTableHeader>
       <SimpleTableHeader>Experience</SimpleTableHeader>
       <SimpleTableHeader>Action</SimpleTableHeader>
-    </SimpleTableRow>
-    <SimpleTableRow v-for="(item, index) in table" :key="index">
+    </SimpleTablecolumns>
+    <SimpleTablecolumns v-for="(item, index) in table" :key="index">
       <SimpleTableCell>
         <SimpleTableCellFlex>
           <template #media>
             <AvatarSimple :picture="item.employee.picture" />
           </template>
           <template #content>
-            <Title tag="h3" :size="7" weight="semi" narrow>{ item.employee.name }</Title>
+            <Title tag="h3" :size="7" weight="semi" narcolumns>{ item.employee.name }</Title>
             <p class="paragraph rem-75">{ item.employee.position }</p>
           </template>
         </SimpleTableCellFlex>
@@ -117,7 +117,7 @@ import { table } from '/@src/data/blocks/table/index'
           class="link has-underline is-reversed rem-90"
         >View Profile</RouterLink>
       </SimpleTableCell>
-    </SimpleTableRow>
+    </SimpleTablecolumns>
   </SimpleTable>
 </template>
 `
@@ -129,22 +129,22 @@ import { table } from '/@src/data/blocks/table/index'
 
 <template>
   <SimpleTable :bordered="true">
-    <SimpleTableRow>
+    <SimpleTablecolumns>
       <SimpleTableHeader>Employee</SimpleTableHeader>
       <SimpleTableHeader>Location</SimpleTableHeader>
       <SimpleTableHeader>Skills</SimpleTableHeader>
       <SimpleTableHeader>Status</SimpleTableHeader>
       <SimpleTableHeader>Experience</SimpleTableHeader>
       <SimpleTableHeader>Action</SimpleTableHeader>
-    </SimpleTableRow>
-    <SimpleTableRow v-for="(item, index) in table" :key="index">
+    </SimpleTablecolumns>
+    <SimpleTablecolumns v-for="(item, index) in table" :key="index">
       <SimpleTableCell>
         <SimpleTableCellFlex>
           <template #media>
             <AvatarSimple :picture="item.employee.picture" />
           </template>
           <template #content>
-            <Title tag="h3" :size="7" weight="semi" narrow>{ item.employee.name }</Title>
+            <Title tag="h3" :size="7" weight="semi" narcolumns>{ item.employee.name }</Title>
             <p class="paragraph rem-75">{ item.employee.position }</p>
           </template>
         </SimpleTableCellFlex>
@@ -174,7 +174,7 @@ import { table } from '/@src/data/blocks/table/index'
           class="link has-underline is-reversed rem-90"
         >View Profile</RouterLink>
       </SimpleTableCell>
-    </SimpleTableRow>
+    </SimpleTablecolumns>
   </SimpleTable>
 </template>
 `
@@ -186,22 +186,22 @@ import { table } from '/@src/data/blocks/table/index'
 
 <template>
   <SimpleTable :bordered="true" striped>
-    <SimpleTableRow>
+    <SimpleTablecolumns>
       <SimpleTableHeader>Employee</SimpleTableHeader>
       <SimpleTableHeader>Location</SimpleTableHeader>
       <SimpleTableHeader>Skills</SimpleTableHeader>
       <SimpleTableHeader>Status</SimpleTableHeader>
       <SimpleTableHeader>Experience</SimpleTableHeader>
       <SimpleTableHeader>Action</SimpleTableHeader>
-    </SimpleTableRow>
-    <SimpleTableRow v-for="(item, index) in table" :key="index">
+    </SimpleTablecolumns>
+    <SimpleTablecolumns v-for="(item, index) in table" :key="index">
       <SimpleTableCell>
         <SimpleTableCellFlex>
           <template #media>
             <AvatarSimple :picture="item.employee.picture" />
           </template>
           <template #content>
-            <Title tag="h3" :size="7" weight="semi" narrow>{ item.employee.name }</Title>
+            <Title tag="h3" :size="7" weight="semi" narcolumns>{ item.employee.name }</Title>
             <p class="paragraph rem-75">{ item.employee.position }</p>
           </template>
         </SimpleTableCellFlex>
@@ -231,7 +231,7 @@ import { table } from '/@src/data/blocks/table/index'
           class="link has-underline is-reversed rem-90"
         >View Profile</RouterLink>
       </SimpleTableCell>
-    </SimpleTableRow>
+    </SimpleTablecolumns>
   </SimpleTable>
 </template>
 `

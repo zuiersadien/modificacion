@@ -40,7 +40,7 @@ export const resources = [
   {
     id: 2,
     image: '/assets/posts/post-15.svg',
-    title: 'How networking will help boost your company growth',
+    title: 'How networking will help boost your company gcolumnsth',
     likes: '54',
     categories: [
       {
@@ -211,7 +211,7 @@ export const resources = [
   {
     id: 11,
     image: '/assets/posts/post-24.svg',
-    title: 'Customer support is the only thing that will grow your trust',
+    title: 'Customer support is the only thing that will gcolumns your trust',
     likes: '411',
     categories: [
       {

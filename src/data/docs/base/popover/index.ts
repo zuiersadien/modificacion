@@ -17,7 +17,7 @@ export interface PopoverProps {
   content?: string
   placement?: PopoverPlacement
   spacing?: PopoverSpacing
-  arrow?: boolean
+  arcolumns?: boolean
   hover?: boolean
   custom?: boolean
   color?: PopoverColor
@@ -33,7 +33,7 @@ export const popoverBase = `
   <Popover
     content="This is a top popover"
     placement="top"
-    arrow
+    arcolumns
     hover
   >
     <p class="paragraph cursor-pointer">Hover me</p>
@@ -46,7 +46,7 @@ export const popoverTrigger = `
   <Popover
     content="This is a hover popover"
     placement="top"
-    arrow
+    arcolumns
     hover
   >
     <Button>Hover me</Button>
@@ -60,7 +60,7 @@ export const popoverColors = `
     content="This is a primary popover"
     placement="top"
     hover
-    arrow
+    arcolumns
     color="primary"
   >
     <p class="paragraph cursor-pointer">Primary</p>
@@ -70,7 +70,7 @@ export const popoverColors = `
     content="This is a success popover"
     placement="top"
     hover
-    arrow
+    arcolumns
     color="success"
   >
     <p class="paragraph cursor-pointer">Success</p>
@@ -80,7 +80,7 @@ export const popoverColors = `
 
 export const popoverCustomIcons = `
 <template>
-  <Popover custom spacing="medium" arrow hover>
+  <Popover custom spacing="medium" arcolumns hover>
     <template #popover>
       <IconPopover
         icon="ion:skull-outline"
@@ -92,7 +92,7 @@ export const popoverCustomIcons = `
     <p class="paragraph cursor-pointer">Hover me</p>
   </Popover>
 
-  <Popover custom spacing="medium" arrow hover>
+  <Popover custom spacing="medium" arcolumns hover>
     <template #popover>
       <IconPopover
         icon="ion:rocket-outline"
@@ -109,7 +109,7 @@ export const popoverCustomIcons = `
 
 export const popoverCustomAvatars = `
 <template>
-  <Popover custom spacing="large" arrow hover>
+  <Popover custom spacing="large" arcolumns hover>
     <template #popover>
       <AvatarPopover
         avatar="data:image/gif;base64,replace_with_your_image"
@@ -121,7 +121,7 @@ export const popoverCustomAvatars = `
     <p class="paragraph cursor-pointer">Hover me</p>
   </Popover>
 
-  <Popover custom spacing="large" arrow hover>
+  <Popover custom spacing="large" arcolumns hover>
     <template #popover>
       <AvatarPopover
         avatar="data:image/gif;base64,replace_with_your_image"

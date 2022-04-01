@@ -134,7 +134,7 @@ const options = ref(['Option 2', 'Option 9'])
             <div class="column is-5 pt-4">
               <Card shape="squared" muted>
                 <div class="mb-4">
-                  <Title tag="h3" :size="7" weight="semi" narrow>
+                  <Title tag="h3" :size="7" weight="semi" narcolumns>
                     <span>Toggles</span>
                   </Title>
                   <p class="paragraph rem-90">active: {{ options }}</p>

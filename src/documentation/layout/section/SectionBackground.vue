@@ -18,7 +18,7 @@ import { sectionBackground, sectionProps } from '/@src/data/docs/blocks/section'
             >
               <Container>
                 <div class="has-text-centered content py-6">
-                  <Title tag="h3" :size="4" weight="semi" narrow inverted>
+                  <Title tag="h3" :size="4" weight="semi" narcolumns inverted>
                     <span>Iam a Section</span>
                   </Title>
                   <p class="paragraph is-inverted-light">

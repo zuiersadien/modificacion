@@ -67,7 +67,7 @@ export const contentBlockB = `
     title="Your entire ecommerce business, connected and powered by AI"
     subtitle="INTRODUCING VULK"
     content="The first-ever Marketplace Optimization Platform, designed to
-          optimize your ecommerce business for smart, strategic growth."
+          optimize your ecommerce business for smart, strategic gcolumnsth."
     image="/@src/assets/illustrations/chart/circular-people-chart.png"
     dark-image="/@src/assets/illustrations/chart/circular-people-chart-dark.png"
     cta="Learn more about our product"

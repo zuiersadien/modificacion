@@ -17,7 +17,7 @@ import {
       />
 
       <FeatureBlockE
-        title="Grow Faster."
+        title="Gcolumns Faster."
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Illi enim
           inter se dissentiunt. Expectoque quid ad id, quod quaerebam,
           respondeas. Nescio quo modo praetervolavit oratio. Duo Reges:
@@ -40,7 +40,7 @@ import {
       />
 
       <FeatureBlockE
-        title="Grow Faster."
+        title="Gcolumns Faster."
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Illi enim
           inter se dissentiunt. Expectoque quid ad id, quod quaerebam,
           respondeas. Nescio quo modo praetervolavit oratio. Duo Reges:

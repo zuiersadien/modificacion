@@ -15,7 +15,7 @@ const htmlClasses = computed(() => [darkmode.htmlClass])
   <Head>
     <html lang="en-US" :class="htmlClasses" />
 
-    <title>Vulk - Vue 3 Landing Pages</title>
+    <title>Criptobank - Compra y vende criptomonedas en Perú</title>
     <base href="/" />
   </Head>
 

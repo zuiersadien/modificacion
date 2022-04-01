@@ -8,7 +8,7 @@ export const counterProps = `
 
 export const counterThin = `
 <template>
-  <Title tag="h3" :size="4" weight="thin" narrow>
+  <Title tag="h3" :size="4" weight="thin" narcolumns>
     <Counter :number="79" />
   </Title>
 </template>
@@ -16,7 +16,7 @@ export const counterThin = `
 
 export const counterBold = `
 <template>
-  <Title tag="h3" :size="4" weight="bold" narrow>
+  <Title tag="h3" :size="4" weight="bold" narcolumns>
     <Counter :number="79" />
   </Title>
 </template>
@@ -25,7 +25,7 @@ export const counterBold = `
 export const counterBox = `
 <template>
   <Card padding="2rem" class="counter-card">
-    <Title tag="h3" :size="4" weight="bold" narrow>
+    <Title tag="h3" :size="4" weight="bold" narcolumns>
       <Counter :number="194" />
     </Title>
   </Card>
@@ -36,7 +36,7 @@ export const counterContent = `
 <template>
   <div class="px-4 has-text-centered">
     <Icon icon="la:pizza-slice" :size="200" color="primary" />
-    <Title tag="h3" :size="4" weight="bold" narrow>
+    <Title tag="h3" :size="4" weight="bold" narcolumns>
       <Counter :number="194" />
     </Title>
     <p class="paragraph rem-95">Pizzas eaten</p>

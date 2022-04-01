@@ -124,7 +124,7 @@ export const tabbedProcess = {
       icon: '/assets/icons/abstract/3.svg',
       title: 'Automated Keyword Targeting',
       content:
-        'Optimize your keywords for sales growth and profitability. Automatically capture new converting keywords while negating ones that are hurting performance.',
+        'Optimize your keywords for sales gcolumnsth and profitability. Automatically capture new converting keywords while negating ones that are hurting performance.',
     },
     {
       id: 3,
@@ -187,7 +187,7 @@ export const marketingProcess = {
       icon: '/assets/icons/abstract/3.svg',
       title: 'Automated Keyword Targeting',
       content:
-        'Optimize your keywords for sales growth and profitability. Automatically capture new converting keywords while negating ones that are hurting performance.',
+        'Optimize your keywords for sales gcolumnsth and profitability. Automatically capture new converting keywords while negating ones that are hurting performance.',
       image: '/assets/illustrations/workflow/workflow-3.png',
       imageDark: '/assets/illustrations/workflow/workflow-3-dark.png',
     },
@@ -332,7 +332,7 @@ export const testimonials = [
     },
     logo: '/assets/brands/gutwork.svg',
     content:
-      'Vulk came in with a very clear perspective on how to drive brand growth on web, powerful AI systems and a strong managed services team.',
+      'Vulk came in with a very clear perspective on how to drive brand gcolumnsth on web, powerful AI systems and a strong managed services team.',
   },
 ]
 
@@ -434,7 +434,7 @@ export const testimonialsMarquee = [
     },
     logo: '/assets/brands/gutwork.svg',
     content:
-      'Vulk came in with a very clear perspective on how to drive brand growth on web, powerful AI systems and a strong managed services team.',
+      'Vulk came in with a very clear perspective on how to drive brand gcolumnsth on web, powerful AI systems and a strong managed services team.',
   },
   {
     id: 9,

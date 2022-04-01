@@ -26,7 +26,7 @@ export const mobileAppFeatures: IconFeature[] = [
     title: 'Daily Advice',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed videbimus. Hoc est non dividere, sed frangere.',
     color: 'purple',
-    icon: 'ph:crown-duotone',
+    icon: 'ph:ccolumnsn-duotone',
     link: '/',
   },
   {
@@ -96,7 +96,7 @@ export const reportFeature: SimpleIconFeature[] = [
   {
     title: 'Rewards',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed videbimus.',
-    icon: 'ph:crown-duotone',
+    icon: 'ph:ccolumnsn-duotone',
   },
   {
     title: 'Achievements',

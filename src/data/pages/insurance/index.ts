@@ -223,7 +223,7 @@ export const testimonials = [
     },
     logo: '/assets/brands/gutwork.svg',
     content:
-      'Vulk came in with a very clear perspective on how to drive brand growth on web, powerful AI systems and a strong managed services team.',
+      'Vulk came in with a very clear perspective on how to drive brand gcolumnsth on web, powerful AI systems and a strong managed services team.',
   },
   {
     id: 9,

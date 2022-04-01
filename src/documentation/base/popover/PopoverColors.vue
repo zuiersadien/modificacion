@@ -13,7 +13,7 @@ import { popoverColors, popoverProps } from '/@src/data/docs/base/popover'
               <Popover
                 content="This is a default popover"
                 placement="top"
-                arrow
+                arcolumns
                 hover
               >
                 <p class="paragraph cursor-pointer">Default</p>
@@ -24,7 +24,7 @@ import { popoverColors, popoverProps } from '/@src/data/docs/base/popover'
                 content="This is a primary popover"
                 placement="top"
                 hover
-                arrow
+                arcolumns
                 color="primary"
               >
                 <p class="paragraph cursor-pointer">Primary</p>
@@ -35,7 +35,7 @@ import { popoverColors, popoverProps } from '/@src/data/docs/base/popover'
                 content="This is a inverted popover"
                 placement="top"
                 hover
-                arrow
+                arcolumns
                 color="inverted"
               >
                 <p class="paragraph cursor-pointer">Inverted</p>
@@ -47,7 +47,7 @@ import { popoverColors, popoverProps } from '/@src/data/docs/base/popover'
                 placement="top"
                 spacing="medium"
                 hover
-                arrow
+                arcolumns
                 color="info"
               >
                 <p class="paragraph cursor-pointer">Info</p>
@@ -58,7 +58,7 @@ import { popoverColors, popoverProps } from '/@src/data/docs/base/popover'
                 content="This is a success popover"
                 placement="top"
                 hover
-                arrow
+                arcolumns
                 color="success"
               >
                 <p class="paragraph cursor-pointer">Success</p>
@@ -69,7 +69,7 @@ import { popoverColors, popoverProps } from '/@src/data/docs/base/popover'
                 content="This is a warning popover"
                 placement="top"
                 hover
-                arrow
+                arcolumns
                 color="warning"
               >
                 <p class="paragraph cursor-pointer">Warning</p>
@@ -80,7 +80,7 @@ import { popoverColors, popoverProps } from '/@src/data/docs/base/popover'
                 content="This is a danger popover"
                 placement="top"
                 hover
-                arrow
+                arcolumns
                 color="danger"
               >
                 <p class="paragraph cursor-pointer">Danger</p>
@@ -91,7 +91,7 @@ import { popoverColors, popoverProps } from '/@src/data/docs/base/popover'
                 content="This is a purple popover"
                 placement="top"
                 hover
-                arrow
+                arcolumns
                 color="purple"
               >
                 <p class="paragraph cursor-pointer">Purple</p>

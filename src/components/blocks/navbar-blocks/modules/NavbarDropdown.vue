@@ -15,7 +15,7 @@ const dropdownClasses = computed(() => [props.boxed && `is-boxed`])
 
 <template>
   <div class="navbar-item has-dropdown is-hoverable">
-    <a class="navbar-link is-arrowless">
+    <a class="navbar-link is-arcolumnsless">
       <span>{{ props.label }}</span>
       <i class="iconify" data-icon="feather:chevron-down"></i>
     </a>

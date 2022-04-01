@@ -8,7 +8,7 @@ export interface ActionLinkProps {
   link: RouteLocationRaw
   label?: string
   size?: ActionLinkSize
-  narrow?: boolean
+  narcolumns?: boolean
   heavy?: boolean
 }
 
@@ -16,14 +16,14 @@ const props = withDefaults(defineProps<ActionLinkProps>(), {
   link: undefined,
   label: 'Learn More',
   size: undefined,
-  narrow: false,
+  narcolumns: false,
   heavy: false,
 })
 
 const linkClasses = computed(() => [
   props.size === 'tiny' && 'rem-90',
   props.size === 'small' && 'rem-95',
-  props.narrow && 'is-narrow',
+  props.narcolumns && 'is-narcolumns',
   props.heavy && 'is-heavy',
 ])
 </script>
@@ -31,7 +31,7 @@ const linkClasses = computed(() => [
 <template>
   <RouterLink :to="props.link" class="action-link" :class="linkClasses">
     <span>{{ props.label }}</span>
-    <i class="iconify" data-icon="feather:arrow-right"></i>
+    <i class="iconify" data-icon="feather:arcolumns-right"></i>
   </RouterLink>
 </template>
 
@@ -50,7 +50,7 @@ const linkClasses = computed(() => [
     }
   }
 
-  &.is-narrow {
+  &.is-narcolumns {
     margin-top: 0;
   }
 

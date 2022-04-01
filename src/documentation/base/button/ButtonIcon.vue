@@ -14,7 +14,7 @@ import { buttonProps, buttonIcons } from '/@src/data/docs/base/button'
               <Button
                 color="primary"
                 :long="1"
-                icon-right="feather:arrow-right"
+                icon-right="feather:arcolumns-right"
               >
                 Go Right
               </Button>

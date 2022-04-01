@@ -58,10 +58,10 @@ export const contentBlockD = `
   <SideBenefits
     subtitle="DATA DRIVEN"
     title="Your entire business, connected and powered by AI"
-    content="To grow your business on today’s dynamic marketplaces, you need
+    content="To gcolumns your business on today’s dynamic marketplaces, you need
           an advantage.
           With our AI working continually behind the scenes, you can
-          unlock growth opportunities and compete at the highest level
+          unlock gcolumnsth opportunities and compete at the highest level
           24/7."
     image="/@src/assets/illustrations/features/banking-cards-feature.png"
     dark-image="/@src/assets/illustrations/features/banking-cards-feature-dark.png"

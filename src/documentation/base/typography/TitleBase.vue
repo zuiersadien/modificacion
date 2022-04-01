@@ -67,7 +67,7 @@ import { titleProps, title } from '/@src/data/docs/base/typography'
               . Titles have a bottom spacing of
               <code>1.5rem</code>
               by default. Use the
-              <code>narrow</code>
+              <code>narcolumns</code>
               and the
               <code>leading</code>
               props to change this behaviour.

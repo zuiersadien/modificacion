@@ -77,7 +77,7 @@ zh-CN:
       <div class="modal-content">
         <div class="modal-card">
           <header class="modal-card-head">
-            <Title tag="h3" :size="6" weight="semi" narrow>
+            <Title tag="h3" :size="6" weight="semi" narcolumns>
               <slot name="title">{{ title }}</slot>
             </Title>
 

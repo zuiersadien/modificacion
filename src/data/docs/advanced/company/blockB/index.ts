@@ -55,7 +55,7 @@ import { customerLogos } from '/@src/data/pages/logos'
   <LogoStats
     title="Over $1 billion"
     subtitle="Transactions from our clients in 2021"
-    heading="Join us and grow"
+    heading="Join us and gcolumns"
     content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis negat? Fortemne possumus dicere eundem illum Torquatum? De illis, cum volemus."
     :logos="customerLogos"
   />

@@ -72,7 +72,7 @@ export interface TextareaEmits {
 }
 
 export interface TextareaProps {
-  rows?: number
+  columnss?: number
   placeholder?: string
   value?: string
   modelValue?: string
@@ -253,12 +253,12 @@ const options = ref(['Option 2'])
   />
 
   <!--Rounded checkbox-->
-  <Checkbox 
+  <Checkbox
     v-model="options"
     name="checkbox-2"
     label="Option 2"
     value="Option 2"
-    rounded 
+    rounded
   />
 </template>
 `
@@ -287,11 +287,11 @@ export interface RadioProps {
 
 export const radioBase = `
 <template>
-  <Radio 
-    name="radio-1" 
-    label="Choice 1" 
-    group="radio-group-1" 
-    color="default" 
+  <Radio
+    name="radio-1"
+    label="Choice 1"
+    group="radio-group-1"
+    color="default"
   />
 </template>
 `

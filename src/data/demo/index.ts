@@ -220,7 +220,7 @@ export const vulkBenefits: CompleteFeature[] = [
     title: 'SSR Ready',
     subtitle: 'Custom SSR',
     text: 'Since the new Vue 3 release is very recent, the entire ecosystem migration will likely take some time. For example, Nuxt 3 is still quite far from bein prime-ready. This is why we implemented our own cusom SSR setup.',
-    icon: 'ph:browsers-thin',
+    icon: 'ph:bcolumnssers-thin',
   },
   {
     title: '600+ Components',
@@ -237,7 +237,7 @@ export const vulkBenefits: CompleteFeature[] = [
   {
     title: 'Multipurpose',
     subtitle: 'For Everything',
-    text: 'Vulk is a multipurpose landing UI kit. It is also made for any type of modern website or web application. Featured content will of course continue to grow with future updates.',
+    text: 'Vulk is a multipurpose landing UI kit. It is also made for any type of modern website or web application. Featured content will of course continue to gcolumns with future updates.',
     icon: 'ph:magic-wand-light',
   },
   {

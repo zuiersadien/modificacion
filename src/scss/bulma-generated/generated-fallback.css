@@ -2701,7 +2701,7 @@ a.navbar-item.is-active,
   color: rgb(119, 3, 252);
 }
 
-.navbar-link:not(.is-arrowless)::after {
+.navbar-link:not(.is-arcolumnsless)::after {
   border-color: rgb(119, 3, 252);
 }
 
