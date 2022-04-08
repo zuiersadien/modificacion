@@ -1,5 +1,5 @@
 import type { GalleryBlockAItem } from '/@src/components/blocks/gallery-blocks/GalleryBlockA.vue'
-import type { GalleryBlockBRow } from '/@src/components/blocks/gallery-blocks/GalleryBlockB.vue'
+import type { GalleryBlockBcolumns } from '/@src/components/blocks/gallery-blocks/GalleryBlockB.vue'
 import type { GalleryBlockCItem } from '/@src/components/blocks/gallery-blocks/GalleryBlockC.vue'
 import type { GalleryBlockDItem } from '/@src/components/blocks/gallery-blocks/GalleryBlockD.vue'
 
@@ -76,7 +76,7 @@ export const masonryGallery: GalleryBlockAItem[] = [
   },
 ]
 
-export const advancedGallery: GalleryBlockBRow[] = [
+export const advancedGallery: GalleryBlockBcolumns[] = [
   {
     items: [
       {
@@ -361,7 +361,7 @@ export const simpleGallery: GalleryBlockDItem[] = [
   },
 ]
 
-export const genericLargeGallery: GalleryBlockBRow[] = [
+export const genericLargeGallery: GalleryBlockBcolumns[] = [
   {
     items: [
       {

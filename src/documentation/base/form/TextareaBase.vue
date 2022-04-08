@@ -26,7 +26,7 @@ const textareaValue = ref('')
             <div class="w-full max-w-1/2 max-w-mobile p-4">
               <Card shape="squared" muted>
                 <div class="mb-4">
-                  <Title tag="h3" :size="7" weight="semi" narrow>
+                  <Title tag="h3" :size="7" weight="semi" narcolumns>
                     <span>Textarea</span>
                   </Title>
                   <p class="paragraph rem-90">value: {{ textareaValue }}</p>

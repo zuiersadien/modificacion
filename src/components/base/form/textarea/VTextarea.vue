@@ -6,7 +6,7 @@ export interface TextareaEmits {
 }
 
 export interface TextareaProps {
-  rows?: number
+  columnss?: number
   placeholder?: string
   value?: string
   modelValue?: string
@@ -18,7 +18,7 @@ const emit = defineEmits<TextareaEmits>()
 const props = withDefaults(defineProps<TextareaProps>(), {
   value: undefined,
   modelValue: undefined,
-  rows: undefined,
+  columnss: undefined,
   placeholder: undefined,
   readonly: false,
   resize: true,
@@ -39,7 +39,7 @@ const testValue = computed({
     :placeholder="props.placeholder"
     class="textarea"
     :class="textareaClasses"
-    :rows="props.rows"
+    :columnss="props.columnss"
     :readonly="props.readonly"
     aria-label="textarea"
   ></textarea>

@@ -96,7 +96,7 @@ export const testimonials = [
     },
     logo: '/assets/brands/gutwork.svg',
     content:
-      'Vulk came in with a very clear perspective on how to drive brand growth on web, powerful AI systems and a strong managed services team.',
+      'Vulk came in with a very clear perspective on how to drive brand gcolumnsth on web, powerful AI systems and a strong managed services team.',
   },
   {
     id: 9,
@@ -209,7 +209,7 @@ export const testimonials2 = [
     },
     logo: '/assets/brands/gutwork.svg',
     content:
-      'Vulk came in with a very clear perspective on how to drive brand growth on web, powerful AI systems and a strong managed services team.',
+      'Vulk came in with a very clear perspective on how to drive brand gcolumnsth on web, powerful AI systems and a strong managed services team.',
   },
 ]
 
@@ -229,7 +229,7 @@ export const tabbedTestimonials = {
     },
     {
       title:
-        "Vulk mentors helped me so much strenghtening my company's growth and securing new sources of income ",
+        "Vulk mentors helped me so much strenghtening my company's gcolumnsth and securing new sources of income ",
       content:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quamquam te quidem video minime esse deterritum. Quae cum dixisset, finem ille. Eam tum adesse, cum dolor omnis absit',
       member: {
@@ -363,7 +363,7 @@ export const carouselTestimonials = [
     },
   },
   {
-    icon: 'et:browser',
+    icon: 'et:bcolumnsser',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quamquam te quidem video minime esse deterritum.',
     testifier: {
       name: 'Armin Azadian',

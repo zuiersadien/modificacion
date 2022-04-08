@@ -1,4 +1,4 @@
-import type { GalleryBlockBRow } from '/@src/components/blocks/gallery-blocks/GalleryBlockB.vue'
+import type { GalleryBlockBcolumns } from '/@src/components/blocks/gallery-blocks/GalleryBlockB.vue'
 import type { EventDay } from '/@src/components/advanced/event/event-schedule/EventSchedule.vue'
 import type { PricingPlan } from '/@src/components/advanced/pricing/pricing-card/PricingCardsA.vue'
 
@@ -52,7 +52,7 @@ export const speakers = [
   {
     image: 'data:image/gif;base64,replace_with_your_image',
     name: 'Kyle Adams',
-    position: 'Founder of Crown.js',
+    position: 'Founder of Ccolumnsn.js',
     bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     socialLinks: [
       {
@@ -189,7 +189,7 @@ export const speakers = [
   },
 ]
 
-export const conferenceGallery: GalleryBlockBRow[] = [
+export const conferenceGallery: GalleryBlockBcolumns[] = [
   {
     items: [
       {

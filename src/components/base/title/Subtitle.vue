@@ -10,7 +10,7 @@ export interface SubtitleProps {
   weight?: SubtitleWeight
   tag: SubtitleTag
   inverted?: boolean
-  narrow?: boolean
+  narcolumns?: boolean
   leading?: boolean
   uppercase?: boolean
 }
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<SubtitleProps>(), {
   size: undefined,
   weight: undefined,
   tag: 'h3',
-  narrow: false,
+  narcolumns: false,
   leading: false,
   inverted: false,
   uppercase: false,
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<SubtitleProps>(), {
 const subtitleClasses = computed(() => [
   props.size && `is-${props.size}`,
   props.weight && `is-${props.weight}`,
-  props.narrow && `is-narrow`,
+  props.narcolumns && `is-narcolumns`,
   props.leading && `is-leading`,
   props.inverted && `is-inverted`,
   props.uppercase && `is-uppercase`,
@@ -73,7 +73,7 @@ const subtitleClasses = computed(() => [
     color: var(--title-color-inverted) !important;
   }
 
-  &.is-narrow {
+  &.is-narcolumns {
     margin-bottom: 0 !important;
   }
 

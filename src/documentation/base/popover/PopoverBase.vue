@@ -13,7 +13,7 @@ import { popoverBase, popoverProps } from '/@src/data/docs/base/popover'
               <Popover
                 content="This is a top popover"
                 placement="top"
-                arrow
+                arcolumns
                 hover
               >
                 <p class="paragraph cursor-pointer">Hover me</p>
@@ -24,7 +24,7 @@ import { popoverBase, popoverProps } from '/@src/data/docs/base/popover'
                 content="This is a bottom popover"
                 placement="bottom"
                 hover
-                arrow
+                arcolumns
               >
                 <p class="paragraph cursor-pointer">Hover me</p>
               </Popover>
@@ -34,7 +34,7 @@ import { popoverBase, popoverProps } from '/@src/data/docs/base/popover'
                 content="This is a left popover"
                 placement="left"
                 hover
-                arrow
+                arcolumns
               >
                 <p class="paragraph cursor-pointer">Hover me</p>
               </Popover>
@@ -45,7 +45,7 @@ import { popoverBase, popoverProps } from '/@src/data/docs/base/popover'
                 placement="right"
                 spacing="medium"
                 hover
-                arrow
+                arcolumns
               >
                 <p class="paragraph cursor-pointer">Hover me</p>
               </Popover>

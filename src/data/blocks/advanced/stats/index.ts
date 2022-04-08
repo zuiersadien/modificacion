@@ -49,7 +49,7 @@ export const mentorStats = [
     prefix: '',
     suffix: 'M',
     value: 750,
-    text: 'Monthly growth recorded',
+    text: 'Monthly gcolumnsth recorded',
   },
   {
     id: 3,

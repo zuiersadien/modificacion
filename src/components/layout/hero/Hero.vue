@@ -60,7 +60,7 @@ const heroClasses = computed(() => [
     </div>
 
     <div v-if="props.mask === 'wave'" class="hero-mask-wave">
-      <HeroWaveMask :color="props.color" />
+      <HecolumnsaveMask :color="props.color" />
     </div>
 
     <div v-if="props.mask === 'slant'" class="hero-mask-slant">

@@ -21,7 +21,7 @@ const textareaValue = ref('')
                 <Control>
                   <VTextarea
                     v-model="textareaValue"
-                    :rows="3"
+                    :columnss="3"
                     :resize="false"
                     placeholder="Write something..."
                   />
@@ -31,7 +31,7 @@ const textareaValue = ref('')
             <div class="w-full max-w-1/2 max-w-mobile p-4">
               <Card shape="squared" muted>
                 <div class="mb-4">
-                  <Title tag="h3" :size="7" weight="semi" narrow>
+                  <Title tag="h3" :size="7" weight="semi" narcolumns>
                     <span>Textarea</span>
                   </Title>
                   <p class="paragraph rem-90">value: {{ textareaValue }}</p>
@@ -69,8 +69,8 @@ const textareaValue = ref('')
               <code>&#x3C;VTextarea /&#x3E;</code>
               . You can prevent a textarea from being resizable by using the
               <code>no-resize</code>
-              prop. You can also change the number of rows using the
-              <code>:rows</code>
+              prop. You can also change the number of columnss using the
+              <code>:columnss</code>
               prop.
             </p>
           </template>

@@ -53,7 +53,7 @@ export const tabbedProcess = {
       icon: '/assets/icons/abstract/3.svg',
       title: 'Automated Keyword Targeting',
       content:
-        'Optimize your keywords for sales growth and profitability. Automatically capture new converting keywords while negating ones that are hurting performance.',
+        'Optimize your keywords for sales gcolumnsth and profitability. Automatically capture new converting keywords while negating ones that are hurting performance.',
     },
     {
       id: 3,

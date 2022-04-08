@@ -8,7 +8,7 @@ export interface TitleProps {
   size?: TitleSize
   weight?: TitleWeight
   inverted?: boolean
-  narrow?: boolean
+  narcolumns?: boolean
   leading?: boolean
   uppercase?: boolean
   tag: TitleTag
@@ -19,10 +19,10 @@ export interface TitleProps {
 
 export const title = `
 <template>
-  <Title 
-    tag="h2" 
-    :size="2" 
-    weight="thin" 
+  <Title
+    tag="h2"
+    :size="2"
+    weight="thin"
     leading>
     This is a title
   </Title>
@@ -40,7 +40,7 @@ export interface SubtitleProps {
   weight?: SubtitleWeight
   tag: SubtitleTag
   inverted?: boolean
-  narrow?: boolean
+  narcolumns?: boolean
   leading?: boolean
   uppercase?: boolean
 }
@@ -49,10 +49,10 @@ export interface SubtitleProps {
 
 export const subtitle = `
 <template>
-  <Subtitle 
-    tag="h3" 
-    :size="3" 
-    weight="thin" 
+  <Subtitle
+    tag="h3"
+    :size="3"
+    weight="thin"
     leading>
     This is a subtitle
   </Subtitle>
@@ -156,7 +156,7 @@ export interface ActionLinkProps {
   link: RouteLocationRaw
   label?: string
   size?: ActionLinkSize
-  narrow?: boolean
+  narcolumns?: boolean
   heavy?: boolean
 }
 </script>

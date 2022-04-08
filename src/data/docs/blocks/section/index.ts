@@ -17,8 +17,8 @@ export interface SectionProps {
   borderedTop?: boolean
   borderedBottom?: boolean
   bottomSpaced?: boolean
-  bottomNarrow?: boolean
-  topNarrow?: boolean
+  bottomNarcolumns?: boolean
+  topNarcolumns?: boolean
   overflown?: boolean
   wave?: SectionWave
   tongue?: SectionTongue
@@ -63,7 +63,7 @@ export const sectionWave = `
   <Section wave="wave-1" shape-color="grey">
     <Container>
       <div class="content py-6">
-        <Title tag="h3" :size="4" weight="semi" narrow>
+        <Title tag="h3" :size="4" weight="semi" narcolumns>
           <span>Iam a Section</span>
         </Title>
         <p class="paragraph">I can hold any type of content</p>
@@ -73,7 +73,7 @@ export const sectionWave = `
   <Section color="grey">
     <Container>
       <div class="content py-6">
-        <Title tag="h3" :size="4" weight="semi" narrow>
+        <Title tag="h3" :size="4" weight="semi" narcolumns>
           <span>Iam a Section</span>
         </Title>
         <p class="paragraph">I can hold any type of content</p>
@@ -85,7 +85,7 @@ export const sectionWave = `
   <Section wave="wave-2" shape-color="darker">
     <Container>
       <div class="content py-6">
-        <Title tag="h3" :size="4" weight="semi" narrow inverted>
+        <Title tag="h3" :size="4" weight="semi" narcolumns inverted>
           <span>Iam a Section</span>
         </Title>
         <p class="paragraph">I can hold any type of content</p>
@@ -95,7 +95,7 @@ export const sectionWave = `
   <Section color="darker">
     <Container>
       <div class="content py-6">
-        <Title tag="h3" :size="4" weight="semi" narrow inverted>
+        <Title tag="h3" :size="4" weight="semi" narcolumns inverted>
           <span>Iam a Section</span>
         </Title>
         <p class="paragraph">I can hold any type of content</p>
@@ -111,7 +111,7 @@ export const sectionTongue = `
   <Section tongue="tongue-1" shape-color="grey">
     <Container>
       <div class="content py-6">
-        <Title tag="h3" :size="4" weight="semi" narrow>
+        <Title tag="h3" :size="4" weight="semi" narcolumns>
           <span>Iam a Section</span>
         </Title>
         <p class="paragraph">I can hold any type of content</p>
@@ -123,7 +123,7 @@ export const sectionTongue = `
   <Section tongue="tongue-2" shape-color="grey">
     <Container>
       <div class="content py-6">
-        <Title tag="h3" :size="4" weight="semi" narrow>
+        <Title tag="h3" :size="4" weight="semi" narcolumns>
           <span>Iam a Section</span>
         </Title>
         <p class="paragraph">I can hold any type of content</p>
@@ -143,7 +143,7 @@ export const sectionBackground = `
   >
     <Container>
       <div class="has-text-centered content py-6">
-        <Title tag="h3" :size="4" weight="semi" narrow inverted>
+        <Title tag="h3" :size="4" weight="semi" narcolumns inverted>
           <span>Iam a Section</span>
         </Title>
         <p class="paragraph is-inverted-light">

@@ -117,7 +117,7 @@ const options = ref(['Option 2'])
             <div class="column is-5 pt-4">
               <Card shape="squared" muted>
                 <div class="mb-4">
-                  <Title tag="h3" :size="7" weight="semi" narrow>
+                  <Title tag="h3" :size="7" weight="semi" narcolumns>
                     <span>Checkboxes</span>
                   </Title>
                   <p class="paragraph rem-90">Selected: {{ options }}</p>

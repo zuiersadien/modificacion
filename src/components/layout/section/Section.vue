@@ -18,8 +18,8 @@ export interface SectionProps {
   borderedTop?: boolean
   borderedBottom?: boolean
   bottomSpaced?: boolean
-  bottomNarrow?: boolean
-  topNarrow?: boolean
+  bottomNarcolumns?: boolean
+  topNarcolumns?: boolean
   overflown?: boolean
   wave?: SectionWave
   tongue?: SectionTongue
@@ -32,8 +32,8 @@ const props = withDefaults(defineProps<SectionProps>(), {
   color: undefined,
   borderedTop: false,
   borderedBottom: false,
-  bottomNarrow: false,
-  topNarrow: false,
+  bottomNarcolumns: false,
+  topNarcolumns: false,
   overflown: false,
   wave: undefined,
   tongue: undefined,
@@ -50,8 +50,8 @@ const sectionClasses = computed(() => [
   props.overflown && `is-overflown`,
   props.wave && `section-${props.wave}`,
   props.tongue && `section-${props.tongue}`,
-  props.bottomNarrow && `is-bottom-narrow`,
-  props.topNarrow && `is-top-narrow`,
+  props.bottomNarcolumns && `is-bottom-narcolumns`,
+  props.topNarcolumns && `is-top-narcolumns`,
 ])
 </script>
 
@@ -142,11 +142,11 @@ const sectionClasses = computed(() => [
     padding-bottom: 6rem;
   }
 
-  &.is-bottom-narrow {
+  &.is-bottom-narcolumns {
     padding-bottom: 0;
   }
 
-  &.is-top-narrow {
+  &.is-top-narcolumns {
     padding-top: 0;
   }
 

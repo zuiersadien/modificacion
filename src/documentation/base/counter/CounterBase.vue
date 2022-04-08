@@ -15,22 +15,22 @@ import { counterProps, counterThin } from '/@src/data/docs/base/counter'
             "
           >
             <div class="px-6">
-              <Title tag="h3" :size="4" weight="thin" narrow>
+              <Title tag="h3" :size="4" weight="thin" narcolumns>
                 <Counter :number="194" />
               </Title>
             </div>
             <div class="px-6">
-              <Title tag="h3" :size="4" weight="thin" narrow>
+              <Title tag="h3" :size="4" weight="thin" narcolumns>
                 <Counter :number="79" />
               </Title>
             </div>
             <div class="px-6">
-              <Title tag="h3" :size="4" weight="thin" narrow>
+              <Title tag="h3" :size="4" weight="thin" narcolumns>
                 <Counter :number="217" />
               </Title>
             </div>
             <div class="px-6">
-              <Title tag="h3" :size="4" weight="thin" narrow>
+              <Title tag="h3" :size="4" weight="thin" narcolumns>
                 <Counter :number="42" />
               </Title>
             </div>

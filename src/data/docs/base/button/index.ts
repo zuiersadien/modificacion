@@ -73,7 +73,7 @@ export const buttonOutlined = `
 export const buttonIcons = `
 <template>
   <Button icon-left="feather:github">GitHub</Button>
-  <Button icon-right="feather:arrow-right">Go Right</Button>
+  <Button icon-right="feather:arcolumns-right">Go Right</Button>
 </template>
 `
 

@@ -17,7 +17,7 @@ import {
       <SideSection
         subtitle="Managed Services"
         title="Market based DSP managed service"
-        content="Whether you're looking to maximize reach, grow incremental profits, or optimize towards custom metrics, our team of experts is here to ensure success is targeted to your KPIs."
+        content="Whether you're looking to maximize reach, gcolumns incremental profits, or optimize towards custom metrics, our team of experts is here to ensure success is targeted to your KPIs."
         image="/assets/illustrations/features/feature-1.png"
         dark-image="/assets/illustrations/features/feature-1-dark.png"
         blob
@@ -74,7 +74,7 @@ import {
       <SideSection
         subtitle="Managed Services"
         title="Market based DSP managed service"
-        content="Whether you're looking to maximize reach, grow incremental profits, or optimize towards custom metrics, our team of experts is here to ensure success is targeted to your KPIs."
+        content="Whether you're looking to maximize reach, gcolumns incremental profits, or optimize towards custom metrics, our team of experts is here to ensure success is targeted to your KPIs."
         image="/assets/illustrations/features/feature-1.png"
         dark-image="/assets/illustrations/features/feature-1-dark.png"
         blob

@@ -54,7 +54,7 @@ export const vehicleFeatures: IconFeature[] = [
     title: 'Luxury service',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed videbimus. Hoc est non dividere, sed frangere.',
     color: 'orange',
-    icon: 'ph:crown-duotone',
+    icon: 'ph:ccolumnsn-duotone',
     link: '/',
   },
 ]

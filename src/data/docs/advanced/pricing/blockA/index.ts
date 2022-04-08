@@ -26,7 +26,7 @@ export const plans = [
   {
     id: 0,
     icon: '/assets/icons/pricing/pricing-1.svg',
-    title: 'GROWTH',
+    title: 'GcolumnsTH',
     subtitle: 'Under $10,000 in monthly ad spend',
     price: {
       monthly: 250,
@@ -81,7 +81,7 @@ export const plans = [
     benefits: [
       {
         id: 0,
-        content: 'All features in Growth',
+        content: 'All features in Gcolumnsth',
       },
       {
         id: 1,

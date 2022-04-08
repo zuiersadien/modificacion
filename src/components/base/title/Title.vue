@@ -9,7 +9,7 @@ export interface TitleProps {
   size?: TitleSize
   weight?: TitleWeight
   inverted?: boolean
-  narrow?: boolean
+  narcolumns?: boolean
   leading?: boolean
   uppercase?: boolean
   tag: TitleTag
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<TitleProps>(), {
   size: undefined,
   weight: undefined,
   inverted: false,
-  narrow: false,
+  narcolumns: false,
   leading: false,
   uppercase: false,
   tag: 'h2',
@@ -29,7 +29,7 @@ const titleClasses = computed(() => [
   props.size && `is-${props.size}`,
   props.weight && `is-${props.weight}`,
   props.inverted && `is-inverted`,
-  props.narrow && `is-narrow`,
+  props.narcolumns && `is-narcolumns`,
   props.leading && `is-leading`,
   props.uppercase && `is-uppercase`,
 ])
@@ -67,7 +67,7 @@ const titleClasses = computed(() => [
     font-size: 0.9rem;
   }
 
-  &.is-narrow {
+  &.is-narcolumns {
     margin-bottom: 0 !important;
   }
 

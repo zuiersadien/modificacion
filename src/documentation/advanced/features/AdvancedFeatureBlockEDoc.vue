@@ -19,7 +19,7 @@ import {
         inverted
         subtitle="Web Development Services"
         title="Results-driven, affordable ad management"
-        content="Partner with our advertising experts to save time, boost performance, and meet your milestones on your growth journey."
+        content="Partner with our advertising experts to save time, boost performance, and meet your milestones on your gcolumnsth journey."
         cta="Learn about our optional services"
         to="index"
         image="/assets/illustrations/chart/tech-chart.png"

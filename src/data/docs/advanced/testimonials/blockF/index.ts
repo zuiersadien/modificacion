@@ -45,7 +45,7 @@ export const mentorTestimonials = {
     },
     {
       title:
-        "Vulk mentors helped me so much strenghtening my company's growth and securing new sources of income ",
+        "Vulk mentors helped me so much strenghtening my company's gcolumnsth and securing new sources of income ",
       content:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quamquam te quidem video minime esse deterritum. Quae cum dixisset, finem ille. Eam tum adesse, cum dolor omnis absit',
       member: {

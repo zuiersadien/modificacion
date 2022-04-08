@@ -16,28 +16,28 @@ import { counterProps, counterContent } from '/@src/data/docs/base/counter'
           >
             <div class="px-4 has-text-centered">
               <Icon icon="la:pizza-slice" :size="200" color="primary" />
-              <Title tag="h3" :size="4" weight="bold" narrow>
+              <Title tag="h3" :size="4" weight="bold" narcolumns>
                 <Counter :number="194" />
               </Title>
               <p class="paragraph rem-95">Pizzas eaten</p>
             </div>
             <div class="px-4 has-text-centered">
               <Icon icon="la:ice-cream" :size="200" color="primary" />
-              <Title tag="h3" :size="4" weight="bold" narrow>
+              <Title tag="h3" :size="4" weight="bold" narcolumns>
                 <Counter :number="79" />
               </Title>
               <p class="paragraph rem-95">Cones eaten</p>
             </div>
             <div class="px-4 has-text-centered">
               <Icon icon="la:hotdog" :size="200" color="primary" />
-              <Title tag="h3" :size="4" weight="bold" narrow>
+              <Title tag="h3" :size="4" weight="bold" narcolumns>
                 <Counter :number="217" />
               </Title>
               <p class="paragraph rem-95">Hotdogs eaten</p>
             </div>
             <div class="px-4 has-text-centered">
               <Icon icon="la:apple-alt" :size="200" color="primary" />
-              <Title tag="h3" :size="4" weight="bold" narrow>
+              <Title tag="h3" :size="4" weight="bold" narcolumns>
                 <Counter :number="42" />
               </Title>
               <p class="paragraph rem-95">Apples eaten</p>

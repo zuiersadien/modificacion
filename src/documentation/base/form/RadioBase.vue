@@ -125,19 +125,19 @@ const selectedThird = ref('value_1')
             <div class="column pt-4">
               <Card shape="squared" muted>
                 <div class="mb-4">
-                  <Title tag="h3" :size="7" weight="semi" narrow>
+                  <Title tag="h3" :size="7" weight="semi" narcolumns>
                     <span>Radios 1</span>
                   </Title>
                   <p class="paragraph rem-90">Selected: {{ selectedFirst }}</p>
                 </div>
                 <div class="mb-4">
-                  <Title tag="h3" :size="7" weight="semi" narrow>
+                  <Title tag="h3" :size="7" weight="semi" narcolumns>
                     <span>Radios 2</span>
                   </Title>
                   <p class="paragraph rem-90">selected: {{ selectedSecond }}</p>
                 </div>
                 <div class="mb-4">
-                  <Title tag="h3" :size="7" weight="semi" narrow>
+                  <Title tag="h3" :size="7" weight="semi" narcolumns>
                     <span>Radios 3</span>
                   </Title>
                   <p class="paragraph rem-90">selected: {{ selectedThird }}</p>

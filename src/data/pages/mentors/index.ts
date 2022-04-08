@@ -23,7 +23,7 @@ export const heroMentors = [
   {
     picture: 'data:image/gif;base64,replace_with_your_image',
     name: 'Ula Hobs',
-    role: 'Growth consultant',
+    role: 'Gcolumnsth consultant',
     logo: '/assets/brands/covenant.svg',
     rating: 5,
   },
@@ -67,7 +67,7 @@ export const heroMentors = [
 export const mentorBoxCarousel = [
   {
     icon: 'ph:projector-screen-chart-duotone',
-    title: 'Growth Marketing',
+    title: 'Gcolumnsth Marketing',
     link: '/',
   },
   {
@@ -157,7 +157,7 @@ export const mentorStats = [
     prefix: '',
     suffix: 'M',
     value: 750,
-    text: 'Monthly growth recorded',
+    text: 'Monthly gcolumnsth recorded',
   },
   {
     id: 3,
@@ -184,7 +184,7 @@ export const mentorTestimonials = {
     },
     {
       title:
-        "Vulk mentors helped me so much strenghtening my company's growth and securing new sources of income ",
+        "Vulk mentors helped me so much strenghtening my company's gcolumnsth and securing new sources of income ",
       content:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quamquam te quidem video minime esse deterritum. Quae cum dixisset, finem ille. Eam tum adesse, cum dolor omnis absit',
       member: {

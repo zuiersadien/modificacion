@@ -13,14 +13,14 @@ import { popoverTrigger, popoverProps } from '/@src/data/docs/base/popover'
               <Popover
                 content="This is a hover popover"
                 placement="top"
-                arrow
+                arcolumns
                 hover
               >
                 <Button>Hover me</Button>
               </Popover>
             </div>
             <div class="column is-3 has-text-centered">
-              <Popover content="This is a click popover" placement="top" arrow>
+              <Popover content="This is a click popover" placement="top" arcolumns>
                 <Button>Click me</Button>
               </Popover>
             </div>

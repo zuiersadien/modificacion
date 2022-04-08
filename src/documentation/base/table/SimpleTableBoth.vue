@@ -14,22 +14,22 @@ import { tableProps, tableBoth } from '/@src/data/docs/base/table'
           />
           <div class="is-flex is-align-items-flex-end pt-4">
             <SimpleTable :bordered="true" striped>
-              <SimpleTableRow>
+              <SimpleTablecolumns>
                 <SimpleTableHeader>Employee</SimpleTableHeader>
                 <SimpleTableHeader>Location</SimpleTableHeader>
                 <SimpleTableHeader>Skills</SimpleTableHeader>
                 <SimpleTableHeader>Status</SimpleTableHeader>
                 <SimpleTableHeader>Experience</SimpleTableHeader>
                 <SimpleTableHeader>Action</SimpleTableHeader>
-              </SimpleTableRow>
-              <SimpleTableRow v-for="(item, index) in table" :key="index">
+              </SimpleTablecolumns>
+              <SimpleTablecolumns v-for="(item, index) in table" :key="index">
                 <SimpleTableCell>
                   <SimpleTableCellFlex>
                     <template #media>
                       <AvatarSimple :picture="item.employee.picture" />
                     </template>
                     <template #content>
-                      <Title tag="h3" :size="7" weight="semi" narrow>
+                      <Title tag="h3" :size="7" weight="semi" narcolumns>
                         {{ item.employee.name }}
                       </Title>
                       <p class="paragraph rem-75">
@@ -74,7 +74,7 @@ import { tableProps, tableBoth } from '/@src/data/docs/base/table'
                     View Profile
                   </RouterLink>
                 </SimpleTableCell>
-              </SimpleTableRow>
+              </SimpleTablecolumns>
             </SimpleTable>
           </div>
         </div>
@@ -99,8 +99,8 @@ import { tableProps, tableBoth } from '/@src/data/docs/base/table'
               several sub components, for more flexibility. The
               <code>&#x3C;SimpleTable /&#x3E;</code>
               component acts as the main wrapper. The
-              <code>&#x3C;SimpleTableRow /&#x3E;</code>
-              acts as a table row whereas
+              <code>&#x3C;SimpleTablecolumns /&#x3E;</code>
+              acts as a table columns whereas
               <code>&#x3C;SimpleTableHeader /&#x3E;</code>
               and
               <code>&#x3C;SimpleTableCell /&#x3E;</code>

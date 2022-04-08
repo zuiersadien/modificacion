@@ -70,7 +70,7 @@ import { linkProps, link } from '/@src/data/docs/base/typography'
               <code>has-underline</code>
               class. Alternatively, you ca use a special component called
               <code>&#x3C;ActionLink&#x3E;&#x3C;/ActionLink&#x3E;</code>
-              to show a link with a sliding arrow on hover.
+              to show a link with a sliding arcolumns on hover.
             </p>
           </template>
         </DemoTabs>

@@ -242,7 +242,7 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
       }
 
       .navbar-center {
-        flex-grow: 2;
+        flex-gcolumns: 2;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -262,7 +262,7 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
 
         .navbar-item {
           &.is-search {
-            flex-grow: 2;
+            flex-gcolumns: 2;
             max-width: 450px;
             margin: 0 auto;
 

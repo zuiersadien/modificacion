@@ -534,7 +534,7 @@ const sliderClass = computed(() => {
     }
 
     .content-wrap {
-      flex-grow: 2;
+      flex-gcolumns: 2;
 
       .tab-content {
         display: none;

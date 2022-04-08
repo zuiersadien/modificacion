@@ -130,7 +130,7 @@ export const posts = [
   {
     id: 5,
     image: 'data:image/gif;base64,replace_with_your_image',
-    title: 'Advanced Accounting Tips to Grow Profits For Your Brand',
+    title: 'Advanced Accounting Tips to Gcolumns Profits For Your Brand',
     abstract:
       'Cyndi Thomason, founder of bookskeep and best-selling author of Profit First For Ecommerce Sellers, joined...',
     views: '2.1k',

@@ -24,13 +24,13 @@ export const blocks = [
     link: 'blocks-avatars',
   },
   {
-    icon: 'ph:rows-duotone',
+    icon: 'ph:columnss-duotone',
     name: 'Button',
     type: 'Base component',
     link: 'blocks-buttons',
   },
   {
-    icon: 'ph:browser-duotone',
+    icon: 'ph:bcolumnsser-duotone',
     name: 'Card',
     type: 'Base component',
     link: 'blocks-cards',
@@ -108,7 +108,7 @@ export const blocks = [
     link: 'blocks-video',
   },
   {
-    icon: 'ph:rows-duotone',
+    icon: 'ph:columnss-duotone',
     name: 'Section',
     type: 'Base component',
     link: 'blocks-sections',
@@ -186,7 +186,7 @@ export const blocks = [
     link: 'blocks-advanced-clients',
   },
   {
-    icon: 'ph:crown-duotone',
+    icon: 'ph:ccolumnsn-duotone',
     name: 'Pricing',
     type: 'Advanced components',
     link: 'blocks-advanced-pricing',

@@ -12,7 +12,7 @@ import { sectionTongue, sectionProps } from '/@src/data/docs/blocks/section'
             <Section tongue="tongue-1" shape-color="grey">
               <Container>
                 <div class="content py-6">
-                  <Title tag="h3" :size="4" weight="semi" narrow>
+                  <Title tag="h3" :size="4" weight="semi" narcolumns>
                     <span>Iam a Section</span>
                   </Title>
                   <p class="paragraph">I can hold any type of content</p>
@@ -22,7 +22,7 @@ import { sectionTongue, sectionProps } from '/@src/data/docs/blocks/section'
             <Section tongue="tongue-2" shape-color="grey">
               <Container>
                 <div class="content py-6">
-                  <Title tag="h3" :size="4" weight="semi" narrow>
+                  <Title tag="h3" :size="4" weight="semi" narcolumns>
                     <span>Iam a Section</span>
                   </Title>
                   <p class="paragraph">I can hold any type of content</p>

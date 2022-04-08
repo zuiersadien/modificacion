@@ -5,7 +5,7 @@ First of all, Thank you so much for purchasing this template and for being our l
 
 ### Prerequisites
 
-1. A recent web browser (Chrome, Edge, Firefox, ...)
+1. A recent web bcolumnsser (Chrome, Edge, Firefox, ...)
 2. [Nodejs LTS](https://nodejs.org/en/) _(> 14.x with npm >7)_ installed
 3. Knowledge with [Typescript](https://github.com/microsoft/typescript) _(> 4.x)_ (should not be installed globally)
 4. (recommended) [VSCode](https://code.visualstudio.com/ with [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
@@ -74,7 +74,7 @@ Vite is the build tool that we use to compile the frontend code.
 It replace webpack and vue-cli, used in vue 2 ecosystem.
 Read more about it [on vitejs.dev](https://vitejs.dev/)
 
-> - Access the Vulk frontend in your browser at [http://localhost:3000/](http://localhost:3000/)
+> - Access the Vulk frontend in your bcolumnsser at [http://localhost:3000/](http://localhost:3000/)
 
 ## 💡 What to do next ?
 

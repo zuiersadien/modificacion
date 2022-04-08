@@ -11,7 +11,7 @@ import IconPopover from '/@src/components/base/popover/modules/IconPopover.vue'
           <DemoTitle title="Custom - Icons" subtitle="Custom icon layout" />
           <div class="columns pt-4">
             <div class="column is-3 has-text-centered">
-              <Popover custom spacing="medium" arrow hover>
+              <Popover custom spacing="medium" arcolumns hover>
                 <template #popover>
                   <IconPopover
                     icon="ion:skull-outline"
@@ -24,7 +24,7 @@ import IconPopover from '/@src/components/base/popover/modules/IconPopover.vue'
               </Popover>
             </div>
             <div class="column is-3 has-text-centered">
-              <Popover custom spacing="medium" arrow hover>
+              <Popover custom spacing="medium" arcolumns hover>
                 <template #popover>
                   <IconPopover
                     icon="ion:leaf-outline"
@@ -37,7 +37,7 @@ import IconPopover from '/@src/components/base/popover/modules/IconPopover.vue'
               </Popover>
             </div>
             <div class="column is-3 has-text-centered">
-              <Popover custom spacing="medium" arrow hover>
+              <Popover custom spacing="medium" arcolumns hover>
                 <template #popover>
                   <IconPopover
                     icon="ion:pizza-outline"
@@ -51,7 +51,7 @@ import IconPopover from '/@src/components/base/popover/modules/IconPopover.vue'
               </Popover>
             </div>
             <div class="column is-3 has-text-centered">
-              <Popover custom spacing="medium" arrow hover>
+              <Popover custom spacing="medium" arcolumns hover>
                 <template #popover>
                   <IconPopover
                     icon="ion:rocket-outline"
