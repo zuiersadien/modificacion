@@ -61,8 +61,8 @@ web_modules/
 \*.tsbuildinfo
 
 # Optional npm cache directory
-
 .npm
+package-lock.json
 
 # Optional eslint cache
 

@@ -41,6 +41,7 @@ meta:
               data-wow-delay="0.3s"
               data-wow-duration="0.5s"
             >
+              <CalculatorExchange />
               <!-- TODO: Include component FiatExchange -->
             </div>
           </div>
@@ -391,3 +392,6 @@ meta:
     </div>
   </section>
 </template>
+<script>
+
+</script>
