@@ -9,10 +9,7 @@ import { counterProps, counterBold } from '/@src/data/docs/base/counter'
         <div class="pt-4 pb-6">
           <DemoTitle title="Counter" subtitle="Counter bold variation" />
           <div
-            class="
-              is-flex is-align-items-flex-end is-justify-content-center
-              pt-4
-            "
+            class="is-flex is-align-items-flex-end is-justify-content-center pt-4"
           >
             <div class="px-6">
               <Title tag="h3" :size="4" weight="bold" narcolumns>

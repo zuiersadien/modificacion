@@ -126,8 +126,6 @@ function loadTimer() {
             :tc-pen-usd="params.tc.penusd"
             :currencies="params.fiatCurrenciesAvailable"
             :fiat-amount="fiatAmount"
-            @fiatCurrency="setFiatCurrency"
-            @fiatAmount="setFiatAmount"
           />
           <!-- TODO: InputFiat -->
         </span>

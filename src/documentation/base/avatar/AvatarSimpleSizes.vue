@@ -22,7 +22,9 @@ import {
               />
             </div>
             <div class="px-2">
-              <AvatarSimple picture="data:image/gif;base64,replace_with_your_image" />
+              <AvatarSimple
+                picture="data:image/gif;base64,replace_with_your_image"
+              />
             </div>
             <div class="px-2">
               <AvatarSimple

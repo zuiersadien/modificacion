@@ -59,10 +59,7 @@ import {
           </div>
 
           <div
-            class="
-              is-flex is-align-items-flex-end is-justify-content-center
-              pt-4
-            "
+            class="is-flex is-align-items-flex-end is-justify-content-center pt-4"
           >
             <div class="px-2">
               <AvatarSimple

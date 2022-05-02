@@ -51,13 +51,9 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
         class="navbar-menu b-centered-mobile b-centered-tablet-p"
         :class="navbarMenuClasses"
       >
-
         <div class="navbar-end">
           <div
-            class="
-              navbar-item
-              is-flex is-align-items-center is-justify-content-center
-            "
+            class="navbar-item is-flex is-align-items-center is-justify-content-center"
           >
             <ThemeToggle />
           </div>

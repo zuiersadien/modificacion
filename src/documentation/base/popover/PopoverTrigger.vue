@@ -20,7 +20,11 @@ import { popoverTrigger, popoverProps } from '/@src/data/docs/base/popover'
               </Popover>
             </div>
             <div class="column is-3 has-text-centered">
-              <Popover content="This is a click popover" placement="top" arcolumns>
+              <Popover
+                content="This is a click popover"
+                placement="top"
+                arcolumns
+              >
                 <Button>Click me</Button>
               </Popover>
             </div>

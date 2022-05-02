@@ -9,12 +9,7 @@ import { counterProps, counterBox } from '/@src/data/docs/base/counter'
         <div class="pt-4 pb-6">
           <DemoTitle title="Counter box" subtitle="Counter variations" />
           <div
-            class="
-              is-flex is-align-items-flex-end
-              pt-4
-              is-justify-content-center
-              has-text-centered
-            "
+            class="is-flex is-align-items-flex-end pt-4 is-justify-content-center has-text-centered"
           >
             <div class="px-2">
               <Card padding="2rem" class="counter-card">

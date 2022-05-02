@@ -7,12 +7,7 @@ meta:
 
 <template>
   <section id="home">
-    <div
-      class="banner"
-      :style="{
-        backgroundImage: 'url(/assets/images/banner-bg.png)',
-      }"
-    >
+    <div class="banner">
       <div class="illustration">
         <img src="/assets/images/banner-bg-1.png" alt="" class="one" />
         <img src="/assets/images/banner-bg-2.png" alt="" class="two" />

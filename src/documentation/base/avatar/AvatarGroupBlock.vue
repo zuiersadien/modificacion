@@ -59,10 +59,7 @@ const avatars = [
           <div class="py-4"></div>
 
           <div
-            class="
-              is-flex is-align-items-flex-end is-justify-content-center
-              pt-4
-            "
+            class="is-flex is-align-items-flex-end is-justify-content-center pt-4"
           >
             <AvatarGroup
               :avatars="avatars"

@@ -33,6 +33,7 @@ p.text {
 }
 
 .banner {
+  background-image: url('/assets/images/banner-bg.png');
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -127,8 +128,6 @@ p.text {
         padding-top: 20px;
 
         .selector {
-          display: box;
-          display: flexbox;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -144,8 +143,6 @@ p.text {
           }
 
           .coin {
-            display: box;
-            display: flexbox;
             display: flex;
             align-items: center;
 
@@ -252,6 +249,39 @@ p.text {
   }
 }
 
+.is-dark {
+  .banner {
+    background: rgb(2 0 36);
+    background: linear-gradient(180deg, rgb(2 0 36 / 100%) 0%, rgb(40 28 61 / 100%) 0%, rgb(13 4 26 / 100%) 100%);
+
+    .illustration {
+      opacity: 0.15;
+
+       .three {
+         opacity: 0.6;
+       }
+    }
+
+    .head, {
+      color: var(--title-color)!important;
+    }
+
+  }
+
+  .subtitle, .text, .title {
+    color: var(--paragraph-color-inverted)!important;
+  }
+
+  .earningpartners .item p.text {
+    color: #33276a!important;
+  }
+
+  .footer {
+    background-color: var(--night-light-3)!important;
+  }
+
+}
+
 /* Earningpartners Start */
 .earningpartners {
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
@@ -282,8 +312,6 @@ p.text {
     }
 
     .coin-box {
-      display: box;
-      display: flexbox;
       display: flex;
       -webkit-box-align: center;
       -ms-flex-align: center;

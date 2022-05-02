@@ -9,10 +9,7 @@ import { counterProps, counterContent } from '/@src/data/docs/base/counter'
         <div class="pt-4 pb-6">
           <DemoTitle title="Counter" subtitle="Counter content variation" />
           <div
-            class="
-              is-flex is-align-items-flex-end is-justify-content-center
-              pt-6
-            "
+            class="is-flex is-align-items-flex-end is-justify-content-center pt-6"
           >
             <div class="px-4 has-text-centered">
               <Icon icon="la:pizza-slice" :size="200" color="primary" />
