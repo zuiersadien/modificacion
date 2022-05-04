@@ -1,4 +1,4 @@
-import type { PluginItem } from '/@src/components/misc/demo/DemoPlugins.vue'
+import type { PluginItem } from '/@src/components/core/misc/demo/DemoPlugins.vue'
 
 export const plugins: PluginItem[] = [
   {

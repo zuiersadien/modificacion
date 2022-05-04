@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import InputFiat from '/@src/components/advanced/CalculatorExchange/InputFiat.vue'
+import InputFiat from '/@src/components/application/CalculatorExchange/InputFiat.vue'
 
 type InputDefaultCalculatorExchangeType = 'fiat' | 'crypto'
 type StatesCalulatorType = 'loading' | 'success' | 'error'

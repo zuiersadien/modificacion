@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import type { AvatarSimpleProps } from '/@src/components/base/avatar/AvatarSimple.vue'
+import type { AvatarSimpleProps } from '/@src/components/core/base/avatar/AvatarSimple.vue'
 
 export type AvatarGroupSize = 'small' | 'medium' | 'large'
 

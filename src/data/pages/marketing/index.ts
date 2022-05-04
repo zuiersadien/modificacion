@@ -1,4 +1,4 @@
-import type { HeroAvatar } from '/@src/components/layout/hero/modules/HeroAvatars.vue'
+import type { HeroAvatar } from '/@src/components/core/layout/hero/modules/HeroAvatars.vue'
 import type { BaseFeature } from '/@src/types'
 
 export const heroAvatars: HeroAvatar[] = [

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { popoverCustomIcons, popoverProps } from '/@src/data/docs/base/popover'
-import IconPopover from '/@src/components/base/popover/modules/IconPopover.vue'
+import IconPopover from '/@src/components/core/base/popover/modules/IconPopover.vue'
 </script>
 
 <template>

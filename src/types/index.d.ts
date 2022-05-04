@@ -1,5 +1,5 @@
 import type { RouteLocationRaw } from 'vue-router'
-import type { IconBoxColor } from '/@src/components/base/icon/IconBox.vue'
+import type { IconBoxColor } from '/@src/components/core/base/icon/IconBox.vue'
 
 export interface BaseFeature {
   title: string

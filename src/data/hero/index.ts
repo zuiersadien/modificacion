@@ -1,4 +1,4 @@
-import type { HeroStack } from '/@src/components/layout/hero/modules/HeroStacks.vue'
+import type { HeroStack } from '/@src/components/core/layout/hero/modules/HeroStacks.vue'
 
 export const heroStacks: HeroStack[] = [
   {

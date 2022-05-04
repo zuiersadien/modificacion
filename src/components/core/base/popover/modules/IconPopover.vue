@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IconBoxColor } from '/@src/components/base/icon/IconBox.vue'
+import type { IconBoxColor } from '/@src/components/core/base/icon/IconBox.vue'
 
 export interface IconPopoverProps {
   icon: string

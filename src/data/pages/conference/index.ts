@@ -1,4 +1,4 @@
-import type { GalleryBlockBcolumns } from '/@src/components/blocks/gallery-blocks/GalleryBlockB.vue'
+import type { GalleryBlockBcolumns } from '/@src/components/core/blocks/gallery-blocks/GalleryBlockB.vue'
 import type { EventDay } from '/@src/components/advanced/event/event-schedule/EventSchedule.vue'
 import type { PricingPlan } from '/@src/components/advanced/pricing/pricing-card/PricingCardsA.vue'
 

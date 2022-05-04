@@ -1,7 +1,7 @@
-import type { GalleryBlockAItem } from '/@src/components/blocks/gallery-blocks/GalleryBlockA.vue'
-import type { GalleryBlockBcolumns } from '/@src/components/blocks/gallery-blocks/GalleryBlockB.vue'
-import type { GalleryBlockCItem } from '/@src/components/blocks/gallery-blocks/GalleryBlockC.vue'
-import type { GalleryBlockDItem } from '/@src/components/blocks/gallery-blocks/GalleryBlockD.vue'
+import type { GalleryBlockAItem } from '/@src/components/core/blocks/gallery-blocks/GalleryBlockA.vue'
+import type { GalleryBlockBcolumns } from '/@src/components/core/blocks/gallery-blocks/GalleryBlockB.vue'
+import type { GalleryBlockCItem } from '/@src/components/core/blocks/gallery-blocks/GalleryBlockC.vue'
+import type { GalleryBlockDItem } from '/@src/components/core/blocks/gallery-blocks/GalleryBlockD.vue'
 
 export const masonryGallery: GalleryBlockAItem[] = [
   {

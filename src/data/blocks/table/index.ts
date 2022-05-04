@@ -1,4 +1,4 @@
-import type { TagColor } from '/@src/components/base/tag/Tag.vue'
+import type { TagColor } from '/@src/components/core/base/tag/Tag.vue'
 
 export const table = [
   {
