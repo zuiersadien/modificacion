@@ -1,26 +1,4 @@
 export const footer = {
-  cta: {
-    title: 'Maximize your marketplace potential',
-    subtitle: '30-day free trial',
-    benefits: [
-      {
-        label: 'AI-powered tech',
-      },
-      {
-        label: 'Hours of time saved',
-      },
-    ],
-    links: [
-      {
-        label: 'Get Started',
-        to: '/',
-      },
-      {
-        label: "Let's Talk",
-        to: '/',
-      },
-    ],
-  },
   columns: [
     {
       title: 'Product',
@@ -117,29 +95,19 @@ export const footer = {
   ],
   socials: [
     {
-      icon: 'fa-brands:facebook-f',
-      link: '/',
-      name: 'Facebook',
-    },
-    {
-      icon: 'fa-brands:twitter',
-      link: '/',
-      name: 'Twitter',
-    },
-    {
-      icon: 'fa-brands:linkedin-in',
-      link: '/',
-      name: 'Linkedin',
-    },
-    {
       icon: 'fa-brands:youtube',
       link: '/',
       name: 'Youtube',
     },
     {
-      icon: 'fa-brands:github',
+      icon: 'fa-brands:facebook-f',
       link: '/',
-      name: 'GitHub',
+      name: 'Facebook',
+    },
+    {
+      icon: 'fa-brands:instagram',
+      link: '/',
+      name: 'Instagram',
     },
   ],
   links: [
@@ -156,5 +124,5 @@ export const footer = {
       to: '/',
     },
   ],
-  copyright: '© 2022-2023 Css Ninja. All rights reserved.',
+  copyright: '© 2023 Innovadora Digital. All rights reserved.',
 }

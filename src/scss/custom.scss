@@ -276,15 +276,10 @@ p.text {
     color: #33276a!important;
   }
 
-  .footer {
-    background-color: var(--night-light-3)!important;
-  }
-
 }
 
 /* Earningpartners Start */
 .earningpartners {
-  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
   filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
   padding: 55px 0 133px;
   position: relative;
@@ -492,98 +487,3 @@ p.text {
   }
 }
 
-
-/* Footer Start */
-.footer {
-  padding: 102px 0 30px;
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-
-  .footer-box {
-    padding: 30px 0;
-
-    .logo {
-      padding-bottom: 25px;
-    }
-
-    h4 {
-      &.lasthead {
-        color: #fff;
-        padding-bottom: 12px;
-      }
-    }
-
-    p {
-      &.text {
-        color: rgb(255 255 255 / 90%);
-      }
-    }
-
-    .footer-link {
-      li {
-        color: rgb(255 255 255 / 90%);
-        padding-top: 8px;
-
-        a {
-          font-family: "Open Sans", sans-serif;
-          font-size: 18px;
-          line-height: 28px;
-          font-weight: 400;
-          color: rgb(255 255 255 / 90%);
-          transition: all 0.3s ease-in;
-
-          &:hover {
-            color: #fff;
-          }
-        }
-      }
-    }
-  }
-
-  .raka {
-    border-top: 1px solid #686fc5;
-    margin: 85px 0 30px;
-  }
-
-  .footer-bottom {
-    p {
-      font-family: "Open Sans", sans-serif;
-      font-size: 18px;
-      line-height: 28px;
-      font-weight: 400;
-      color: rgb(255 255 255 / 90%);
-    }
-
-    a {
-      font-family: "Open Sans", sans-serif;
-      font-size: 18px;
-      line-height: 28px;
-      font-weight: 400;
-      color: rgb(255 255 255 / 90%);
-    }
-
-    .social-style {
-      text-align: right;
-
-      a {
-        margin-left: 8px;
-        color: rgb(255 255 255 / 90%);
-        border: 1px solid rgb(255 255 255 / 90%);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 42px;
-        display: inline-block;
-        transition: all 0.3s ease-in;
-
-        &:hover {
-          border: 0;
-          background: linear-gradient(24deg, #903eff 17%, #ea07fe 100%);
-          box-shadow: -1.816px 3.564px 10px 0 rgb(60 49 172 / 29%);
-        }
-      }
-    }
-  }
-}

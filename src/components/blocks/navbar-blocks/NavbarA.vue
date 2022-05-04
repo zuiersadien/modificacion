@@ -37,7 +37,7 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
     <div class="container">
       <div class="navbar-brand">
         <RouterLink :to="{ name: 'index' }" class="navbar-item">
-          <img class="navbar-logo" src="/assets/logo/logo-sm.png" alt="logo" />
+          <img class="navbar-logo" src="/assets/logo/logo.svg" alt="logo" />
         </RouterLink>
         <div
           class="navbar-burger"
@@ -86,7 +86,8 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
     .navbar-logo {
       display: block;
       width: 100%;
-      max-height: 38px;
+      max-height: 25px;
+      filter: invert(0%);
     }
 
     .navbar-burger {
@@ -271,6 +272,11 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
     }
   }
 }
+
+.is-dark .navbar-logo {
+  filter: brightness(0) invert(1) !important;
+}
+
 @media only screen and (max-width: 980px) {
   .navbar {
     .navbar-brand {
