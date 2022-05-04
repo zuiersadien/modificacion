@@ -5,10 +5,11 @@ import axios from 'axios'
 type InputDefaultCalculatorExchangeType = 'fiat' | 'crypto'
 type StatesCalulatorType = 'loading' | 'success' | 'error'
 export type FiatCurrencyType = 'PEN' | 'USD'
+
 // type CryptoCurrencyType = 'USDT'
 
 export interface CalculatorExchangeProps {
-  inputDefault: InputDefaultCalculatorExchangeType
+  inputDefault?: InputDefaultCalculatorExchangeType
 }
 
 withDefaults(defineProps<CalculatorExchangeProps>(), {
@@ -27,10 +28,20 @@ let interval = ref<Timer>()
 let time = ref('')
 let params = ref({})
 
+const currencySelected = ref('')
+const btnColorPEN = ref()
+const btnColorUSD = ref()
+
 onMounted(() => {
+  setup()
   getParams()
   loadTimer()
 })
+
+function setup() {
+  currencySelected.value = 'PEN'
+  updateCurrencySelected()
+}
 
 function getParams() {
   state.value = 'loading'
@@ -93,19 +104,19 @@ function loadTimer() {
   }, 1000)
 }
 
-const currPEN = ref()
-const btnColorPEN = ref()
-const btnColorUSD = ref()
-
-function currencySelected(currency: string) {
-  if (currency === 'PEN') {
+function updateCurrencySelected() {
+  if (currencySelected.value === 'PEN') {
     btnColorPEN.value = 'primary'
     btnColorUSD.value = null
   } else {
     btnColorPEN.value = null
     btnColorUSD.value = 'primary'
   }
-  console.log(currency)
+}
+
+function setCurrencySelected(currency: FiatCurrencyType) {
+  currencySelected.value = currency
+  updateCurrencySelected()
 }
 </script>
 
@@ -121,39 +132,38 @@ function currencySelected(currency: string) {
         Exchange
       </h5>
       <div>
-        <Button
-          v-model="currPEN"
-          size="small"
-          :color="btnColorPEN"
-          @click="currencySelected('PEN')"
-        >
-          Soles
-        </Button>
-        <Button
-          size="small"
-          :color="btnColorUSD"
-          @click="currencySelected('USD')"
-        >
-          Dolares
-        </Button>
+        <div class="has-text-right">
+          <Button
+            size="small"
+            :color="btnColorPEN"
+            @click="setCurrencySelected('PEN')"
+          >
+            Soles
+          </Button>
+          <Button
+            size="small"
+            :color="btnColorUSD"
+            @click="setCurrencySelected('USD')"
+          >
+            Dolares
+          </Button>
+        </div>
+
         <Field>
           <FieldLabel type="hero" label="Tu nos envías"></FieldLabel>
           <Control>
-            <VInput v-model="inputOneValue" rounded size="lg" />
+            <VInput rounded size="lg" />
           </Control>
         </Field>
 
         <Field>
           <FieldLabel type="hero" label="Recibirás"></FieldLabel>
           <Control>
-            <VInput v-model="inputOneValue" rounded size="lg" />
+            <VInput rounded size="lg" />
           </Control>
         </Field>
       </div>
-
-      <a v-if="state === 'success'" href="/register" class="button button-1">
-        Comprar
-      </a>
+      <Button class="mt-4" color="primary" to="/register">Comprar</Button>
     </div>
   </div>
 </template>
