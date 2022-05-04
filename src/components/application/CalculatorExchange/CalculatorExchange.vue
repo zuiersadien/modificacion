@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import InputFiat from '/@src/components/application/CalculatorExchange/InputFiat.vue'
 
 type InputDefaultCalculatorExchangeType = 'fiat' | 'crypto'
 type StatesCalulatorType = 'loading' | 'success' | 'error'
@@ -93,6 +92,21 @@ function loadTimer() {
     }).format()
   }, 1000)
 }
+
+const currPEN = ref()
+const btnColorPEN = ref()
+const btnColorUSD = ref()
+
+function currencySelected(currency: string) {
+  if (currency === 'PEN') {
+    btnColorPEN.value = 'primary'
+    btnColorUSD.value = null
+  } else {
+    btnColorPEN.value = null
+    btnColorUSD.value = 'primary'
+  }
+  console.log(currency)
+}
 </script>
 
 <template>
@@ -106,43 +120,35 @@ function loadTimer() {
         <br />
         Exchange
       </h5>
-      <div v-if="state === 'loading'"></div>
-      <div
-        v-else-if="state === 'error'"
-        class="d-flex align-items-center"
-        style="height: 340px"
-      >
-        <div class="text-center w-100">
-          <a href="#!" @click="getParams">
-            Volver a cargar
-            <i class="fas fa-redo"></i>
-          </a>
-        </div>
-      </div>
-      <div v-else-if="state === 'success'">
-        <span v-if="orderInputs">
-          <InputFiat
-            label="Tu envías"
-            :tc-pen-usd="params.tc.penusd"
-            :currencies="params.fiatCurrenciesAvailable"
-            :fiat-amount="fiatAmount"
-          />
-          <!-- TODO: InputFiat -->
-        </span>
+      <div>
+        <Button
+          v-model="currPEN"
+          size="small"
+          :color="btnColorPEN"
+          @click="currencySelected('PEN')"
+        >
+          Soles
+        </Button>
+        <Button
+          size="small"
+          :color="btnColorUSD"
+          @click="currencySelected('USD')"
+        >
+          Dolares
+        </Button>
+        <Field>
+          <FieldLabel type="hero" label="Tu nos envías"></FieldLabel>
+          <Control>
+            <VInput v-model="inputOneValue" rounded size="lg" />
+          </Control>
+        </Field>
 
-        <div v-if="!orderInputs" class="d-flex justify-content-center my-2">
-          <button
-            class="rotate btn btn-link"
-            href="#"
-            @click="changeOrderInput"
-          >
-            <img src="/assets/images/exchange-img.png" alt="" />
-          </button>
-        </div>
-
-        <span v-if="orderInputs">
-          <!-- TODO: InputCrypto -->
-        </span>
+        <Field>
+          <FieldLabel type="hero" label="Recibirás"></FieldLabel>
+          <Control>
+            <VInput v-model="inputOneValue" rounded size="lg" />
+          </Control>
+        </Field>
       </div>
 
       <a v-if="state === 'success'" href="/register" class="button button-1">

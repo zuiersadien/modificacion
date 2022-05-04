@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
-export type ButtonSize = 'medium' | 'large' | 'form'
+export type ButtonSize = 'small' | 'medium' | 'large' | 'form'
 export type ButtonColor =
   | 'primary'
   | 'secondary'
@@ -164,6 +164,13 @@ const buttonClasses = computed(() => [
 
   &.is-long-3 {
     min-width: 150px;
+  }
+
+  &.is-small {
+    font-size: 0.765625rem;
+    padding: 4px 8px;
+    min-height: auto;
+    border: 0px;
   }
 
   &.is-medium {

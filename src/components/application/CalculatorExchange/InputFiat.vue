@@ -18,6 +18,7 @@ withDefaults(defineProps<InputFiatProps>(), {
 })
 
 let currencySelected = ref<FiatCurrencyType>('USD')
+const inputOneValue = ref()
 
 onMounted(() => {
   let defaultValue = currencies.value[0].id
@@ -30,15 +31,6 @@ onMounted(() => {
   //   max: 9999999,
   // })
 })
-
-function emitFiatCurrency(val: FiatCurrencyType) {
-  currencySelected.value = val
-  // this.$emit('fiatCurrency', value)
-}
-function emitFiatAmount(e: any) {
-  console.log(e)
-  // this.$emit('fiatAmount', e.target.value)
-}
 
 /*
 export default {
@@ -111,16 +103,8 @@ export default {
         </div>
       </div>
       <div class="form-group">
-        <input
-          id="phone-mask"
-          onClick="this.setSelectionRange(0, this.value.length)"
-          type="text"
-          name="number"
-          placeholder="1000"
-          class="form-control"
-          :value="fiatAmount"
-          @keyup="emitFiatAmount"
-        />
+        <VInput v-model="inputOneValue" placeholder="John Doe" />
+        <label>{{ inputOneValue }}</label>
       </div>
       <small v-if="currencySelected === 'PEN'">
         Tipo de cambio: S/ {{ tcPenUsd.toFixed(3) }}

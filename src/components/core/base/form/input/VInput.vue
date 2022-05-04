@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+export type InputSize = 'sm' | 'md' | 'lg'
+
 export interface InputEmits {
   (e: 'update:modelValue', value: string | number): void
 }
@@ -13,6 +15,7 @@ export interface InputProps {
   readonly?: boolean
   rounded?: boolean
   inverted?: boolean
+  size?: InputSize
 }
 
 const emit = defineEmits<InputEmits>()
@@ -24,11 +27,13 @@ const props = withDefaults(defineProps<InputProps>(), {
   readonly: false,
   rounded: false,
   inverted: false,
+  size: 'md',
 })
 
 const inputClasses = computed(() => [
   props.rounded && `is-rounded`,
   props.inverted && `is-inverted`,
+  props.size && `size-${props.size}`,
 ])
 
 function change(e: any) {
@@ -88,6 +93,12 @@ function change(e: any) {
     &::placeholder {
       color: var(--input-inverted-placeholder-color);
     }
+  }
+
+  &.size-lg {
+    padding: 10px 20px 10px;
+    font-size: 24px;
+    color: var(--primary);
   }
 }
 
