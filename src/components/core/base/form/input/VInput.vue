@@ -96,7 +96,7 @@ function change(e: any) {
   }
 
   &.size-lg {
-    padding: 10px 20px 10px;
+    padding: 10px 20px;
     font-size: 24px;
     color: var(--primary);
   }

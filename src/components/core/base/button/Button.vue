@@ -170,7 +170,7 @@ const buttonClasses = computed(() => [
     font-size: 0.765625rem;
     padding: 4px 8px;
     min-height: auto;
-    border: 0px;
+    border: 0;
   }
 
   &.is-medium {

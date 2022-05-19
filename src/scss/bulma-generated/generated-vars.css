@@ -10,10 +10,10 @@
   --white: white; }
 
 :root {
-  --black--10--rgba: rgba(10, 10, 10, 0.1);
-  --black--2--rgba: rgba(10, 10, 10, 0.02);
-  --black--20--rgba: rgba(10, 10, 10, 0.2);
-  --black--5--rgba: rgba(10, 10, 10, 0.05);
+  --black--10--rgba: rgb(10 10 10 / 10%);
+  --black--2--rgba: rgb(10 10 10 / 2%);
+  --black--20--rgba: rgb(10 10 10 / 20%);
+  --black--5--rgba: rgb(10 10 10 / 5%);
   --black--800--lighten: #1e1e1e;
   --danger--color-invert: white;
   --danger--dark-color: #e30358;
@@ -29,12 +29,10 @@
   --primary--color-invert: white;
   --primary--dark-color: #7a08fc;
   --primary--light-color: #f4ebff;
-  --success--color-invert: rgba(0, 0, 0, 0.7);
+  --success--color-invert: rgb(0 0 0 / 70%);
   --success--dark-color: #0d875a;
   --success--light-color: #ecfdf7;
-  --warning--color-invert: rgba(0, 0, 0, 0.7);
+  --warning--color-invert: rgb(0 0 0 / 70%);
   --warning--dark-color: #8b6209;
   --warning--light-color: #fef8ec;
   --white--800--lighten: white; }
-
-/*# sourceMappingURL=generated-vars.css.map */

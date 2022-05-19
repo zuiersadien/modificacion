@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+export type IconSize = 'sm' | 'md' | 'lg'
+
 export interface ControlProps {
   icon?: string
   validation?: boolean
   isValid?: boolean
   error?: string
   expanded?: boolean
+  iconSize?: IconSize
 }
 
 const props = withDefaults(defineProps<ControlProps>(), {
@@ -15,6 +18,8 @@ const props = withDefaults(defineProps<ControlProps>(), {
   isValid: false,
   error: 'Please enter a valid value',
   expanded: false,
+  iconSize: 'md',
+  were: 'USDT',
 })
 
 const controlClasses = computed(() => [
@@ -23,6 +28,8 @@ const controlClasses = computed(() => [
   props.isValid && `is-valid`,
   !props.isValid && `is-invalid`,
   props.expanded && `is-expanded`,
+  props.iconSize && `icon-size-${props.iconSize}`,
+  props.were && `were-${props.iconSize}`,
 ])
 </script>
 
@@ -54,6 +61,12 @@ const controlClasses = computed(() => [
 
 <style lang="scss" scoped>
 .control {
+  &.icon-size-lg {
+    .form-icon {
+      top: 8px !important;
+    }
+  }
+
   &.has-icon {
     position: relative;
 
