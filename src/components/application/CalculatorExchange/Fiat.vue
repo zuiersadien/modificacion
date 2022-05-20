@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { defineProps, toRefs, ref, defineEmits, onMounted } from 'vue'
 
-type fiatAmount = Number | String
+// type fiatAmount = Number | String
 
 const props = defineProps({
   currencies: Array,
-  fiatAmount: [Number, String],
+  // fiatAmount: [Number, String],
   tcPenUsd: Number,
   fiatAmoutLocalString: [Array, Number],
 })
@@ -14,7 +14,7 @@ const btnColorPEN = ref('btn-primary')
 const btnColorUSD = ref()
 
 //
-const { currencies, fiatAmount } = toRefs(props)
+const { currencies, fiatAmoutLocalString } = toRefs(props)
 // VARIABLES
 const currencySelected = ref('PEN')
 //
@@ -95,7 +95,7 @@ onMounted(() => {
 
         <Control icon-size="lg" icon="feather:dollar-sign">
           <VInput
-            v-model="fiatAmount"
+            v-model="fiatAmoutLocalString"
             rounded
             size="lg"
             type="text"
