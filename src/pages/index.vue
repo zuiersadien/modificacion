@@ -17,11 +17,14 @@ meta:
         <img src="/assets/images/banner-bg-2.png" alt="" class="two" />
         <img src="/assets/images/banner-map.png" alt="" class="three" />
       </div>
-
       <div class="hero-area">
         <div class="container">
-          <div class="columns align-items-center justify-content-between">
-            <div class="column is-6-tablet is-7-desktop">
+          <div
+            class="columns align-items-center is-justify-content-space-between"
+          >
+            <div
+              class="column is-6-tablet is-7-desktop is-flex is-align-items-center"
+            >
               <div
                 class="banner-content wow fadeInUp"
                 data-wow-duration="0.5s"
@@ -36,7 +39,7 @@ meta:
               </div>
             </div>
             <div
-              class="column is-6-tablet is-4-desktop wow fadeInRightBig"
+              class="column is-4-tablet is-4-desktop wow fadeInRightBig"
               data-wow-delay="0.3s"
               data-wow-duration="0.5s"
             >

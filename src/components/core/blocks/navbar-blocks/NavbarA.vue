@@ -67,7 +67,16 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
             Contacto
           </RouterLink>
           <div class="navbar-item">
-            <Button color="primary" raised bold custom>Empecemos!</Button>
+            <Button
+              color="primary"
+              class="NavBarButton"
+              rounded
+              raised
+              bold
+              custom
+            >
+              Empecemos!
+            </Button>
           </div>
         </div>
       </div>
@@ -76,6 +85,15 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
 </template>
 
 <style lang="scss" scoped>
+.NavBarButton {
+  background: linear-gradient(45deg, #903eff 0%, #3e19ff 100%) !important;
+  border: none;
+  transition: 0.2s all ease-in-out !important;
+}
+
+.NavBarButton:hover {
+  background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
+}
 .navbar {
   height: 70px;
   transition: all 0.3s;

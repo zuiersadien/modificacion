@@ -7,12 +7,12 @@ const props = defineProps({
   currencies: Array,
   fiatAmount: [Number, String],
   tcPenUsd: Number,
+  fiatAmoutLocalString: [Array, Number],
 })
 // inputs
-const btnColorPEN = ref('primary')
+const btnColorPEN = ref('btn-primary')
 const btnColorUSD = ref()
 
-const LocalS = ref(0)
 //
 const { currencies, fiatAmount } = toRefs(props)
 // VARIABLES
@@ -27,13 +27,7 @@ function emitFiatCurrency(value) {
 }
 function emitFiatAmount(e) {
   emit('fiatAmount', e.target.value)
-  separadorMillares(fiatAmount.value)
-}
-// separador de millares
-function separadorMillares(numero) {
-  LocalS.value = numero.toLocaleString('en-US')
-
-  console.log(LocalS.value)
+  limpiarNumero(e)
 }
 
 const init = async () => {
@@ -41,17 +35,20 @@ const init = async () => {
   currencySelected.value = defaultValue
   emitFiatCurrency(defaultValue)
 }
-
 function updateCurrencySelected() {
   if (currencySelected.value === 'PEN') {
-    btnColorPEN.value = 'primary'
+    btnColorPEN.value = 'btn-primary '
     btnColorUSD.value = null
   } else {
     btnColorPEN.value = null
-    btnColorUSD.value = 'primary'
+    btnColorUSD.value = 'btn-primary '
   }
 }
 
+function limpiarNumero(obj) {
+  /* El evento "change" sólo saltará si son diferentes */
+  obj.target.value = obj.target.value.replace(/\D/g, '')
+}
 // definir funciones
 const emit = defineEmits(['fiatAmount', 'fiatCurrency'])
 
@@ -61,21 +58,6 @@ const emit = defineEmits(['fiatAmount', 'fiatCurrency'])
 onMounted(() => {
   init()
 })
-
-//
-
-//COMPUTED
-// const classButtonPEN = computed(() => {
-//   return {
-//     'primary': currencySelected.value === 'PEN',
-//   }
-// })
-// const classButtonUSD = computed(() => {
-//   return {
-//     'primary': currencySelected.value === 'USD',
-//   }
-// })
-//
 </script>
 
 <template>
@@ -87,23 +69,23 @@ onMounted(() => {
           <div class="selector">
             <p id="sl" class="text">Tu envías</p>
           </div>
-          <p>
-            {{ LocalS }}
-          </p>
+
           <!-- <FieldLabel  type="hero" label="Tu envías"></FieldLabel> -->
           <div class="has-text-right">
             <Button
+              raised
               size="small"
               class="uno"
-              :color="btnColorPEN"
+              :class="btnColorPEN"
               @click="emitFiatCurrency('PEN')"
             >
               Soles
             </Button>
             <Button
+              raised
               class="uno"
               size="small"
-              :color="btnColorUSD"
+              :class="btnColorUSD"
               @click="emitFiatCurrency('USD')"
             >
               Dólares
@@ -113,7 +95,6 @@ onMounted(() => {
 
         <Control icon-size="lg" icon="feather:dollar-sign">
           <VInput
-            id="phone-mask1"
             v-model="fiatAmount"
             rounded
             size="lg"
@@ -144,5 +125,17 @@ onMounted(() => {
 
 .uno {
   margin: 0 5px;
+}
+
+.btn-primary {
+  color: #fff !important;
+  background-color: #5156be;
+  border-color: #5156be;
+  box-shadow: 0 0 0 0.15rem rgb(107 111 200 / 50%);
+  transition: 0.2s all ease-in-out !important;
+}
+.btn-primary:hover {
+  background-color: #4549a2;
+  border-color: #414598;
 }
 </style>

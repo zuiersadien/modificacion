@@ -7,7 +7,7 @@ import axios from 'axios'
 type InputDefaultCalculatorExchangeType = 'fiat' | 'crypto'
 type StatesCalulatorType = 'loading' | 'success' | 'error'
 export type FiatCurrencyType = 'PEN' | 'USD'
-
+type fiatAmoutLocalString = Number | String
 // type CryptoCurrencyType = 'USDT'
 
 export interface CalculatorExchangeProps {
@@ -98,40 +98,49 @@ const fiatAmount = ref(0)
 const cryptoAmount = ref(0)
 const tcPenUsd = ref(0)
 
+const fiatAmoutLocalString = ref('')
 const cryptoCurrency = ref('tether')
 const fiatCurrency = ref('PEN')
 const lastInputEdited = ref(null)
-// const fiatCurrenciesAvailable=ref({})
 
-// Funtion
+function separadorMillares(numero) {
+  fiatAmoutLocalString.value = numero
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
-// function updateCurrencySelected() {
-//   if (currencySelected.value === 'PEN') {
-//     btnColorPEN.value = 'primary'
-//     btnColorUSD.value = ""
-//   } else {
-//     btnColorPEN.value = ''
-//     btnColorUSD.value = 'primary'
-//   }
-// }
+  console.log(fiatAmoutLocalString.value)
+}
+// function numberWithCommas(x) {
+// let uno= x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//    let uno = x.toString().replace(/[^A-Z\d-]/g, "")
 
-// function setCurrencySelected(currency: FiatCurrencyType) {
-//   currencySelected.value = currency
-//   updateCurrencySelected()
+//     // uno=fiatAmoutLocalString.value
+//     console.log(x)
 // }
 function setFiatAmount(val) {
   let amount = parseFloat(val)
   fiatAmount.value = amount
   updateCryptoAmountFromFiat(amount)
   lastInputEdited.value = 'setFiatAmount'
+  // numberWithCommas(val)
+  separadorMillares(val)
 }
+
 const setFiatCurrency = (val) => {
   fiatCurrency.value = val
+
   if (lastInputEdited.value === 'setFiatAmount') {
     updateCryptoAmountFromFiat()
+    fiatAmoutLocalString.value = 0
+    fiatAmount.value = 0
+    cryptoAmount.value = 0
   }
   if (lastInputEdited.value === 'setCryptoAmount') {
     updateFiatAmountFromCrypto()
+    fiatAmoutLocalString.value = 0
+    cryptoAmount.value = 0
+    fiatAmount.value = 0
+    console.log('hello')
   }
 }
 function setCryptoAmount(val) {
@@ -148,6 +157,7 @@ function setCryptoCurrency(val) {
 
 const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
   let totalUSDT = 0
+
   let amount = fiatAmount === 0 ? fiatAmount.value : fiatAmount
   let fiatCharge = params.value.fiatCharge.find(
     (fiat) => fiat.code === fiatCurrency.value
@@ -171,7 +181,9 @@ const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
     (crypto) => crypto.code === cryptoCurrency.value
   )
   console.log(cryptoCharge)
-  cryptoAmount.value = (totalUSDT - cryptoCharge.charge).toFixed(1) + '0'
+  cryptoAmount.value = Number(
+    (totalUSDT - cryptoCharge.charge).toFixed(1) + '0'
+  )
 }
 const updateFiatAmountFromCrypto = (cryptoAmount = 0) => {
   let totalUSD = 0
@@ -194,19 +206,18 @@ const updateFiatAmountFromCrypto = (cryptoAmount = 0) => {
       break
   }
 
-  fiatAmount.value = totalUSD.toFixed(1) + '0'
+  fiatAmount.value = Number(totalUSD.toFixed(1) + '0')
+  // separadorMillares(fiatAmount.value)
 }
 
-function init() {
-  loadTimer()
-  getParams()
-}
+function init() {}
 //mounted
-onBeforeMount(() => {
-  init()
-})
+onBeforeMount(() => {})
 onMounted(() => {
   console.log(params.value)
+  loadTimer()
+  getParams()
+  init()
 })
 // AGREGANDO watch
 watch(fiatAmount, (value) => {
@@ -242,6 +253,7 @@ watch(cryptoAmount, (value) => {
         :fiat-charge="params.fiatCharge"
         :tc-pen-usd="tcPenUsd"
         :currencies="params.fiatCurrenciesAvailable"
+        :fiat-amout-local-string="fiatAmoutLocalString"
         @fiat-Amount="setFiatAmount"
         @fiat-Currency="setFiatCurrency"
       />
@@ -249,6 +261,7 @@ watch(cryptoAmount, (value) => {
       <CriptoVue
         :crypto-currencies="params.cryptoCurrenciesAvailable"
         :crypto-amount="cryptoAmount"
+        :fiat-amout-local-string="fiatAmoutLocalString"
         @crypto-Amount="setCryptoAmount"
         @cryptoCurrency="setCryptoCurrency"
         @cryptoAmount="setCryptoAmount"
@@ -260,6 +273,7 @@ watch(cryptoAmount, (value) => {
         class="mt-4 full"
         color="primary"
         to="/register"
+        raised
       >
         Comprar
       </Button>
@@ -287,6 +301,7 @@ watch(cryptoAmount, (value) => {
   font-family: 'Open Sans', sans-serif !important;
   width: 100%;
   font-weight: 600;
+  border: none;
   background: linear-gradient(45deg, #903eff 0%, #3e19ff 100%) !important;
   // background-image: linear-gradient(45deg, rgb(144, 62, 255) 0%, rgb(62, 25, 255) 100%);
 }

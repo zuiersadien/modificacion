@@ -1,14 +1,29 @@
 h1.head {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Josefin Sans", sans-serif ;
   font-size: 90px;
   line-height: 100px;
-  font-weight: 700;
-}
+  // font-weight: 700 !important; 
 
+}
+@media (max-width: 1199px) {
+
+	// h1.head {
+	// 	font-size: 49px;
+	// 	line-height: 59px;
+  //   font-family: "Josefin Sans", sans-serif;
+	// }
+  // .flex-unico{
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+}
+  
 h2.title {
   font-family: "Josefin Sans", sans-serif;
-  font-size: 60px;
+  font-size: 90px;
   line-height: 70px;
+
 }
 
 h3.subtitle {

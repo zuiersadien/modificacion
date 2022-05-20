@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// import IMask from 'imask'
-
 import { defineProps, ref, defineEmits, onMounted } from 'vue'
 type cryptoAmount = Number | Array
 defineProps({
@@ -36,12 +34,6 @@ const emit = defineEmits(['fiatAmount', 'fiatCurrency'])
 
 onMounted(() => {
   init()
-  // IMask(document.getElementById('phone-mask'), {
-  //   mask: Number,
-  //   decimal: '.',
-  //   min: 0,
-  //   max: 9999999,
-  // })
 })
 </script>
 
@@ -59,7 +51,7 @@ onMounted(() => {
             v-model="cryptoAmount"
             rounded
             size="lg"
-            type="text"
+            type="number"
             maxlength="12"
             @keyup="emitCryptoAmount"
           />
@@ -85,5 +77,10 @@ onMounted(() => {
   right: 10px;
   top: 15px;
   font-size: 18px;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>
