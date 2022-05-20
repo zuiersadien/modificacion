@@ -278,12 +278,3 @@ meta:
   </section>
 </template>
 
-<style>
-@media (max-width: 1199px) {
-  h1.head {
-    font-size: 49px;
-    line-height: 59px;
-    font-family: 'Josefin Sans', sans-serif;
-  }
-}
-</style>
