@@ -38,11 +38,7 @@ meta:
                 </p>
               </div>
             </div>
-            <div
-              class="column is-4-tablet is-4-desktop wow fadeInRightBig"
-              data-wow-delay="0.3s"
-              data-wow-duration="0.5s"
-            >
+            <div class="column is-4-tablet is-4-desktop wow fadeInRightBig">
               <CalculatorExchange />
               <!-- TODO: Include component FiatExchange -->
             </div>
