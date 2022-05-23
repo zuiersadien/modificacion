@@ -1,5 +1,53 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 
+let currentDate = ref('')
+let interval = ref<Timer>()
+let time = ref('')
+
+function loadTimer() {
+  const today = new Date()
+  const monthNames = [
+    'Enero',
+    'Febrero',
+    'Marzp',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agoto',
+    'Setiembre',
+    'Octubre',
+    'Nov',
+    'Diciembre',
+  ]
+  let weekdays = [
+    'Domingo',
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sábado',
+  ]
+
+  currentDate.value =
+    weekdays[today.getDay()] +
+    ', ' +
+    today.getDate() +
+    ' ' +
+    monthNames[today.getMonth()]
+  interval.value = setInterval(() => {
+    time.value = Intl.DateTimeFormat(navigator.language, {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    }).format()
+  }, 1000)
+}
+onMounted(() => {
+  loadTimer()
+})
 </script>
 
 <route lang="yaml">
@@ -17,8 +65,11 @@ meta:
       </div>
       <div class="hero-area">
         <div class="container">
-          <div
+          <!-- <div
             class="columns align-items-center is-flex is-flex-wrap-wrap is-justify-content-center"
+          > -->
+          <div
+            class="columns align-items-center is-flex-wrap-wrap is-justify-content-center"
           >
             <div
               class="column is-two-thirds is-6-tablet is-7-desktop is-flex is-align-items-center is-flex-direction-column mx-4"
@@ -66,12 +117,14 @@ meta:
                       placeholder="Crear contrasena"
                     />
 
-                    <Button
-                      size="medium"
-                      class="button is-primary is-rounded is-raised mt-4 fullBsum"
-                    >
-                      Registrate
-                    </Button>
+                    <div class="is flex is-justify-content-end">
+                      <Button
+                        size="medium"
+                        class="button is-primary is-rounded is-raised mt-4 fullBsum"
+                      >
+                        Registrate
+                      </Button>
+                    </div>
                   </div>
                 </div>
 
@@ -86,12 +139,14 @@ meta:
                       class="input is-rounded size-lg radius"
                       placeholder="DNI"
                     />
-                    <Button
-                      size="medium"
-                      class="button is-primary is-rounded is-raised mt-4 fullBsum"
-                    >
-                      Iniciar sesion
-                    </Button>
+                    <div class="is flex is-justify-content-end">
+                      <Button
+                        size="medium"
+                        class="button is-primary is-rounded is-raised mt-4 fullBsum"
+                      >
+                        Iniciar sesion
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -108,7 +163,9 @@ meta:
                 Exchange
               </h5>
               <div class="timerlive is-flex is-justify-content-center">
-                <p class="colorFecha mb-4">Lunes 6 Dic, 1:44pm</p>
+                <small class="colorFecha mb-4">
+                  {{ currentDate }} {{ time }}
+                </small>
               </div>
               <div class="env-res-div is-flex is-flex-direction-column box">
                 <div class="is-flex is-justify-content-space-between my-2">
@@ -125,7 +182,7 @@ meta:
               <div class="box">
                 <div class="is-flex is-justify-content-space-between my-2">
                   <p class="code-Tras">Código de transacción:</p>
-                  <a class="number-tras">2203B1857B8</a>
+                  <p class="number-tras">2203B1857B8</p>
                 </div>
                 <div class="is-flex is-justify-content-space-between my-2">
                   <p class="code-Tras">Tipo de cambio:</p>
@@ -189,9 +246,9 @@ meta:
   background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
 }
 
-.banner {
-  padding-top: 265px !important;
-}
+// .banner {
+//   padding-top: 265px !important;
+// }
 .title-env-res {
   color: #6042f9;
   font-size: 18px;
