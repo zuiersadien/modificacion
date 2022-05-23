@@ -123,7 +123,7 @@ onMounted(() => {
             size="lg"
             type="text"
             minlength="1"
-            maxlength="10"
+            maxlength="15"
             @keydown="filterKey"
             @keyup="emitFiatAmount"
           />
