@@ -25,9 +25,15 @@ function emitFiatCurrency(value) {
   console.log(value, currencySelected.value)
   updateCurrencySelected()
 }
+
+// function emitFiatAmount(e) {
+//   emit('fiatAmount', e.target.value)
+//   limpiarNumero(e)
+// }
 function emitFiatAmount(e) {
-  emit('fiatAmount', e.target.value)
-  limpiarNumero(e)
+  let TotalDevengado = e.target.value.replace(/,/g, '')
+
+  emit('fiatAmount', TotalDevengado)
 }
 
 const init = async () => {
@@ -45,15 +51,32 @@ function updateCurrencySelected() {
   }
 }
 
-function limpiarNumero(obj) {
-  /* El evento "change" sólo saltará si son diferentes */
-  obj.target.value = obj.target.value.replace(/\D/g, '')
-}
+// function limpiarNumero(obj) {
+
+//   // obj.target.value = obj.target.value.replace(/\D/g, '')
+//       let TotalDevengado = e.target.value.replace(/,/g, "")
+// }
 // definir funciones
 const emit = defineEmits(['fiatAmount', 'fiatCurrency'])
 
 //
 
+function filterKey(e) {
+  let code = e.keyCode
+
+  let numeros = [
+    48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 37, 38, 39, 190, 97, 98, 99, 100,
+    101, 102, 103, 104, 105, 110,
+  ]
+  let verdad = numeros.some((numero) => numero === code)
+
+  console.log(code)
+  if (verdad) {
+    console.log(verdad)
+  } else {
+    e.preventDefault()
+  }
+}
 // Mounted
 onMounted(() => {
   init()
@@ -99,7 +122,9 @@ onMounted(() => {
             rounded
             size="lg"
             type="text"
+            minlength="1"
             maxlength="10"
+            @keydown="filterKey"
             @keyup="emitFiatAmount"
           />
         </Control>

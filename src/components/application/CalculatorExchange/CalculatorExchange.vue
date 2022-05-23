@@ -7,7 +7,7 @@ import axios from 'axios'
 type InputDefaultCalculatorExchangeType = 'fiat' | 'crypto'
 type StatesCalulatorType = 'loading' | 'success' | 'error'
 export type FiatCurrencyType = 'PEN' | 'USD'
-type fiatAmoutLocalString = Number | String
+type fiatAmoutLocalString = String
 // type CryptoCurrencyType = 'USDT'
 
 export interface CalculatorExchangeProps {
@@ -98,18 +98,18 @@ const fiatAmount = ref(0)
 const cryptoAmount = ref(0)
 const tcPenUsd = ref(0)
 
-const fiatAmoutLocalString = ref('')
+const fiatAmoutLocalString = ref('0')
 const cryptoCurrency = ref('tether')
 const fiatCurrency = ref('PEN')
 const lastInputEdited = ref(null)
 
-function separadorMillares(numero) {
-  fiatAmoutLocalString.value = numero
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+// function separadorMillares(numero) {
+//   fiatAmoutLocalString.value = numero
+//     .toString()
+//     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
-  console.log(fiatAmoutLocalString.value)
-}
+//   console.log(fiatAmoutLocalString.value)
+// }
 // function numberWithCommas(x) {
 // let uno= x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 //    let uno = x.toString().replace(/[^A-Z\d-]/g, "")
@@ -117,15 +117,28 @@ function separadorMillares(numero) {
 //     // uno=fiatAmoutLocalString.value
 //     console.log(x)
 // }
+
 function setFiatAmount(val) {
   let amount = parseFloat(val)
   fiatAmount.value = amount
   updateCryptoAmountFromFiat(amount)
   lastInputEdited.value = 'setFiatAmount'
-  // numberWithCommas(val)
-  separadorMillares(val)
 }
+function ComasenValor(val) {
+  let internationalNumberFormat = new Intl.NumberFormat('en-US')
 
+  fiatAmoutLocalString.value = internationalNumberFormat.format(val)
+
+  let stringVar = String(val)
+
+  console.log(stringVar.length)
+
+  if (fiatAmoutLocalString.value === 'NaN') {
+    fiatAmoutLocalString.value = '0'
+  } else {
+    fiatAmoutLocalString.value = internationalNumberFormat.format(val)
+  }
+}
 const setFiatCurrency = (val) => {
   fiatCurrency.value = val
 
@@ -157,7 +170,6 @@ function setCryptoCurrency(val) {
 
 const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
   let totalUSDT = 0
-
   let amount = fiatAmount === 0 ? fiatAmount.value : fiatAmount
   let fiatCharge = params.value.fiatCharge.find(
     (fiat) => fiat.code === fiatCurrency.value
@@ -184,7 +196,9 @@ const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
   cryptoAmount.value = Number(
     (totalUSDT - cryptoCharge.charge).toFixed(1) + '0'
   )
+  ComasenValor(fiatAmount)
 }
+
 const updateFiatAmountFromCrypto = (cryptoAmount = 0) => {
   let totalUSD = 0
   let amount = cryptoAmount === 0 ? cryptoAmount.value : cryptoAmount
@@ -207,7 +221,7 @@ const updateFiatAmountFromCrypto = (cryptoAmount = 0) => {
   }
 
   fiatAmount.value = Number(totalUSD.toFixed(1) + '0')
-  // separadorMillares(fiatAmount.value)
+  ComasenValor(fiatAmount.value)
 }
 
 function init() {}
@@ -283,7 +297,7 @@ watch(cryptoAmount, (value) => {
     </div>
   </div>
 </template>
-<style scoped lang="scss">
+<style  lang="scss">
 .smallColor {
   color: #6129eb;
 }
@@ -309,5 +323,9 @@ watch(cryptoAmount, (value) => {
 .full:hover {
   color: #fff;
   background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
+}
+
+.input.size-lg[data-v-76af6636] {
+  color: var(--input-base-color) !important;
 }
 </style>
