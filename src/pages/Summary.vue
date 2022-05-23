@@ -97,66 +97,42 @@ meta:
               </div>
             </div>
 
-            <!-- <div class="Fiat-Exchange-DIV exchange column is-4-tablet is-4-desktop wow fadeInRightBig 	mx-4
-            "
-             data-wow-delay="0.3s"
+            <div
+              class="Fiat-Exchange-DIV exchange column is-4-tablet is-4-desktop wow fadeInRightBig mx-4"
+              data-wow-delay="0.3s"
               data-wow-duration="0.5s"
             >
-                 <h5 class="ex-head">
-                   Fiat
-                  <br />
-                 Exchange
-                  </h5>
-                  <div class="timerlive is-flex is-justify-content-center	">
-                    <p class="colorFecha mb-4">
-                      Lunes 6 Dic, 1:44pm
-                    </p>
-                  </div>
-                  <div class="env-res-div is-flex is-flex-direction-column box	">
-                    <div class=" is-flex is-justify-content-space-between	 my-2">
+              <h5 class="ex-head">
+                Fiat
+                <br />
+                Exchange
+              </h5>
+              <div class="timerlive is-flex is-justify-content-center">
+                <p class="colorFecha mb-4">Lunes 6 Dic, 1:44pm</p>
+              </div>
+              <div class="env-res-div is-flex is-flex-direction-column box">
+                <div class="is-flex is-justify-content-space-between my-2">
+                  <h4 class="title-env-res">Tu Envias</h4>
 
-                      <h4 class="title-env-res">
-                      Tu Envias
-                      </h4>
-
-                      <p class="number-en-res">
-                        $/1500.00
-                      </p>
-
-                    </div>
-                       <div class=" is-flex is-justify-content-space-between	my-2">
-                          <h4 class="title-env-res">
-                        Recibiras
-                          </h4>
-                          <p class="number-en-res">
-                           359.60 USDT
-                          </p>
-                      
-                       </div>
-                
-                  </div>
-                      <hr width=100% >
-                  <div class="box">
-                    <div class=" is-flex is-justify-content-space-between	 my-2">
-                      <p class="code-Tras">
-                      Código de transacción:
-                      </p>
-                      <a class="number-tras">
-                        2203B1857B8
-                      </a>
-                    </div>
-                    <div class=" is-flex is-justify-content-space-between	 my-2">
-                    <p class="code-Tras">
-                      Tipo de cambio:
-                    </p>
-                    <p class="number-tras">
-                      S/ 4.090
-                     </p>
-                    </div>
-                     
-                  </div>
-
-            </div> -->
+                  <p class="number-en-res">$/1500.00</p>
+                </div>
+                <div class="is-flex is-justify-content-space-between my-2">
+                  <h4 class="title-env-res">Recibiras</h4>
+                  <p class="number-en-res">359.60 USDT</p>
+                </div>
+              </div>
+              <hr width="100%" />
+              <div class="box">
+                <div class="is-flex is-justify-content-space-between my-2">
+                  <p class="code-Tras">Código de transacción:</p>
+                  <a class="number-tras">2203B1857B8</a>
+                </div>
+                <div class="is-flex is-justify-content-space-between my-2">
+                  <p class="code-Tras">Tipo de cambio:</p>
+                  <p class="number-tras">S/ 4.090</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
