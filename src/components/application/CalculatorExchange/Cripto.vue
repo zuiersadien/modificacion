@@ -62,7 +62,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style  lang="scss">
 #sign-cryptocurrency {
   color: #d2c8ec;
   position: absolute;

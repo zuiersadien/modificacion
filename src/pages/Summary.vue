@@ -118,12 +118,12 @@ meta:
                     />
 
                     <div class="is flex is-justify-content-end">
-                      <Button
+                      <!-- <Button
                         size="medium"
                         class="button is-primary is-rounded is-raised mt-4 fullBsum"
                       >
                         Registrate
-                      </Button>
+                      </Button> -->
                     </div>
                   </div>
                 </div>
@@ -140,12 +140,13 @@ meta:
                       placeholder="DNI"
                     />
                     <div class="is flex is-justify-content-end">
-                      <Button
+                      <!-- <Button
+
                         size="medium"
                         class="button is-primary is-rounded is-raised mt-4 fullBsum"
                       >
                         Iniciar sesion
-                      </Button>
+                      </Button> -->
                     </div>
                   </div>
                 </div>
