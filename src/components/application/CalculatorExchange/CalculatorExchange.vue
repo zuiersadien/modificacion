@@ -126,9 +126,9 @@ function setFiatAmount(val) {
   lastInputEdited.value = 'setFiatAmount'
 }
 function ComasenValor(val) {
-  let internationalNumberFormat = new Intl.NumberFormat('US')
+  let internationalNumberFormat = new Intl.NumberFormat('en-US')
 
-  // fiatAmoutLocalString.value = internationalNumberFormat.format(val)
+  fiatAmoutLocalString.value = internationalNumberFormat.format(val)
 
   // let stringVar = String(val)
   // let nummer=internationalNumberFormat.format(Number(stringVar).toFixed(2))

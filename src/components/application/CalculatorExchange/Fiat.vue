@@ -13,7 +13,7 @@ const props = defineProps({
 const btnColorPEN = ref('btn-primary')
 const btnColorUSD = ref()
 
-const valorNum = ref(0)
+// const valorNum = ref(0)
 
 //
 const { currencies, fiatAmoutLocalString } = toRefs(props)
@@ -36,9 +36,8 @@ function emitFiatAmount(e) {
   let TotalDevengado = e.target.value.replace(/,/g, '')
 
   // let news=new String(TotalDevengado)
-  valorNum.value = Number(TotalDevengado)
 
-  emit('fiatAmount', valorNum.value)
+  emit('fiatAmount', TotalDevengado)
 }
 const init = async () => {
   let defaultValue = currencies.value[0].id
@@ -68,13 +67,13 @@ const emit = defineEmits(['fiatAmount', 'fiatCurrency'])
 
 function filterKey(e) {
   let code = e.keyCode
-
+  console.log(code)
   let TotalDevengado = e.target.value.replace(/,/g, '')
   let numeros = [
     48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 37, 38, 39, 190, 97, 98, 99, 100,
     101, 102, 103, 104, 105, 110, 96,
   ]
-  let especiales = [37, 39, 8, 190]
+  let especiales = [37, 39, 8]
   let separadorComas = TotalDevengado.split('.', 2)
 
   let max = 999999

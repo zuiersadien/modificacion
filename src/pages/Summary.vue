@@ -187,23 +187,26 @@ meta:
                   </div>
 
                   <div class="container-input-login">
-                    <VInput
-                      type="text "
-                      class="radius"
-                      placeholder="DNI"
-                      required
-                      maxlength="7"
-                      minlength="7"
-                      @keydown="filterKey"
-                    />
-                    <div class="is flex is-justify-content-end">
-                      <Button
-                        size="medium"
-                        class="button is-primary is-rounded is-raised mt-4 fullBsum"
-                      >
-                        Iniciar sesion
-                      </Button>
-                    </div>
+                    <form action="">
+                      <VInput
+                        type="text "
+                        class="radius"
+                        placeholder="DNI"
+                        required
+                        maxlength="7"
+                        minlength="7"
+                        @keydown="filterKey"
+                      />
+                      <div class="is flex is-justify-content-end">
+                        <Button
+                          size="medium"
+                          type="submit"
+                          class="button is-primary is-rounded is-raised mt-4 fullBsum"
+                        >
+                          Iniciar sesion
+                        </Button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
