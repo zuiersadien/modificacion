@@ -13,6 +13,8 @@ const props = defineProps({
 const btnColorPEN = ref('btn-primary')
 const btnColorUSD = ref()
 
+const valorNum = ref(0)
+
 //
 const { currencies, fiatAmoutLocalString } = toRefs(props)
 // VARIABLES
@@ -33,12 +35,15 @@ function emitFiatCurrency(value) {
 function emitFiatAmount(e) {
   let TotalDevengado = e.target.value.replace(/,/g, '')
 
-  emit('fiatAmount', TotalDevengado)
-}
+  // let news=new String(TotalDevengado)
+  valorNum.value = Number(TotalDevengado)
 
+  emit('fiatAmount', valorNum.value)
+}
 const init = async () => {
   let defaultValue = currencies.value[0].id
   currencySelected.value = defaultValue
+
   emitFiatCurrency(defaultValue)
 }
 function updateCurrencySelected() {
@@ -64,17 +69,45 @@ const emit = defineEmits(['fiatAmount', 'fiatCurrency'])
 function filterKey(e) {
   let code = e.keyCode
 
+  let TotalDevengado = e.target.value.replace(/,/g, '')
   let numeros = [
     48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 37, 38, 39, 190, 97, 98, 99, 100,
     101, 102, 103, 104, 105, 110, 96,
   ]
-  let verdad = numeros.some((numero) => numero === code)
+  let especiales = [37, 39, 8, 190]
+  let separadorComas = TotalDevengado.split('.', 2)
 
-  console.log(code)
-  if (verdad) {
-    console.log(verdad)
+  let max = 999999
+  let decimal = 10
+  // let cambioPuntos=1
+  let cambioPuntos = Number(separadorComas[1])
+  let verdad = numeros.some((numero) => numero === code)
+  let verdadCode = especiales.some((numero) => numero === code)
+
+  // arreglar el problema de 2 comas
+  let repeatComa = TotalDevengado.split('')
+  // let puntoDecimal="."
+  console.log(repeatComa)
+
+  if (Number(TotalDevengado) < max) {
+    if (verdad) {
+      if (cambioPuntos > decimal) {
+        if (verdadCode) {
+          console.log('borrando')
+        } else {
+          e.preventDefault()
+        }
+      } else {
+      }
+    } else {
+      e.preventDefault()
+    }
   } else {
-    e.preventDefault()
+    if (verdadCode) {
+      console.log('borrando')
+    } else {
+      e.preventDefault()
+    }
   }
 }
 
@@ -123,8 +156,6 @@ onMounted(() => {
             rounded
             size="lg"
             type="text"
-            minlength="1"
-            maxlength="15"
             @keydown="filterKey"
             @keyup="emitFiatAmount"
           />

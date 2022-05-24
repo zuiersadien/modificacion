@@ -92,6 +92,7 @@ function loadTimer() {
     }).format()
   }, 1000)
 }
+//
 
 // valores
 const fiatAmount = ref(0)
@@ -125,18 +126,22 @@ function setFiatAmount(val) {
   lastInputEdited.value = 'setFiatAmount'
 }
 function ComasenValor(val) {
-  let internationalNumberFormat = new Intl.NumberFormat('en-US')
+  let internationalNumberFormat = new Intl.NumberFormat('US')
 
-  fiatAmoutLocalString.value = internationalNumberFormat.format(val)
+  // fiatAmoutLocalString.value = internationalNumberFormat.format(val)
 
-  let stringVar = String(val)
-
-  console.log(stringVar.length)
+  // let stringVar = String(val)
+  // let nummer=internationalNumberFormat.format(Number(stringVar).toFixed(2))
 
   if (fiatAmoutLocalString.value === 'NaN') {
     fiatAmoutLocalString.value = '0'
   } else {
     fiatAmoutLocalString.value = internationalNumberFormat.format(val)
+
+    // if(stringVar.includes(".")){
+    //   fiatAmoutLocalString.value=nummer
+    //   console.log( fiatAmoutLocalString.value)
+    // }
   }
 }
 const setFiatCurrency = (val) => {
@@ -175,7 +180,7 @@ const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
     (fiat) => fiat.code === fiatCurrency.value
   )
   let charge = 1 + fiatCharge.chargePercentage / 100
-  console.log(fiatCharge)
+
   switch (fiatCurrency.value) {
     case 'PEN':
       totalUSDT = amount / params.value.tc.penusd / charge
@@ -192,9 +197,9 @@ const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
   let cryptoCharge = params.value.cryptoCharge.find(
     (crypto) => crypto.code === cryptoCurrency.value
   )
-  console.log(cryptoCharge)
+
   cryptoAmount.value = Number(
-    (totalUSDT - cryptoCharge.charge).toFixed(1) + '0'
+    (totalUSDT - cryptoCharge.charge).toFixed(2) + '0'
   )
   ComasenValor(fiatAmount)
 }
@@ -228,7 +233,6 @@ function init() {}
 //mounted
 onBeforeMount(() => {})
 onMounted(() => {
-  console.log(params.value)
   loadTimer()
   getParams()
   init()

@@ -40,7 +40,6 @@ function change(e: any) {
   const value = e.target.value
 
   emit('update:modelValue', value)
-  console.log(value)
 }
 </script>
 

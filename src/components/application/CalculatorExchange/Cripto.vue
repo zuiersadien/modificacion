@@ -51,8 +51,8 @@ onMounted(() => {
             v-model="cryptoAmount"
             rounded
             size="lg"
-            type="number"
-            maxlength="12"
+            type="text"
+            maxlength="9"
             @keyup="emitCryptoAmount"
           />
           <div id="sign-cryptocurrency">USDT</div>

@@ -4,7 +4,8 @@ import { ref, onMounted } from 'vue'
 let currentDate = ref('')
 let interval = ref<Timer>()
 let time = ref('')
-
+const codeCopy = ref('2203B1857B8')
+const copyTrue = ref(false)
 function loadTimer() {
   const today = new Date()
   const monthNames = [
@@ -45,6 +46,47 @@ function loadTimer() {
     }).format()
   }, 1000)
 }
+function filterKey(e) {
+  let code = e.keyCode
+
+  let numeros = [
+    48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 37, 38, 39, 190, 97, 98, 99, 100,
+    101, 102, 103, 104, 105, 110, 96,
+  ]
+  let verdad = numeros.some((numero) => numero === code)
+
+  console.log(code)
+  if (verdad) {
+    console.log(verdad)
+  } else {
+    e.preventDefault()
+  }
+}
+function filterNumber(e) {
+  let code = e.keyCode
+
+  let numeros = [
+    48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 38, 190, 97, 98, 99, 100, 101, 102,
+    103, 104, 105, 110, 96,
+  ]
+  let verdad = numeros.some((numero) => numero === code)
+
+  console.log(code)
+  if (verdad) {
+    e.preventDefault()
+  } else {
+    console.log(verdad)
+  }
+}
+function copy() {
+  try {
+    copyTrue.value = !copyTrue.value
+    navigator.clipboard.writeText(codeCopy.value)
+  } catch (e) {
+    throw e
+  }
+}
+
 onMounted(() => {
   loadTimer()
 })
@@ -87,44 +129,55 @@ meta:
                     <h2 class="input-Title mb-5">Registar Cuenta</h2>
                   </div>
                   <div class="container-input-register">
-                    <input
-                      type="text"
-                      class="input size-lg my-2 radius"
-                      placeholder="Nombres"
-                    />
-                    <input
-                      type="text"
-                      class="input size-lg my-2 radius"
-                      placeholder="Apellidos"
-                    />
-                    <input
-                      type="text"
-                      class="input size-lg my-2 radius"
-                      placeholder="Correo electronico"
-                    />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <input
-                      type="text"
-                      class="input size-lg my-2 radius"
-                      placeholder="DNI"
-                    />
-                    <input
-                      type="text"
-                      class="input size-lg my-2 radius"
-                      placeholder="Crear contrasena"
-                    />
+                    <form action="">
+                      <VInput
+                        type="text"
+                        class="radius"
+                        placeholder="Nombres"
+                        required
+                        @keydown="filterNumber"
+                      />
+                      <VInput
+                        type="text"
+                        class="radius"
+                        placeholder="Apellidos"
+                        required
+                        @keydown="filterNumber"
+                      />
+                      <VInput
+                        type="email"
+                        required
+                        class="radius"
+                        placeholder="Correo electronico"
+                      />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <VInput
+                        type="text"
+                        class="radius"
+                        placeholder="DNI"
+                        required
+                        maxlength="7"
+                        @keydown="filterKey"
+                      />
+                      <VInput
+                        type="password"
+                        class="radius"
+                        placeholder="Crear contrasena"
+                      />
 
-                    <div class="is flex is-justify-content-end">
-                      <Button
-                        size="medium"
-                        class="button is-primary is-rounded is-raised mt-4 fullBsum"
-                      >
-                        Registrate
-                      </Button>
-                    </div>
+                      <div class="is flex is-justify-content-end">
+                        <Button
+                          size="medium"
+                          type="submit"
+                          class="button is-primary is-rounded is-raised mt-4 fullBsum"
+                        >
+                          Registrate
+                        </Button>
+                      </div>
+                    </form>
                   </div>
                 </div>
 
@@ -134,10 +187,14 @@ meta:
                   </div>
 
                   <div class="container-input-login">
-                    <input
+                    <VInput
                       type="text "
-                      class="input is-rounded size-lg radius"
+                      class="radius"
                       placeholder="DNI"
+                      required
+                      maxlength="7"
+                      minlength="7"
+                      @keydown="filterKey"
                     />
                     <div class="is flex is-justify-content-end">
                       <Button
@@ -182,8 +239,18 @@ meta:
               <div class="">
                 <div class="is-flex is-justify-content-space-between my-2">
                   <p class="code-Tras">Código de transacción:</p>
-                  <p class="number-tras">2203B1857B8</p>
+                  <div class="is-flex is-flex is-justify-content-end">
+                    <p class="number-tras">{{ codeCopy }}</p>
+                    <button class="buttonCOPY" @click="copy">
+                      <i class="iconify" data-icon="akar-icons:copy"></i>
+                    </button>
+                  </div>
                 </div>
+                <div class="is-flex is-justify-content-end">
+                  <p v-if="copyTrue" class="text-true-copy">Codigo Copiado</p>
+                  <p v-else class="br-text"></p>
+                </div>
+
                 <div class="is-flex is-justify-content-space-between my-2">
                   <p class="code-Tras">Tipo de cambio:</p>
                   <p class="number-tras">S/ 4.090</p>
@@ -197,6 +264,30 @@ meta:
   </section>
 </template>
 <style  scoped lang="scss">
+.text-true-copy {
+  font-size: 12px;
+  color: #903eff;
+}
+.br-text {
+  height: 18px;
+  background: red;
+}
+.Fiat-Exchange-DIV {
+  height: 50%;
+}
+.buttonCOPY {
+  margin: none;
+  background: transparent;
+  border: none;
+  color: #33276a;
+  font-size: 17px;
+}
+.buttonCOPY:hover {
+  cursor: pointer;
+}
+.buttonCOPY:active {
+  cursor: auto;
+}
 .Empecemos {
   color: var(---6042f9);
   text-align: left;
@@ -231,6 +322,7 @@ meta:
 }
 .radius {
   border-radius: 12px !important;
+  margin: 7.5px 0;
 }
 .fullBsum {
   font-family: 'Open Sans', sans-serif !important;
