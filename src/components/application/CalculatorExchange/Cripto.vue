@@ -51,7 +51,7 @@ onMounted(() => {
             v-model="cryptoAmount"
             rounded
             size="lg"
-            type="text"
+            type="number"
             maxlength="9"
             @keyup="emitCryptoAmount"
           />
