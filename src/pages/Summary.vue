@@ -118,12 +118,12 @@ meta:
                     />
 
                     <div class="is flex is-justify-content-end">
-                      <!-- <Button
+                      <Button
                         size="medium"
                         class="button is-primary is-rounded is-raised mt-4 fullBsum"
                       >
                         Registrate
-                      </Button> -->
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -140,13 +140,12 @@ meta:
                       placeholder="DNI"
                     />
                     <div class="is flex is-justify-content-end">
-                      <!-- <Button
-
+                      <Button
                         size="medium"
                         class="button is-primary is-rounded is-raised mt-4 fullBsum"
                       >
                         Iniciar sesion
-                      </Button> -->
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -168,7 +167,7 @@ meta:
                   {{ currentDate }} {{ time }}
                 </small>
               </div>
-              <div class="env-res-div is-flex is-flex-direction-column box">
+              <div class="env-res-div is-flex is-flex-direction-column">
                 <div class="is-flex is-justify-content-space-between my-2">
                   <h4 class="title-env-res">Tu Envias</h4>
 
@@ -180,7 +179,7 @@ meta:
                 </div>
               </div>
               <hr width="100%" />
-              <div class="box">
+              <div class="">
                 <div class="is-flex is-justify-content-space-between my-2">
                   <p class="code-Tras">Código de transacción:</p>
                   <p class="number-tras">2203B1857B8</p>
