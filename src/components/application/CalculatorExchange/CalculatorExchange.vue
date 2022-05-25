@@ -402,7 +402,9 @@ const modalLargeOpen = ref()
     </div>
 
     <div class="timerlive is-flex is-justify-content-flex-end">
-      <!-- <a class="smallColor vender"  @click="modalLargeOpen = true">¿Deseas vender tus USDT?</a> -->
+      <button class="smallColor vender" @click="modalLargeOpen = true">
+        ¿Deseas vender tus USDT?
+      </button>
     </div>
     <Modal
       title="Vende tus USDT en minutos!"
@@ -477,6 +479,14 @@ const modalLargeOpen = ref()
 
 .smallColor {
   color: #6129eb;
+  background: none;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    cursor: normal;
+  }
 }
 
 .vender {
