@@ -13,14 +13,25 @@ const props = withDefaults(defineProps<PlaceholderSectionProps>(), {
   <div class="section-placeholder">
     <div class="placeholder-content">
       <slot name="image"></slot>
-      <Title tag="h3" :size="6" weight="semi" leading>{{ props.title }}</Title>
-      <p v-if="props.subtitle" class="paragraph">{{ props.subtitle }}</p>
+      <Title tag="h3" :size="6" weight="semi" leading class="imagenmodificada">
+        {{ props.title }}
+      </Title>
+      <div v-if="props.subtitle" class="paragraph paragraphModificado">
+        {{ props.subtitle }}
+      </div>
       <slot name="action"></slot>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+// anadido
+
+.paragraphModificado {
+  width: 100% !important;
+  margin: 20px 0 !important;
+}
+
 .section-placeholder {
   width: 100%;
   display: flex;

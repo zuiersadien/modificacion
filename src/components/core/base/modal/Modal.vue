@@ -102,7 +102,7 @@ zh-CN:
             ]"
           >
             <slot name="cancel">
-              <Button
+              <!-- <Button
                 raised
                 :long="2"
                 :rounded="rounded"
@@ -110,7 +110,7 @@ zh-CN:
                 @keydown.space.prevent="() => emit('close')"
               >
                 Cancel
-              </Button>
+              </Button> -->
             </slot>
             <slot name="action"></slot>
           </div>

@@ -208,9 +208,8 @@ const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
     (crypto) => crypto.code === cryptoCurrency.value
   )
 
-  cryptoAmount.value = Number(
-    (totalUSDT - cryptoCharge.charge).toFixed(2) + '0'
-  )
+  cryptoAmount.value = (totalUSDT - cryptoCharge.charge).toFixed(1) + 0
+
   ComasenValor(fiatAmount)
 }
 
@@ -283,9 +282,8 @@ const textvalAlertCripto = ref('')
 // AGREGANDO watch
 
 function FiatValidation() {
-  console.log('asdasdasdsadsda')
   if (fiatAmount.value <= minSoles.value) {
-    textvalAlertFiat.value = `el valor minimo es s/${minSoles.value}`
+    textvalAlertFiat.value = `El importe minimo es s/ ${minSoles.value}`
 
     validationFiat.value = true
     validationCripto.value = false
@@ -299,9 +297,8 @@ function FiatValidation() {
   }
 }
 function CriptoValidation() {
-  console.log('asdasdasdsadsda')
   if (fiatAmount.value <= minSoles.value) {
-    textvalAlertCripto.value = `el importe minimo es ${minSoles.value} USDT`
+    textvalAlertCripto.value = `El importe minimo es ${minSoles.value} USDT`
 
     isValid.value = false
 
@@ -337,7 +334,7 @@ watch(cryptoAmount, (value) => {
     cryptoAmount.value = 0
   }
 })
-//
+const modalLargeOpen = ref()
 </script>
 
 <template>
@@ -368,6 +365,14 @@ watch(cryptoAmount, (value) => {
         @keyup="FiatValidation"
       />
 
+      <!-- <div class="is-flex is-justify-content-center	 ">
+        <Button class="buttonRoader" @click="retweet">
+     
+            <i class="iconify retweetIcon" data-icon="system-uicons:retweet"></i>
+
+      </Button>
+      </div> -->
+
       <CriptoVue
         :crypto-currencies="params.cryptoCurrenciesAvailable"
         :crypto-amount="cryptoAmount"
@@ -388,7 +393,6 @@ watch(cryptoAmount, (value) => {
         :disabled="ButtonAviable"
         class="mt-4 full"
         color="primary"
-        raised
         :loading="Buttonloading"
         type="submit"
         @click="Submit"
@@ -396,12 +400,81 @@ watch(cryptoAmount, (value) => {
         Comprar
       </Button>
     </div>
+
     <div class="timerlive is-flex is-justify-content-flex-end">
-      <a class="smallColor vender">¿Deseas vender tus USDT?</a>
+      <!-- <a class="smallColor vender"  @click="modalLargeOpen = true">¿Deseas vender tus USDT?</a> -->
     </div>
+    <Modal
+      title="Vende tus USDT en minutos!"
+      :open="modalLargeOpen"
+      size="large"
+      actions="center"
+      noscroll
+      @close="modalLargeOpen = false"
+    >
+      <template #content>
+        <PlaceholderSection
+          title="¿Necesitas efectivizar tus USDT ?"
+          subtitle="Comunícate con nuestro callcenter (+51 972036729 ) para realizar la compra de tus USDT y enviarte Soles o Dólares a tu cuenta bancaria."
+        >
+          <template #image>
+            <DarkImage
+              src="../../../../public/assets/illustrations/map/calling.svg"
+              src-dark="../../../../public/assets/illustrations/map/calling.svg"
+              alt="dark image"
+            />
+          </template>
+        </PlaceholderSection>
+      </template>
+      <template #action>
+        <Button
+          color="primary"
+          :long="2"
+          raised
+          class="fullBsum"
+          href="tel:+51972036729"
+        >
+          Llama ahora!
+        </Button>
+      </template>
+    </Modal>
   </div>
 </template>
+
+
 <style  lang="scss">
+.imagenmodificada {
+  margin: 10px 0;
+}
+
+.fullBsum {
+  font-family: 'Open Sans', sans-serif !important;
+  border-radius: 18px !important;
+  font-weight: 600;
+  border: 0 !important;
+  background: linear-gradient(45deg, #903eff 0%, #3e19ff 100%) !important;
+  // background-image: linear-gradient(45deg, rgb(144, 62, 255) 0%, rgb(62, 25, 255) 100%);
+}
+.fullBsum:hover {
+  color: #fff;
+  border: 0 !important;
+  background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
+}
+.buttonRoader {
+  background: linear-gradient(45deg, #903eff 0%, #3e19ff 100%) !important;
+  border-radius: 50% !important ;
+  &:hover {
+    background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
+    cursor: pointer;
+  }
+  &:active {
+    cursor: auto;
+  }
+}
+.retweetIcon {
+  color: #fff !important;
+}
+
 .smallColor {
   color: #6129eb;
 }
@@ -419,13 +492,17 @@ watch(cryptoAmount, (value) => {
   font-family: 'Open Sans', sans-serif !important;
   width: 100%;
   font-weight: 600;
-  border: none;
+  border: none !important;
   background: linear-gradient(45deg, #903eff 0%, #3e19ff 100%) !important;
   // background-image: linear-gradient(45deg, rgb(144, 62, 255) 0%, rgb(62, 25, 255) 100%);
+  &:focus {
+    box-shadow: none !important;
+  }
 }
 
 .full:hover {
   color: #fff;
+  border: none !important;
   background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
 }
 

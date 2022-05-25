@@ -71,6 +71,7 @@ const emit = defineEmits(['fiatAmount', 'fiatCurrency', 'disableButton'])
 function filterKey(e) {
   let code = e.keyCode
   console.log(code)
+
   let TotalDevengado = e.target.value.replace(/,/g, '')
   let numeros = [
     48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 37, 38, 39, 190, 97, 98, 99, 100,
@@ -97,7 +98,9 @@ function filterKey(e) {
 
   console.log(repeatComa)
   if (code === 16) {
-    e.preventDefault()
+    if (code === 49) {
+      e.preventDefault()
+    }
   } else {
     if (maxAceptado) {
       if (verdad) {

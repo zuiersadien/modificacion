@@ -52,7 +52,9 @@ const controlClasses = computed(() => [
       <i class="iconify" data-icon="feather:x"></i>
     </div>
     <slot v-if="props.validation && !props.isValid" name="error">
-      <span class="is-block text rem-75 text-danger px-1 pt-1">
+      <span
+        class="spanErrorModificado is-block text rem-75 text-danger px-1 pt-1"
+      >
         {{ props.error }}
       </span>
     </slot>
@@ -60,6 +62,9 @@ const controlClasses = computed(() => [
 </template>
 
 <style lang="scss" scoped>
+.spanErrorModificado {
+  text-transform: none !important;
+}
 .control {
   &.icon-size-lg {
     .form-icon {
