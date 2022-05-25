@@ -118,7 +118,18 @@ const lastInputEdited = ref(null)
 //     // uno=fiatAmoutLocalString.value
 //     console.log(x)
 // }
+// button
+const ButtonAviable = ref(false)
 
+function disableButton(mesage) {
+  console.log(mesage)
+  if (mesage) {
+    ButtonAviable.value = false
+  } else {
+    ButtonAviable.value = true
+  }
+}
+//
 function setFiatAmount(val) {
   let amount = parseFloat(val)
   fiatAmount.value = amount
@@ -146,7 +157,6 @@ function ComasenValor(val) {
 }
 const setFiatCurrency = (val) => {
   fiatCurrency.value = val
-
   if (lastInputEdited.value === 'setFiatAmount') {
     updateCryptoAmountFromFiat()
     fiatAmoutLocalString.value = 0
@@ -158,11 +168,11 @@ const setFiatCurrency = (val) => {
     fiatAmoutLocalString.value = 0
     cryptoAmount.value = 0
     fiatAmount.value = 0
-    console.log('hello')
   }
 }
 function setCryptoAmount(val) {
   cryptoAmount.value = parseFloat(val)
+
   updateFiatAmountFromCrypto(cryptoAmount.value)
   lastInputEdited.value = 'setCryptoAmount'
 }
@@ -229,6 +239,29 @@ const updateFiatAmountFromCrypto = (cryptoAmount = 0) => {
   ComasenValor(fiatAmount.value)
 }
 
+// const validation=ref(false)
+// const isValid=ref(true)
+// const isInvalid=ref(true)
+// const minSoles=ref(100)
+
+// const textvalAlert=ref("")
+
+// function MaxMIN(){
+
+//     if(fiatAmount.value<=minSoles.value){
+//       textvalAlert.value =`el valor minimo es s/${minSoles.value}`
+//       console.log(textvalAlert.value)
+//       validation.value=true
+//       isValid.value=false
+//         // emit('disableButton',  isValid.value)
+//     }else{
+//       isValid.value=true
+//         // emit('disableButton',  isValid.value)
+//      console.log("valor correcto")
+//     }
+
+// }
+
 function init() {}
 //mounted
 onBeforeMount(() => {})
@@ -237,13 +270,67 @@ onMounted(() => {
   getParams()
   init()
 })
+
+const validationCripto = ref(false)
+const validationFiat = ref(false)
+
+const isValid = ref(true)
+
+const minSoles = ref(100)
+
+const textvalAlertFiat = ref('')
+const textvalAlertCripto = ref('')
 // AGREGANDO watch
+
+function FiatValidation() {
+  console.log('asdasdasdsadsda')
+  if (fiatAmount.value <= minSoles.value) {
+    textvalAlertFiat.value = `el valor minimo es s/${minSoles.value}`
+
+    validationFiat.value = true
+    validationCripto.value = false
+    isValid.value = false
+    disableButton(isValid.value)
+  } else {
+    isValid.value = true
+
+    disableButton(isValid.value)
+    console.log('valor correcto')
+  }
+}
+function CriptoValidation() {
+  console.log('asdasdasdsadsda')
+  if (fiatAmount.value <= minSoles.value) {
+    textvalAlertCripto.value = `el importe minimo es ${minSoles.value} USDT`
+
+    isValid.value = false
+
+    validationFiat.value = false
+    validationCripto.value = true
+    disableButton(isValid.value)
+  } else {
+    isValid.value = true
+
+    disableButton(isValid.value)
+    console.log('valor correcto')
+  }
+}
+const Buttonloading = ref(false)
+function Submit() {
+  Buttonloading.value = true
+  setTimeout(() => {
+    Buttonloading.value = false
+  }, 2000)
+}
 watch(fiatAmount, (value) => {
+  console.log(value)
+
   if (isNaN(value)) {
     fiatAmount.value = 0
     cryptoAmount.value = 0
   }
 })
+
 watch(cryptoAmount, (value) => {
   if (isNaN(value)) {
     fiatAmount.value = 0
@@ -272,26 +359,39 @@ watch(cryptoAmount, (value) => {
         :tc-pen-usd="tcPenUsd"
         :currencies="params.fiatCurrenciesAvailable"
         :fiat-amout-local-string="fiatAmoutLocalString"
+        :validation="validationFiat"
+        :textval-alert-fiat="textvalAlertFiat"
+        :is-valid="isValid"
         @fiat-Amount="setFiatAmount"
         @fiat-Currency="setFiatCurrency"
+        @disableButton="disableButton"
+        @keyup="FiatValidation"
       />
 
       <CriptoVue
         :crypto-currencies="params.cryptoCurrenciesAvailable"
         :crypto-amount="cryptoAmount"
         :fiat-amout-local-string="fiatAmoutLocalString"
+        :validation="validationCripto"
+        :textval-alert-cripto="textvalAlertCripto"
+        :is-valid="isValid"
         @crypto-Amount="setCryptoAmount"
         @cryptoCurrency="setCryptoCurrency"
         @cryptoAmount="setCryptoAmount"
+        @disableButton="disableButton"
+        @keyup="CriptoValidation"
       />
 
       <Button
         size="large"
         rounded
+        :disabled="ButtonAviable"
         class="mt-4 full"
         color="primary"
-        to="/register"
         raised
+        :loading="Buttonloading"
+        type="submit"
+        @click="Submit"
       >
         Comprar
       </Button>

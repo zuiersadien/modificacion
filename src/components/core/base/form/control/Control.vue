@@ -101,7 +101,8 @@ const controlClasses = computed(() => [
 
     .validation-icon {
       position: absolute;
-      top: 0;
+      // top: 0;
+      top: 10px !important;
       right: 0;
       display: flex;
       justify-content: center;

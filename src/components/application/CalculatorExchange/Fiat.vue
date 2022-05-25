@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { defineProps, toRefs, ref, defineEmits, onMounted } from 'vue'
 
-// type fiatAmount = Number | String
-
 const props = defineProps({
   currencies: Array,
-  // fiatAmount: [Number, String],
+  // fiatAmount:Number,
+
   tcPenUsd: Number,
   fiatAmoutLocalString: [Array, Number],
+  validation: Boolean,
+  isValid: Boolean,
+  textvalAlertFiat: String,
+  isInvalid: String,
 })
 // inputs
+
+const valorRemoto = ref()
 const btnColorPEN = ref('btn-primary')
 const btnColorUSD = ref()
 
@@ -28,16 +33,14 @@ function emitFiatCurrency(value) {
   updateCurrencySelected()
 }
 
-// function emitFiatAmount(e) {
-//   emit('fiatAmount', e.target.value)
-//   limpiarNumero(e)
-// }
 function emitFiatAmount(e) {
   let TotalDevengado = e.target.value.replace(/,/g, '')
-
   // let news=new String(TotalDevengado)
 
+  valorRemoto.value = TotalDevengado
   emit('fiatAmount', TotalDevengado)
+
+  // MaxMIN(TotalDevengado)
 }
 const init = async () => {
   let defaultValue = currencies.value[0].id
@@ -61,7 +64,7 @@ function updateCurrencySelected() {
 //       let TotalDevengado = e.target.value.replace(/,/g, "")
 // }
 // definir funciones
-const emit = defineEmits(['fiatAmount', 'fiatCurrency'])
+const emit = defineEmits(['fiatAmount', 'fiatCurrency', 'disableButton'])
 
 //
 
@@ -73,11 +76,13 @@ function filterKey(e) {
     48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 8, 37, 38, 39, 190, 97, 98, 99, 100,
     101, 102, 103, 104, 105, 110, 96,
   ]
-  let especiales = [37, 39, 8]
+  let especiales = [37, 39, 8, 190, 110]
   let separadorComas = TotalDevengado.split('.', 2)
 
-  let max = 999999
+  let max = 99999
+  // let mxlengt=String(max).length
   let decimal = 10
+  console.log(TotalDevengado)
   // let cambioPuntos=1
   let cambioPuntos = Number(separadorComas[1])
   let verdad = numeros.some((numero) => numero === code)
@@ -86,11 +91,31 @@ function filterKey(e) {
   // arreglar el problema de 2 comas
   let repeatComa = TotalDevengado.split('')
   // let puntoDecimal="."
-  console.log(repeatComa)
 
-  if (Number(TotalDevengado) < max) {
-    if (verdad) {
-      if (cambioPuntos > decimal) {
+  let maxAceptado = TotalDevengado <= max
+  let maxDecimal = cambioPuntos > decimal
+
+  console.log(repeatComa)
+  if (code === 16) {
+    e.preventDefault()
+  } else {
+    if (maxAceptado) {
+      if (verdad) {
+        if (maxDecimal) {
+          console.log('max decimal')
+          if (verdadCode) {
+            console.log('borrando')
+          } else {
+            e.preventDefault()
+          }
+        } else {
+        }
+      } else {
+        e.preventDefault()
+      }
+    } else if (repeatComa.some((val) => val === '.')) {
+      if (maxDecimal) {
+        console.log('max decimal')
         if (verdadCode) {
           console.log('borrando')
         } else {
@@ -99,13 +124,11 @@ function filterKey(e) {
       } else {
       }
     } else {
-      e.preventDefault()
-    }
-  } else {
-    if (verdadCode) {
-      console.log('borrando')
-    } else {
-      e.preventDefault()
+      if (verdadCode) {
+        console.log('borrando')
+      } else {
+        e.preventDefault()
+      }
     }
   }
 }
@@ -149,7 +172,13 @@ onMounted(() => {
           </div>
         </div>
 
-        <Control icon-size="lg" icon="feather:dollar-sign">
+        <Control
+          icon-size="lg"
+          :error="textvalAlertFiat"
+          :validation="validation"
+          :is-valid="isValid"
+          icon="feather:dollar-sign"
+        >
           <VInput
             v-model="fiatAmoutLocalString"
             rounded

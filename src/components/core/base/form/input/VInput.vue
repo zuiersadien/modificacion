@@ -111,7 +111,7 @@ function change(e: any) {
   }
 
   &.is-valid {
-    .input {
+    .input:focus {
       border-color: var(--success) !important;
     }
   }
