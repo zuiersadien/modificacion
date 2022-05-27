@@ -43,13 +43,13 @@ const controlClasses = computed(() => [
       v-if="props.validation && props.isValid"
       class="validation-icon valid-icon"
     >
-      <i class="iconify" data-icon="feather:check"></i>
+      <!-- <i class="iconify" data-icon="feather:check"></i> -->
     </div>
     <div
       v-if="props.validation && !props.isValid"
       class="validation-icon invalid-icon"
     >
-      <i class="iconify" data-icon="feather:x"></i>
+      <!-- <i class="iconify" data-icon="feather:x"></i> -->
     </div>
     <slot v-if="props.validation && !props.isValid" name="error">
       <span

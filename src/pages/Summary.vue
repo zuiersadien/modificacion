@@ -1,11 +1,59 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-
+import { ref, onMounted, inject } from 'vue'
+import axios from 'axios'
 let currentDate = ref('')
 let interval = ref<Timer>()
 let time = ref('')
 const codeCopy = ref('2203B1857B8')
 const copyTrue = ref(false)
+
+const firstname = ref()
+const lastname = ref()
+const email = ref()
+
+const typedoc = ref('DNI')
+
+const numdoc = ref()
+
+const passwd = ref()
+
+let fiatJson = ref({
+  customer: {
+    firstname: '',
+    lastname: '',
+    email: '',
+  },
+  session: {
+    typedoc: '',
+    numdoc: 0,
+    passwd: '',
+  },
+})
+function inyectarDatos(e) {
+  // e.preventDefault();
+
+  fiatJson.value.customer.firstname = firstname.value
+  fiatJson.value.customer.lastname = lastname.value
+  fiatJson.value.customer.email = email.value
+  fiatJson.value.session.typedoc = typedoc.value
+  fiatJson.value.session.numdoc = numdoc.value
+  fiatJson.value.session.passwd = passwd.value
+
+  console.log(fiatJson.value)
+  axios
+    .post('http://127.0.0.1:8000/api/v1/session/register', fiatJson.value)
+    .then((res) => {
+      console.log(res.data)
+      e.preventDefault()
+      console.log(fiatJson.value)
+      location.href = 'http://criptobank.pe/register'
+      console.log(location.href)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
 function loadTimer() {
   const today = new Date()
   const monthNames = [
@@ -87,6 +135,57 @@ function copy() {
   }
 }
 
+//
+const textAlertValidationName = ref('')
+const validationName = ref(true)
+const isValidName = ref(true)
+
+function validadionName(e) {
+  let data = e.target.value
+  // console.log(data)
+  textAlertValidationName.value = 'El nombre es requerido'
+  textAlertValidationApellido.value = 'El nombre es requerido'
+  isValidName.value = false
+  if (data) {
+    isValidName.value = true
+    console.log('hola')
+  }
+}
+// Apellido
+const textAlertValidationApellido = ref('')
+const validationApellido = ref(true)
+const isValidApellido = ref(true)
+function validadionApellido(e) {
+  let data = e.target.value
+  console.log(data)
+  textAlertValidationApellido.value = 'El Apellido es requerido'
+  isValidApellido.value = false
+  if (data) {
+    isValidApellido.value = true
+  }
+}
+//
+const textAlertValidationCorreo = ref('')
+const validationCorreo = ref(true)
+const isValidACorreo = ref(true)
+
+function validadionCorreo(e) {
+  let data = e.target.value
+  console.log(data)
+  textAlertValidationCorreo.value = 'El Correo es requerido'
+  isValidACorreo.value = false
+
+  if (data) {
+    isValidACorreo.value = true
+    console.log(data)
+    if (!data.includes('@')) {
+      textAlertValidationCorreo.value = 'insertar @'
+      isValidACorreo.value = false
+    }
+  }
+}
+const resJson = inject('resJson')
+console.log(resJson)
 onMounted(() => {
   loadTimer()
 })
@@ -129,55 +228,90 @@ meta:
                     <h2 class="input-Title mb-5">Registar Cuenta</h2>
                   </div>
                   <div class="container-input-register">
-                    <form action="">
+                    <Control
+                      :error="textAlertValidationName"
+                      :validation="validationName"
+                      :is-valid="isValidName"
+                    >
                       <VInput
+                        v-model="firstname"
                         type="text"
                         class="radius"
                         placeholder="Nombres"
                         required
                         @keydown="filterNumber"
+                        @keyup="validadionName"
                       />
+                    </Control>
+                    <Control
+                      :validation="validationApellido"
+                      :is-valid="isValidApellido"
+                      :error="textAlertValidationApellido"
+                    >
                       <VInput
+                        v-model="lastname"
                         type="text"
                         class="radius"
                         placeholder="Apellidos"
                         required
                         @keydown="filterNumber"
+                        @keyup="validadionApellido"
                       />
+                    </Control>
+                    <Control
+                      :validation="validationCorreo"
+                      :is-valid="isValidACorreo"
+                      :error="textAlertValidationCorreo"
+                    >
                       <VInput
+                        v-model="email"
                         type="email"
                         required
                         class="radius"
                         placeholder="Correo electronico"
+                        @keyup="validadionCorreo"
                       />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
+                    </Control>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <Control
+                      validation
+                      is-valid
+                      :error="textAlertValidationName"
+                    >
                       <VInput
+                        v-model="numdoc"
                         type="text"
                         class="radius"
                         placeholder="DNI"
                         required
-                        maxlength="7"
+                        maxlength="8"
                         @keydown="filterKey"
                       />
+                    </Control>
+                    <Control
+                      validation
+                      is-valid
+                      :error="textAlertValidationName"
+                    >
                       <VInput
+                        v-model="passwd"
                         type="password"
                         class="radius"
                         placeholder="Crear contrasena"
                       />
-
-                      <div class="is flex is-justify-content-end">
-                        <Button
-                          size="medium"
-                          type="submit"
-                          class="button is-primary is-rounded is-raised mt-4 fullBsum"
-                        >
-                          Registrate
-                        </Button>
-                      </div>
-                    </form>
+                    </Control>
+                    <div class="is flex is-justify-content-end">
+                      <Button
+                        size="medium"
+                        class="button is-primary is-rounded is-raised mt-4 fullBsum"
+                        @click="inyectarDatos"
+                      >
+                        Registrate
+                      </Button>
+                    </div>
                   </div>
                 </div>
 
@@ -193,8 +327,7 @@ meta:
                         class="radius"
                         placeholder="DNI"
                         required
-                        maxlength="7"
-                        minlength="7"
+                        maxlength="8"
                         @keydown="filterKey"
                       />
                       <div class="is flex is-justify-content-end">

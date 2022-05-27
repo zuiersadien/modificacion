@@ -28,8 +28,9 @@ const currencySelected = ref('PEN')
 // FUNTIONS
 function emitFiatCurrency(value) {
   currencySelected.value = value
+
   emit('fiatCurrency', value)
-  console.log(value, currencySelected.value)
+
   updateCurrencySelected()
 }
 
@@ -44,6 +45,7 @@ function emitFiatAmount(e) {
 }
 const init = async () => {
   let defaultValue = currencies.value[0].id
+
   currencySelected.value = defaultValue
 
   emitFiatCurrency(defaultValue)
@@ -83,10 +85,12 @@ function filterKey(e) {
   let max = 99999
   // let mxlengt=String(max).length
   let decimal = 10
-  console.log(TotalDevengado)
+
   // let cambioPuntos=1
   let cambioPuntos = Number(separadorComas[1])
+
   let verdad = numeros.some((numero) => numero === code)
+
   let verdadCode = especiales.some((numero) => numero === code)
 
   // arreglar el problema de 2 comas
@@ -97,41 +101,37 @@ function filterKey(e) {
   let maxDecimal = cambioPuntos > decimal
 
   console.log(repeatComa)
-  if (code === 16) {
-    if (code === 49) {
-      e.preventDefault()
-    }
-  } else {
-    if (maxAceptado) {
-      if (verdad) {
-        if (maxDecimal) {
-          console.log('max decimal')
-          if (verdadCode) {
-            console.log('borrando')
-          } else {
-            e.preventDefault()
-          }
-        } else {
-        }
-      } else {
-        e.preventDefault()
-      }
-    } else if (repeatComa.some((val) => val === '.')) {
+
+  if (maxAceptado) {
+    if (verdad) {
       if (maxDecimal) {
         console.log('max decimal')
         if (verdadCode) {
-          console.log('borrando')
         } else {
           e.preventDefault()
         }
       } else {
       }
     } else {
-      if (verdadCode) {
-        console.log('borrando')
+      e.preventDefault()
+    }
+  } else if (repeatComa.some((val) => val === '.')) {
+    if (verdad) {
+      if (maxDecimal) {
+        if (verdadCode) {
+        } else {
+          e.preventDefault()
+        }
       } else {
-        e.preventDefault()
       }
+    } else {
+      e.preventDefault()
+    }
+  } else {
+    if (verdadCode) {
+      console.log('borrando')
+    } else {
+      e.preventDefault()
     }
   }
 }

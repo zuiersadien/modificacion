@@ -14,7 +14,6 @@ const htmlClasses = computed(() => [darkmode.htmlClass])
 <template>
   <Head>
     <html lang="en-US" :class="htmlClasses" />
-
     <title>Criptobank - Compra y vende criptomonedas en Perú</title>
     <base href="/" />
   </Head>

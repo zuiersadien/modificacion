@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import CriptoVue from './Cripto.vue'
 import FiatVue from './Fiat.vue'
-import { ref, onMounted, watch, onBeforeMount } from 'vue'
+
+// import {useRoute} from "vue-router"
+import { ref, onMounted, watch } from 'vue'
 import axios from 'axios'
 
 type InputDefaultCalculatorExchangeType = 'fiat' | 'crypto'
@@ -19,22 +21,58 @@ withDefaults(defineProps<CalculatorExchangeProps>(), {
 })
 
 let state = ref<StatesCalulatorType>('loading')
-// let orderInputs = ref(true)
-// let fiatAmount = ref(0)
-// let fiatCurrency = ref<FiatCurrencyType>('PEN')
-// let cryptoAmount = ref(0)
-// let cryptoCurrency = ref<CryptoCurrencyType>('USDT')
-// let lastInputEdited = ref(null)
+
+let fiatAmount = ref(0)
+let cryptoAmount = ref(0)
+let tcPenUsd = ref(0)
+let fiatAmoutLocalString = ref('0')
+let cryptoCurrency = ref('tether')
+let fiatCurrency = ref('PEN')
+let lastInputEdited = ref(null)
+let ButtonAviable = ref(true)
+
 let currentDate = ref('')
 let interval = ref<Timer>()
 let time = ref('')
 let params = ref({})
+// let susuccess=false
+// let stateRes=ref("start")
+let fiatJson = ref({
+  fiat: {
+    currency: '',
+    amount: '',
+  },
+})
+import { provide } from 'vue'
+const resJson = ref('12321')
+provide('resJson', resJson)
+watch(fiatAmount, (value) => {
+  if (isNaN(value)) {
+    fiatAmount.value = 0
+    cryptoAmount.value = 0
+  }
+})
+
+watch(cryptoAmount, (value) => {
+  if (isNaN(value)) {
+    fiatAmount.value = 0
+    cryptoAmount.value = 0
+  }
+})
+
+function init() {
+  loadTimer()
+  getParams()
+}
+
+onMounted(() => {
+  init()
+})
 
 const getParams = async () => {
   state.value = 'loading'
   // let urlAPI = import.meta.env.VITE_APP_API
   let urlAPI = 'https://criptobank.pe/api'
-
   axios
     .get(urlAPI + '/params')
     .then((response) => {
@@ -49,6 +87,30 @@ const getParams = async () => {
       } else {
         console.log(error.response.data.message)
       }
+    })
+}
+
+const Buttonloading = ref(false)
+
+function IngresoDeDatos() {
+  console.log(location.href)
+
+  Buttonloading.value = true
+  console.log(fiatJson.value.fiat)
+  fiatJson.value.fiat.currency = fiatCurrency.value
+  fiatJson.value.fiat.amount = fiatAmount.value
+
+  axios
+    .post('http://127.0.0.1:8000/api/v1/quotation/buy', fiatJson.value)
+    .then((res) => {
+      console.log(res.data)
+
+      Buttonloading.value = false
+      location.href = 'summary/12312123123'
+      console.log(location.href)
+    })
+    .catch((error) => {
+      console.error(error)
     })
 }
 
@@ -95,31 +157,30 @@ function loadTimer() {
 //
 
 // valores
-const fiatAmount = ref(0)
-const cryptoAmount = ref(0)
-const tcPenUsd = ref(0)
+function setFiatAmount(val) {
+  let amount = parseFloat(val)
+  fiatAmount.value = amount
+  updateCryptoAmountFromFiat(amount)
+  lastInputEdited.value = 'setFiatAmount'
+}
+function setFiatCurrency(val) {
+  console.log(val)
+  fiatCurrency.value = val
+  if (lastInputEdited.value === 'setFiatAmount') {
+    console.log('canbiando a cripto')
+    updateCryptoAmountFromFiat(fiatAmount.value)
+  }
+  if (lastInputEdited.value === 'setCryptoAmount') {
+    updateFiatAmountFromCrypto(cryptoAmount.value)
+  }
+}
 
-const fiatAmoutLocalString = ref('0')
-const cryptoCurrency = ref('tether')
-const fiatCurrency = ref('PEN')
-const lastInputEdited = ref(null)
+function setCryptoAmount(val) {
+  cryptoAmount.value = parseFloat(val)
 
-// function separadorMillares(numero) {
-//   fiatAmoutLocalString.value = numero
-//     .toString()
-//     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-
-//   console.log(fiatAmoutLocalString.value)
-// }
-// function numberWithCommas(x) {
-// let uno= x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-//    let uno = x.toString().replace(/[^A-Z\d-]/g, "")
-
-//     // uno=fiatAmoutLocalString.value
-//     console.log(x)
-// }
-// button
-const ButtonAviable = ref(false)
+  updateFiatAmountFromCrypto(cryptoAmount.value)
+  lastInputEdited.value = 'setCryptoAmount'
+}
 
 function disableButton(mesage) {
   console.log(mesage)
@@ -130,63 +191,30 @@ function disableButton(mesage) {
   }
 }
 //
-function setFiatAmount(val) {
-  let amount = parseFloat(val)
-  fiatAmount.value = amount
-  updateCryptoAmountFromFiat(amount)
-  lastInputEdited.value = 'setFiatAmount'
-}
+
 function ComasenValor(val) {
   let internationalNumberFormat = new Intl.NumberFormat('en-US')
 
   fiatAmoutLocalString.value = internationalNumberFormat.format(val)
 
-  // let stringVar = String(val)
-  // let nummer=internationalNumberFormat.format(Number(stringVar).toFixed(2))
-
   if (fiatAmoutLocalString.value === 'NaN') {
     fiatAmoutLocalString.value = '0'
   } else {
     fiatAmoutLocalString.value = internationalNumberFormat.format(val)
-
-    // if(stringVar.includes(".")){
-    //   fiatAmoutLocalString.value=nummer
-    //   console.log( fiatAmoutLocalString.value)
-    // }
   }
-}
-const setFiatCurrency = (val) => {
-  fiatCurrency.value = val
-  if (lastInputEdited.value === 'setFiatAmount') {
-    updateCryptoAmountFromFiat()
-    fiatAmoutLocalString.value = 0
-    fiatAmount.value = 0
-    cryptoAmount.value = 0
-  }
-  if (lastInputEdited.value === 'setCryptoAmount') {
-    updateFiatAmountFromCrypto()
-    fiatAmoutLocalString.value = 0
-    cryptoAmount.value = 0
-    fiatAmount.value = 0
-  }
-}
-function setCryptoAmount(val) {
-  cryptoAmount.value = parseFloat(val)
-
-  updateFiatAmountFromCrypto(cryptoAmount.value)
-  lastInputEdited.value = 'setCryptoAmount'
 }
 
 function setCryptoCurrency(val) {
   cryptoCurrency.value = val
-
-  updateCryptoAmountFromFiat()
+  console.log(val)
+  updateCryptoAmountFromFiat(val)
 }
 
-const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
+const updateCryptoAmountFromFiat = async (fiatAmount) => {
   let totalUSDT = 0
+  console.log('asdasd')
   let amount = fiatAmount === 0 ? fiatAmount.value : fiatAmount
-  let fiatCharge = params.value.fiatCharge.find(
+  let fiatCharge = await params.value.fiatCharge.find(
     (fiat) => fiat.code === fiatCurrency.value
   )
   let charge = 1 + fiatCharge.chargePercentage / 100
@@ -207,13 +235,13 @@ const updateCryptoAmountFromFiat = async (fiatAmount = 0) => {
   let cryptoCharge = params.value.cryptoCharge.find(
     (crypto) => crypto.code === cryptoCurrency.value
   )
-
+  console.log(cryptoAmount.value)
   cryptoAmount.value = (totalUSDT - cryptoCharge.charge).toFixed(1) + 0
 
   ComasenValor(fiatAmount)
 }
 
-const updateFiatAmountFromCrypto = (cryptoAmount = 0) => {
+const updateFiatAmountFromCrypto = (cryptoAmount) => {
   let totalUSD = 0
   let amount = cryptoAmount === 0 ? cryptoAmount.value : cryptoAmount
   let fiatCharge = params.value.fiatCharge.find(
@@ -238,38 +266,6 @@ const updateFiatAmountFromCrypto = (cryptoAmount = 0) => {
   ComasenValor(fiatAmount.value)
 }
 
-// const validation=ref(false)
-// const isValid=ref(true)
-// const isInvalid=ref(true)
-// const minSoles=ref(100)
-
-// const textvalAlert=ref("")
-
-// function MaxMIN(){
-
-//     if(fiatAmount.value<=minSoles.value){
-//       textvalAlert.value =`el valor minimo es s/${minSoles.value}`
-//       console.log(textvalAlert.value)
-//       validation.value=true
-//       isValid.value=false
-//         // emit('disableButton',  isValid.value)
-//     }else{
-//       isValid.value=true
-//         // emit('disableButton',  isValid.value)
-//      console.log("valor correcto")
-//     }
-
-// }
-
-function init() {}
-//mounted
-onBeforeMount(() => {})
-onMounted(() => {
-  loadTimer()
-  getParams()
-  init()
-})
-
 const validationCripto = ref(false)
 const validationFiat = ref(false)
 
@@ -279,7 +275,6 @@ const minSoles = ref(100)
 
 const textvalAlertFiat = ref('')
 const textvalAlertCripto = ref('')
-// AGREGANDO watch
 
 function FiatValidation() {
   if (fiatAmount.value <= minSoles.value) {
@@ -312,28 +307,7 @@ function CriptoValidation() {
     console.log('valor correcto')
   }
 }
-const Buttonloading = ref(false)
-function Submit() {
-  Buttonloading.value = true
-  setTimeout(() => {
-    Buttonloading.value = false
-  }, 2000)
-}
-watch(fiatAmount, (value) => {
-  console.log(value)
 
-  if (isNaN(value)) {
-    fiatAmount.value = 0
-    cryptoAmount.value = 0
-  }
-})
-
-watch(cryptoAmount, (value) => {
-  if (isNaN(value)) {
-    fiatAmount.value = 0
-    cryptoAmount.value = 0
-  }
-})
 const modalLargeOpen = ref()
 </script>
 
@@ -395,7 +369,8 @@ const modalLargeOpen = ref()
         color="primary"
         :loading="Buttonloading"
         type="submit"
-        @click="Submit"
+        :to="ruta"
+        @click="IngresoDeDatos"
       >
         Comprar
       </Button>
