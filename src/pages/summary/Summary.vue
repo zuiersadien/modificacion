@@ -1,21 +1,26 @@
 <script setup lang="ts">
-import { ref, onMounted, inject } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
+
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
 let currentDate = ref('')
 let interval = ref<Timer>()
 let time = ref('')
-const codeCopy = ref('2203B1857B8')
+
 const copyTrue = ref(false)
 
-const firstname = ref()
-const lastname = ref()
-const email = ref()
+const firstname = ref('')
+const lastname = ref('')
+const email = ref('')
 
 const typedoc = ref('DNI')
 
-const numdoc = ref()
+const numdoc = ref('')
 
-const passwd = ref()
+const passwd = ref('')
 
 let fiatJson = ref({
   customer: {
@@ -29,6 +34,104 @@ let fiatJson = ref({
     passwd: '',
   },
 })
+
+const buttonRegister = ref(false)
+
+function MandarDatos() {
+  // if (firstname.value.length>0 && lastname.value.length>0 && email.value.length>0 && numdoc.value.length>0 && passwd.value.length>0){
+
+  //     console.log("el archivo puede pasar")
+
+  // }else{
+  //    console.log("el archivo no puede pasar")
+  //     isValidName.value=false
+  // }
+  if (
+    firstname.value.length == 0 &&
+    lastname.value.length == 0 &&
+    email.value.length == 0 &&
+    numdoc.value.length == 0 &&
+    passwd.value.length == 0
+  ) {
+    textAlertValidationPassword.value = 'El password es requerido'
+    isValidPassword.value = false
+    textAlertValidationDNI.value = 'El DNI es requerido'
+    isValidADNI.value = false
+    textAlertValidationCorreo.value = 'El Correo es requerido'
+    isValidACorreo.value = false
+    textAlertValidationApellido.value = 'El Apellido es requerido'
+    isValidApellido.value = false
+    textAlertValidationName.value = 'El nombre es requerido'
+    isValidName.value = false
+  } else {
+    if (firstname.value.length > 0) {
+      if (lastname.value.length > 0) {
+        if (email.value.length > 0) {
+          if (numdoc.value.length > 0) {
+            if (passwd.value.length > 0) {
+            } else {
+              textAlertValidationPassword.value = 'El password es requerido'
+              isValidPassword.value = false
+            }
+          } else {
+            textAlertValidationDNI.value = 'El DNI es requerido'
+            isValidADNI.value = false
+          }
+        } else {
+          textAlertValidationCorreo.value = 'El Correo es requerido'
+          isValidACorreo.value = false
+        }
+      } else {
+        textAlertValidationApellido.value = 'El Apellido es requerido'
+        isValidApellido.value = false
+      }
+    } else {
+      textAlertValidationName.value = 'El nombre es requerido'
+      isValidName.value = false
+
+      console.log('el archivo no puede pasar')
+    }
+  }
+}
+
+const DNILogin = ref({
+  typedoc: 'DNI',
+  numdoc: '',
+})
+const textAlertValidationDNIlogin = ref('')
+// const validationDNIlogin = ref(true)
+const isValidADNIlogin = ref(true)
+
+const loginButtonLoader = ref(false)
+const loginButtonAviable = ref(false)
+function valDniLoign(e) {
+  loginButtonAviable.value = true
+  let data = e.target.value
+  textAlertValidationDNIlogin.value = 'El DNI requiere de 8 digitos'
+  isValidADNIlogin.value = false
+
+  if (data.length > 7) {
+    isValidADNIlogin.value = true
+    loginButtonAviable.value = false
+  }
+}
+
+function Login() {
+  loginButtonLoader.value = true
+  axios
+    .post('http://127.0.0.1:8000/api/v1/session/username', DNILogin.value)
+    .then((res) => {
+      location.href = 'http://criptobank.pe/login'
+      console.log(res.data)
+      loginButtonLoader.value = false
+    })
+    .catch((e) => {
+      console.error(e.response.data.message)
+      isValidADNIlogin.value = false
+      textAlertValidationDNIlogin.value = e.response.data.message
+      loginButtonLoader.value = false
+    })
+}
 function inyectarDatos(e) {
   // e.preventDefault();
 
@@ -39,19 +142,71 @@ function inyectarDatos(e) {
   fiatJson.value.session.numdoc = numdoc.value
   fiatJson.value.session.passwd = passwd.value
 
-  console.log(fiatJson.value)
+  buttonRegister.value = true
+
   axios
     .post('http://127.0.0.1:8000/api/v1/session/register', fiatJson.value)
     .then((res) => {
-      console.log(res.data)
       e.preventDefault()
-      console.log(fiatJson.value)
-      location.href = 'http://criptobank.pe/register'
-      console.log(location.href)
+      location.href = 'http://criptobank.pe/login'
+      console.log(res.data)
+      buttonRegister.value = false
+      console.log(res.data)
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error.response.data.message)
+      buttonRegister.value = false
+      MandarDatos()
     })
+}
+let ButtonAviable = ref(false)
+function valname(e) {
+  ButtonAviable.value = true
+
+  if (e.target.name === 'nombre') {
+    textAlertValidationName.value = 'El nombre es requerido'
+    let data = e.target.value
+    isValidName.value = false
+    if (data) {
+      ButtonAviable.value = false
+      isValidName.value = true
+    }
+  } else if (e.target.name === 'apellido') {
+    let data = e.target.value
+    textAlertValidationApellido.value = 'El Apellido es requerido'
+    isValidApellido.value = false
+    if (data) {
+      isValidApellido.value = true
+    }
+  } else if (e.target.name === 'correo') {
+    let data = e.target.value
+    textAlertValidationCorreo.value = 'El Correo es requerido'
+    isValidACorreo.value = false
+
+    if (data) {
+      isValidACorreo.value = true
+
+      if (!data.includes('@')) {
+        textAlertValidationCorreo.value = 'El correo requiere de "@" y ".'
+        isValidACorreo.value = false
+      }
+    }
+  } else if (e.target.name === 'DNI') {
+    let data = e.target.value
+    textAlertValidationDNI.value = 'El DNI requiere de 8 digitos'
+    isValidADNI.value = false
+
+    if (data.length > 7) {
+      isValidADNI.value = true
+    }
+  } else if (e.target.name === 'passW') {
+    let data = e.target.value
+    textAlertValidationPassword.value = 'El password es requerido'
+    isValidPassword.value = false
+    if (data) {
+      isValidPassword.value = true
+    }
+  }
 }
 
 function loadTimer() {
@@ -103,9 +258,7 @@ function filterKey(e) {
   ]
   let verdad = numeros.some((numero) => numero === code)
 
-  console.log(code)
   if (verdad) {
-    console.log(verdad)
   } else {
     e.preventDefault()
   }
@@ -119,75 +272,134 @@ function filterNumber(e) {
   ]
   let verdad = numeros.some((numero) => numero === code)
 
-  console.log(code)
   if (verdad) {
     e.preventDefault()
   } else {
-    console.log(verdad)
   }
 }
+
 function copy() {
   try {
     copyTrue.value = !copyTrue.value
-    navigator.clipboard.writeText(codeCopy.value)
+    navigator.clipboard.writeText(Code.value)
   } catch (e) {
     throw e
   }
 }
 
-//
 const textAlertValidationName = ref('')
-const validationName = ref(true)
+// const validationName = ref(true)
 const isValidName = ref(true)
 
-function validadionName(e) {
-  let data = e.target.value
-  // console.log(data)
-  textAlertValidationName.value = 'El nombre es requerido'
-  textAlertValidationApellido.value = 'El nombre es requerido'
-  isValidName.value = false
-  if (data) {
-    isValidName.value = true
-    console.log('hola')
-  }
-}
-// Apellido
-const textAlertValidationApellido = ref('')
-const validationApellido = ref(true)
-const isValidApellido = ref(true)
-function validadionApellido(e) {
-  let data = e.target.value
-  console.log(data)
-  textAlertValidationApellido.value = 'El Apellido es requerido'
-  isValidApellido.value = false
-  if (data) {
-    isValidApellido.value = true
-  }
-}
-//
 const textAlertValidationCorreo = ref('')
-const validationCorreo = ref(true)
+// const validationCorreo = ref(true)
 const isValidACorreo = ref(true)
 
-function validadionCorreo(e) {
-  let data = e.target.value
-  console.log(data)
-  textAlertValidationCorreo.value = 'El Correo es requerido'
-  isValidACorreo.value = false
+const textAlertValidationDNI = ref('')
+// const validationDNI = ref(true)
+const isValidADNI = ref(true)
 
-  if (data) {
-    isValidACorreo.value = true
-    console.log(data)
-    if (!data.includes('@')) {
-      textAlertValidationCorreo.value = 'insertar @'
-      isValidACorreo.value = false
-    }
-  }
+const textAlertValidationPassword = ref('')
+const isValidPassword = ref(true)
+// const validationPassword = ref(true)
+
+const textAlertValidationApellido = ref('')
+// const validationApellido = ref(true)
+const isValidApellido = ref(true)
+
+// function asd(){
+//   function validadionName(e) {
+//   let data = e.target.value
+//   // console.log(data)
+//   textAlertValidationName.value = 'El nombre es requerido'
+
+//   isValidName.value = false
+//   if (data) {
+//     isValidName.value = true
+//     console.log('hola')
+//   }
+// }
+// function validadionApellido(e) {
+//   let data = e.target.value
+//   console.log(data)
+//   textAlertValidationApellido.value = 'El Apellido es requerido'
+//   isValidApellido.value = false
+//   if (data) {
+//     isValidApellido.value = true
+//   }
+// }
+// function validarDNI(e){
+//   let data = e.target.value
+//   textAlertValidationDNI.value = 'El DNI es requerido'
+//   isValidADNI.value = false
+//   if(data){
+//       isValidADNI.value = true
+//   }
+// }
+// function validarPassword(e){
+//   let data = e.target.value
+//   textAlertValidationPassword.value = 'El password es requerido'
+//   isValidPassword.value = false
+//   if(data){
+//       isValidPassword.value = true
+//   }
+// }
+// function validadionCorreo(e) {
+//   let data = e.target.value
+//   textAlertValidationCorreo.value = 'El Correo es requerido'
+//   isValidACorreo.value = false
+
+//   if (data) {
+//     isValidACorreo.value = true
+//     console.log(data)
+//     if (!data.includes('@')) {
+//       textAlertValidationCorreo.value = 'El correo requiere de "@" y ".'
+//       isValidACorreo.value = false
+//     }
+//   }
+// }
+// }
+
+//
+
+// const Link=ref("http://criptobank.pe/login")
+//
+
+//
+const successRes = ref('')
+const Code = ref('')
+const tc = ref('')
+const expiresRes = ref('')
+const fiatcurrency = ref()
+const fiatAmount = ref()
+const criptoCx = ref()
+const criptoAmount = ref()
+
+// const resJson = inject('resJson')
+
+function RetunQuer() {
+  let codigoT = route.query
+  let ArrayCode = Object.values(codigoT)
+
+  successRes.value = ArrayCode[0]
+
+  Code.value = ArrayCode[1]
+
+  tc.value = ArrayCode[2]
+
+  expiresRes.value = ArrayCode[3]
+
+  fiatcurrency.value = ArrayCode[4]
+
+  fiatAmount.value = ArrayCode[5]
+
+  criptoCx.value = ArrayCode[6]
+
+  criptoAmount.value = ArrayCode[7]
 }
-const resJson = inject('resJson')
-console.log(resJson)
 onMounted(() => {
   loadTimer()
+  RetunQuer()
 })
 </script>
 
@@ -237,12 +449,14 @@ meta:
                         v-model="firstname"
                         type="text"
                         class="radius"
+                        name="nombre"
                         placeholder="Nombres"
                         required
                         @keydown="filterNumber"
-                        @keyup="validadionName"
+                        @keyup="valname"
                       />
                     </Control>
+                    <div v-if="isValidName" class="espaciado-plano"></div>
                     <Control
                       :validation="validationApellido"
                       :is-valid="isValidApellido"
@@ -252,12 +466,14 @@ meta:
                         v-model="lastname"
                         type="text"
                         class="radius"
+                        name="apellido"
                         placeholder="Apellidos"
                         required
                         @keydown="filterNumber"
-                        @keyup="validadionApellido"
+                        @keyup="valname"
                       />
                     </Control>
+                    <div v-if="isValidApellido" class="espaciado-plano"></div>
                     <Control
                       :validation="validationCorreo"
                       :is-valid="isValidACorreo"
@@ -267,50 +483,60 @@ meta:
                         v-model="email"
                         type="email"
                         required
+                        name="correo"
                         class="radius"
                         placeholder="Correo electronico"
-                        @keyup="validadionCorreo"
+                        @keyup="valname"
                       />
                     </Control>
+                    <div v-if="isValidACorreo" class="espaciado-plano"></div>
                     <br />
                     <br />
                     <br />
                     <br />
                     <Control
                       validation
-                      is-valid
-                      :error="textAlertValidationName"
+                      :is-valid="isValidADNI"
+                      :error="textAlertValidationDNI"
                     >
                       <VInput
                         v-model="numdoc"
                         type="text"
+                        name="DNI"
                         class="radius"
                         placeholder="DNI"
                         required
                         maxlength="8"
-                        @keydown="filterKey"
+                        @keyup="valname"
                       />
                     </Control>
+                    <div v-if="isValidADNI" class="espaciado-plano"></div>
                     <Control
                       validation
-                      is-valid
-                      :error="textAlertValidationName"
+                      :is-valid="isValidPassword"
+                      :error="textAlertValidationPassword"
                     >
                       <VInput
                         v-model="passwd"
+                        name="passW"
                         type="password"
                         class="radius"
                         placeholder="Crear contrasena"
+                        @keyup="valname"
                       />
                     </Control>
+                    <div v-if="isValidPassword" class="espaciado-plano"></div>
                     <div class="is flex is-justify-content-end">
-                      <Button
-                        size="medium"
-                        class="button is-primary is-rounded is-raised mt-4 fullBsum"
-                        @click="inyectarDatos"
-                      >
-                        Registrate
-                      </Button>
+                      <div class="white">
+                        <Button
+                          size="medium"
+                          class="button is-primary is-rounded is-raised fullBsum"
+                          :loading="buttonRegister"
+                          @click="inyectarDatos"
+                        >
+                          Registrate
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -321,25 +547,34 @@ meta:
                   </div>
 
                   <div class="container-input-login">
-                    <form action="">
+                    <Control
+                      validation
+                      :is-valid="isValidADNIlogin"
+                      :error="textAlertValidationDNIlogin"
+                    >
                       <VInput
+                        v-model="DNILogin.numdoc"
                         type="text "
                         class="radius"
                         placeholder="DNI"
                         required
                         maxlength="8"
                         @keydown="filterKey"
+                        @keyup="valDniLoign"
                       />
-                      <div class="is flex is-justify-content-end">
-                        <Button
-                          size="medium"
-                          type="submit"
-                          class="button is-primary is-rounded is-raised mt-4 fullBsum"
-                        >
-                          Iniciar sesion
-                        </Button>
-                      </div>
-                    </form>
+                    </Control>
+
+                    <div class="is flex is-justify-content-end">
+                      <Button
+                        size="medium"
+                        :loading="loginButtonLoader"
+                        :disabled="loginButtonAviable"
+                        class="button is-primary is-rounded is-raised mt-4 fullBsum"
+                        @click="Login"
+                      >
+                        Iniciar sesion
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -364,11 +599,13 @@ meta:
                 <div class="is-flex is-justify-content-space-between my-2">
                   <h4 class="title-env-res">Tu Envias</h4>
 
-                  <p class="number-en-res">$/1500.00</p>
+                  <p class="number-en-res">
+                    {{ fiatAmount }} {{ fiatcurrency }}
+                  </p>
                 </div>
                 <div class="is-flex is-justify-content-space-between my-2">
                   <h4 class="title-env-res">Recibiras</h4>
-                  <p class="number-en-res">359.60 USDT</p>
+                  <p class="number-en-res">{{ criptoCx }} {{ criptoAmount }}</p>
                 </div>
               </div>
               <hr width="100%" />
@@ -376,7 +613,7 @@ meta:
                 <div class="is-flex is-justify-content-space-between my-2">
                   <p class="code-Tras">Código de transacción:</p>
                   <div class="is-flex is-flex is-justify-content-end">
-                    <p class="number-tras">{{ codeCopy }}</p>
+                    <p class="number-tras">{{ Code }}</p>
                     <button class="buttonCOPY" @click="copy">
                       <i class="iconify" data-icon="akar-icons:copy"></i>
                     </button>
@@ -389,7 +626,7 @@ meta:
 
                 <div class="is-flex is-justify-content-space-between my-2">
                   <p class="code-Tras">Tipo de cambio:</p>
-                  <p class="number-tras">S/ 4.090</p>
+                  <p class="number-tras">S/ {{ tc }}0</p>
                 </div>
               </div>
             </div>
@@ -400,6 +637,16 @@ meta:
   </section>
 </template>
 <style  scoped lang="scss">
+.white {
+  background: white;
+
+  // height: 48px;
+  border-radius: 18px !important;
+}
+.espaciado-plano {
+  height: 22px;
+  width: 100%;
+}
 .text-true-copy {
   font-size: 12px;
   color: #903eff;
@@ -458,7 +705,7 @@ meta:
 }
 .radius {
   border-radius: 12px !important;
-  margin: 7.5px 0;
+  // margin: 7.5px 0;
 }
 .fullBsum {
   font-family: 'Open Sans', sans-serif !important;

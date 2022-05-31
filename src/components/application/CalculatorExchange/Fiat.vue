@@ -25,10 +25,10 @@ const { currencies, fiatAmoutLocalString } = toRefs(props)
 // VARIABLES
 const currencySelected = ref('PEN')
 //
+
 // FUNTIONS
 function emitFiatCurrency(value) {
   currencySelected.value = value
-
   emit('fiatCurrency', value)
 
   updateCurrencySelected()
@@ -54,9 +54,12 @@ function updateCurrencySelected() {
   if (currencySelected.value === 'PEN') {
     btnColorPEN.value = 'btn-primary '
     btnColorUSD.value = null
+    iconoCurrenly.value = false
   } else {
     btnColorPEN.value = null
     btnColorUSD.value = 'btn-primary '
+
+    iconoCurrenly.value = true
   }
 }
 
@@ -72,7 +75,6 @@ const emit = defineEmits(['fiatAmount', 'fiatCurrency', 'disableButton'])
 
 function filterKey(e) {
   let code = e.keyCode
-  console.log(code)
 
   let TotalDevengado = e.target.value.replace(/,/g, '')
   let numeros = [
@@ -100,12 +102,9 @@ function filterKey(e) {
   let maxAceptado = TotalDevengado <= max
   let maxDecimal = cambioPuntos > decimal
 
-  console.log(repeatComa)
-
   if (maxAceptado) {
     if (verdad) {
       if (maxDecimal) {
-        console.log('max decimal')
         if (verdadCode) {
         } else {
           e.preventDefault()
@@ -129,13 +128,13 @@ function filterKey(e) {
     }
   } else {
     if (verdadCode) {
-      console.log('borrando')
     } else {
       e.preventDefault()
     }
   }
 }
 
+const iconoCurrenly = ref(false)
 // Mounted
 onMounted(() => {
   init()
@@ -176,20 +175,30 @@ onMounted(() => {
         </div>
 
         <Control
+          class="DOLLAR-PEN"
           icon-size="lg"
           :error="textvalAlertFiat"
           :validation="validation"
           :is-valid="isValid"
-          icon="feather:dollar-sign"
         >
           <VInput
             v-model="fiatAmoutLocalString"
             rounded
-            size="lg"
+            class="iconoInput"
+            size="lg "
             type="text"
             @keydown="filterKey"
             @keyup="emitFiatAmount"
           />
+          <div v-if="iconoCurrenly" class="sign-fiatamount">
+            <i
+              class="iconify iconoClassCurrenly"
+              data-icon="carbon:currency-dollar"
+            ></i>
+          </div>
+          <div v-else class="sign-fiatamount sign-fiatamount-span">
+            <span class="spanClassCurrenly">S/</span>
+          </div>
         </Control>
       </Field>
       <div class="form-group"></div>
@@ -202,11 +211,42 @@ onMounted(() => {
 
 
 <style scoped lang="scss">
+.sign-fiatamount {
+  color: #d2c8ec;
+  position: absolute;
+  left: 15px;
+  top: 20px;
+}
+.DOLLAR-PEN:hover .spanClassCurrenly {
+  transition: all 1s ease;
+  color: var(--vc-clr-primary) !important;
+  font-size: 40px;
+}
+.DOLLAR-PEN:hover .iconoClassCurrenly {
+  transition: all 1s ease;
+  color: var(--vc-clr-primary) !important;
+  font-size: 18px;
+}
+
+.sign-fiatamount-span {
+  top: 12px;
+}
+.spanClassCurrenly {
+  font-size: 20px !important;
+  padding-top: 0 !important;
+  color: #d2c8ec !important;
+  margin-bottom: 10px !important;
+}
+.iconoClassCurrenly {
+  font-size: 20px !important;
+}
 .flex-button {
   display: flex;
   justify-content: space-between;
 }
-
+.iconoInput {
+  padding-left: 40px !important;
+}
 #sl {
   display: inline !important;
 }

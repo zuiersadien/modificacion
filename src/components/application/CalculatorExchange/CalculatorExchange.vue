@@ -93,21 +93,18 @@ const getParams = async () => {
 const Buttonloading = ref(false)
 
 function IngresoDeDatos() {
-  console.log(location.href)
-
   Buttonloading.value = true
-  console.log(fiatJson.value.fiat)
+
   fiatJson.value.fiat.currency = fiatCurrency.value
   fiatJson.value.fiat.amount = fiatAmount.value
 
   axios
     .post('http://127.0.0.1:8000/api/v1/quotation/buy', fiatJson.value)
     .then((res) => {
-      console.log(res.data)
+      let respuesta = res.data
 
       Buttonloading.value = false
-      location.href = 'summary/12312123123'
-      console.log(location.href)
+      location.href = `summary/summary?success=${respuesta.success}&code=${respuesta.code}&tc=${respuesta.tc}&Expires=${respuesta.expires}&FiCurrenly=${respuesta.fiat.currency}&FiAmout=${respuesta.fiat.amount}&CryAmount=${respuesta.crypto.amount}&CriptoCX=${respuesta.crypto.cx}`
     })
     .catch((error) => {
       console.error(error)
@@ -164,10 +161,8 @@ function setFiatAmount(val) {
   lastInputEdited.value = 'setFiatAmount'
 }
 function setFiatCurrency(val) {
-  console.log(val)
   fiatCurrency.value = val
   if (lastInputEdited.value === 'setFiatAmount') {
-    console.log('canbiando a cripto')
     updateCryptoAmountFromFiat(fiatAmount.value)
   }
   if (lastInputEdited.value === 'setCryptoAmount') {
@@ -183,7 +178,6 @@ function setCryptoAmount(val) {
 }
 
 function disableButton(mesage) {
-  console.log(mesage)
   if (mesage) {
     ButtonAviable.value = false
   } else {
@@ -206,13 +200,12 @@ function ComasenValor(val) {
 
 function setCryptoCurrency(val) {
   cryptoCurrency.value = val
-  console.log(val)
+
   updateCryptoAmountFromFiat(val)
 }
 
 const updateCryptoAmountFromFiat = async (fiatAmount) => {
   let totalUSDT = 0
-  console.log('asdasd')
   let amount = fiatAmount === 0 ? fiatAmount.value : fiatAmount
   let fiatCharge = await params.value.fiatCharge.find(
     (fiat) => fiat.code === fiatCurrency.value
@@ -235,7 +228,7 @@ const updateCryptoAmountFromFiat = async (fiatAmount) => {
   let cryptoCharge = params.value.cryptoCharge.find(
     (crypto) => crypto.code === cryptoCurrency.value
   )
-  console.log(cryptoAmount.value)
+
   cryptoAmount.value = (totalUSDT - cryptoCharge.charge).toFixed(1) + 0
 
   ComasenValor(fiatAmount)
@@ -288,7 +281,6 @@ function FiatValidation() {
     isValid.value = true
 
     disableButton(isValid.value)
-    console.log('valor correcto')
   }
 }
 function CriptoValidation() {
@@ -304,7 +296,6 @@ function CriptoValidation() {
     isValid.value = true
 
     disableButton(isValid.value)
-    console.log('valor correcto')
   }
 }
 
@@ -369,7 +360,6 @@ const modalLargeOpen = ref()
         color="primary"
         :loading="Buttonloading"
         type="submit"
-        :to="ruta"
         @click="IngresoDeDatos"
       >
         Comprar
