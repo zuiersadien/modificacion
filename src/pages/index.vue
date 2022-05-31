@@ -50,7 +50,7 @@ meta:
     <!-- Earningpartners Start -->
     <div class="earningpartners">
       <div class="bg">
-        <img src="/assets/images/profit-bg.png" alt="" class="dp-bg" />
+        <!-- <img src="/assets/images/profit-bg.png" alt="" class="dp-bg" /> -->
       </div>
       <div class="deposit-amounts">
         <div class="container">

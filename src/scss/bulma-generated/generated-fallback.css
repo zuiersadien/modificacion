@@ -20,9 +20,9 @@
   --button-light-bg-color-inverted: rgb(255, 255, 255);
   --button-light-border-color-inverted: rgb(255, 255, 255);
   --button-primary-color: rgb(255, 255, 255);
-  --button-primary-color-inverted: rgb(119, 3, 252);
-  --button-primary-bg-color: rgb(119, 3, 252);
-  --button-primary-border-color: rgb(119, 3, 252);
+  --button-primary-color-inverted: rgb(51, 20, 143);
+  --button-primary-bg-color: rgb(51, 20, 143);
+  --button-primary-border-color: rgb(51, 20, 143);
   --button-secondary-color: rgb(255, 255, 255);
   --button-success-color: rgb(255, 255, 255);
   --button-success-color-inverted: rgb(22, 223, 149);
@@ -47,12 +47,12 @@
 }
 
 :root {
-  --icon-primary-inverted-bg-color: rgb(119, 3, 252);
+  --icon-primary-inverted-bg-color: rgb(51, 20, 143);
   --icon-info-inverted-bg-color: rgb(22, 119, 223);
   --icon-success-inverted-bg-color: rgb(22, 223, 149);
   --icon-warning-inverted-bg-color: rgb(242, 183, 54);
   --icon-danger-inverted-bg-color: rgb(252, 3, 98);
-  --icon-primary-color: rgb(119, 3, 252);
+  --icon-primary-color: rgb(51, 20, 143);
   --icon-info-color: rgb(22, 119, 223);
   --icon-success-color: rgb(22, 223, 149);
   --icon-warning-color: rgb(242, 183, 54);
@@ -60,7 +60,7 @@
 }
 
 .is-dark {
-  --icon-primary-bg-color: rgb(119, 3, 252);
+  --icon-primary-bg-color: rgb(51, 20, 143);
   --icon-info-bg-color: rgb(22, 119, 223);
   --icon-success-bg-color: rgb(22, 223, 149);
   --icon-warning-bg-color: rgb(242, 183, 54);
@@ -85,7 +85,7 @@
 }
 
 .popover-primary {
-  --popper-theme-background-color: rgb(119, 3, 252);
+  --popper-theme-background-color: rgb(51, 20, 143);
 }
 
 .popover-info {
@@ -105,13 +105,13 @@
 }
 
 :root {
-  --vc-clr-primary: rgb(119, 3, 252);
+  --vc-clr-primary: rgb(51, 20, 143);
   --vc-clr-white: rgb(255, 255, 255);
   --vc-nav-color: rgb(255, 255, 255);
 }
 
 .is-dark {
-  --vc-clr-primary: rgb(119, 3, 252);
+  --vc-clr-primary: rgb(51, 20, 143);
   --vc-clr-white: rgb(255, 255, 255);
   --vc-nav-color: rgb(255, 255, 255);
 }
@@ -125,7 +125,7 @@
 
 :root {
   --hero-bg-color: rgb(255, 255, 255);
-  --hero-nuance-main: rgb(119, 3, 252);
+  --hero-nuance-main: rgb(51, 20, 143);
 }
 
 :root {
@@ -134,7 +134,7 @@
 
 :root {
   --footer-light-bg-color: rgb(255, 255, 255);
-  --footer-light-link-color-hover: rgb(119, 3, 252);
+  --footer-light-link-color-hover: rgb(51, 20, 143);
   --footer-dark-bg-color: rgb(37, 46, 60);
 }
 
@@ -145,14 +145,14 @@
 
 :root {
   --input-base-bg-color: rgb(255, 255, 255);
-  --slider-connect-bg: rgb(119, 3, 252);
-  --slider-tooltip-bg: rgb(119, 3, 252);
-  --slider-handle-shadow: rgb(119, 3, 252);
+  --slider-connect-bg: rgb(51, 20, 143);
+  --slider-tooltip-bg: rgb(51, 20, 143);
+  --slider-handle-shadow: rgb(51, 20, 143);
 }
 
 .is-dark {
-  --input-base-focus-color: rgb(119, 3, 252);
-  --input-inverted-focus-color: rgb(119, 3, 252);
+  --input-base-focus-color: rgb(51, 20, 143);
+  --input-inverted-focus-color: rgb(51, 20, 143);
 }
 
 :root {
@@ -196,8 +196,8 @@
 }
 
 .is-dark {
-  --blog-post-tag-border-color: rgb(119, 3, 252);
-  --blog-post-tag-color: rgb(119, 3, 252);
+  --blog-post-tag-border-color: rgb(51, 20, 143);
+  --blog-post-tag-color: rgb(51, 20, 143);
 }
 
 :root {
@@ -517,13 +517,13 @@ fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
 }
 
 .button.is-primary {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .button.is-primary:hover,
 .button.is-primary.is-hovered {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -534,18 +534,18 @@ fieldset[disabled] .button.is-dark.is-inverted.is-outlined {
 
 .button.is-primary:active,
 .button.is-primary.is-active {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .button.is-primary[disabled],
 fieldset[disabled] .button.is-primary {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
 }
 
 .button.is-primary.is-inverted {
   background-color: rgb(255, 255, 255);
-  color: rgb(119, 3, 252);
+  color: rgb(51, 20, 143);
 }
 
 .button.is-primary.is-inverted:hover,
@@ -556,27 +556,27 @@ fieldset[disabled] .button.is-primary {
 .button.is-primary.is-inverted[disabled],
 fieldset[disabled] .button.is-primary.is-inverted {
   background-color: rgb(255, 255, 255);
-  color: rgb(119, 3, 252);
+  color: rgb(51, 20, 143);
 }
 
 .button.is-primary.is-outlined {
-  border-color: rgb(119, 3, 252);
-  color: rgb(119, 3, 252);
+  border-color: rgb(51, 20, 143);
+  color: rgb(51, 20, 143);
 }
 
 .button.is-primary.is-outlined:hover,
 .button.is-primary.is-outlined.is-hovered,
 .button.is-primary.is-outlined:focus,
 .button.is-primary.is-outlined.is-focused {
-  background-color: rgb(119, 3, 252);
-  border-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
+  border-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .button.is-primary.is-outlined[disabled],
 fieldset[disabled] .button.is-primary.is-outlined {
-  border-color: rgb(119, 3, 252);
-  color: rgb(119, 3, 252);
+  border-color: rgb(51, 20, 143);
+  color: rgb(51, 20, 143);
 }
 
 .button.is-primary.is-inverted.is-outlined {
@@ -589,7 +589,7 @@ fieldset[disabled] .button.is-primary.is-outlined {
 .button.is-primary.is-inverted.is-outlined:focus,
 .button.is-primary.is-inverted.is-outlined.is-focused {
   background-color: rgb(255, 255, 255);
-  color: rgb(119, 3, 252);
+  color: rgb(51, 20, 143);
 }
 
 .button.is-primary.is-inverted.is-outlined[disabled],
@@ -599,20 +599,20 @@ fieldset[disabled] .button.is-primary.is-inverted.is-outlined {
 }
 
 .button.is-primary.is-light {
-  background-color: rgb(244, 235, 255);
-  color: rgb(122, 8, 252);
+  background-color: rgb(241, 237, 253);
+  color: rgb(97, 54, 227);
 }
 
 .button.is-primary.is-light:hover,
 .button.is-primary.is-light.is-hovered {
-  background-color: rgb(244, 235, 255);
-  color: rgb(122, 8, 252);
+  background-color: rgb(241, 237, 253);
+  color: rgb(97, 54, 227);
 }
 
 .button.is-primary.is-light:active,
 .button.is-primary.is-light.is-active {
-  background-color: rgb(244, 235, 255);
-  color: rgb(122, 8, 252);
+  background-color: rgb(241, 237, 253);
+  color: rgb(97, 54, 227);
 }
 
 .button.is-link {
@@ -1136,13 +1136,13 @@ fieldset[disabled] .button {
 }
 
 .notification.is-primary {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .notification.is-primary.is-light {
-  background-color: rgb(244, 235, 255);
-  color: rgb(122, 8, 252);
+  background-color: rgb(241, 237, 253);
+  color: rgb(97, 54, 227);
 }
 
 .notification.is-link {
@@ -1232,15 +1232,15 @@ fieldset[disabled] .button {
 }
 
 .progress.is-primary::-webkit-progress-value {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
 }
 
 .progress.is-primary::-moz-progress-bar {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
 }
 
 .progress.is-primary::-ms-fill {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
 }
 
 .progress.is-link::-webkit-progress-value {
@@ -1330,8 +1330,8 @@ fieldset[disabled] .button {
 
 .table td.is-primary,
 .table th.is-primary {
-  background-color: rgb(119, 3, 252);
-  border-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
+  border-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -1372,12 +1372,12 @@ fieldset[disabled] .button {
 
 .table td.is-selected,
 .table th.is-selected {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .table tr.is-selected {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -1402,13 +1402,13 @@ fieldset[disabled] .button {
 }
 
 .tag:not(body).is-primary {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .tag:not(body).is-primary.is-light {
-  background-color: rgb(244, 235, 255);
-  color: rgb(122, 8, 252);
+  background-color: rgb(241, 237, 253);
+  color: rgb(97, 54, 227);
 }
 
 .tag:not(body).is-link {
@@ -1499,7 +1499,7 @@ fieldset[disabled] .button {
 
 .is-primary.textarea,
 .is-primary.input {
-  border-color: rgb(119, 3, 252);
+  border-color: rgb(51, 20, 143);
 }
 
 .is-link.textarea,
@@ -1571,16 +1571,16 @@ fieldset[disabled] .button {
 }
 
 .select.is-primary:not(:hover)::after {
-  border-color: rgb(119, 3, 252);
+  border-color: rgb(51, 20, 143);
 }
 
 .select.is-primary select {
-  border-color: rgb(119, 3, 252);
+  border-color: rgb(51, 20, 143);
 }
 
 .select.is-primary select:hover,
 .select.is-primary select.is-hovered {
-  border-color: rgb(119, 3, 252);
+  border-color: rgb(51, 20, 143);
 }
 
 .select.is-link:not(:hover)::after {
@@ -1715,13 +1715,13 @@ fieldset[disabled] .button {
 }
 
 .file.is-primary .file-cta {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .file.is-primary:hover .file-cta,
 .file.is-primary.is-hovered .file-cta {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -1732,7 +1732,7 @@ fieldset[disabled] .button {
 
 .file.is-primary:active .file-cta,
 .file.is-primary.is-active .file-cta {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -1859,7 +1859,7 @@ fieldset[disabled] .button {
 }
 
 .help.is-primary {
-  color: rgb(119, 3, 252);
+  color: rgb(51, 20, 143);
 }
 
 .help.is-link {
@@ -1950,17 +1950,17 @@ button.dropdown-item.is-active {
 }
 
 .message.is-primary {
-  background-color: rgb(244, 235, 255);
+  background-color: rgb(241, 237, 253);
 }
 
 .message.is-primary .message-header {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .message.is-primary .message-body {
-  border-color: rgb(119, 3, 252);
-  color: rgb(122, 8, 252);
+  border-color: rgb(51, 20, 143);
+  color: rgb(97, 54, 227);
 }
 
 .message.is-link {
@@ -2261,7 +2261,7 @@ button.dropdown-item.is-active {
 }
 
 .navbar.is-primary {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -2276,7 +2276,7 @@ button.dropdown-item.is-active {
 .navbar.is-primary .navbar-brand .navbar-link:focus,
 .navbar.is-primary .navbar-brand .navbar-link:hover,
 .navbar.is-primary .navbar-brand .navbar-link.is-active {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -2308,7 +2308,7 @@ button.dropdown-item.is-active {
   .navbar.is-primary .navbar-end .navbar-link:focus,
   .navbar.is-primary .navbar-end .navbar-link:hover,
   .navbar.is-primary .navbar-end .navbar-link.is-active {
-    background-color: rgb(119, 3, 252);
+    background-color: rgb(51, 20, 143);
     color: rgb(255, 255, 255);
   }
 
@@ -2320,12 +2320,12 @@ button.dropdown-item.is-active {
   .navbar.is-primary .navbar-item.has-dropdown:focus .navbar-link,
   .navbar.is-primary .navbar-item.has-dropdown:hover .navbar-link,
   .navbar.is-primary .navbar-item.has-dropdown.is-active .navbar-link {
-    background-color: rgb(119, 3, 252);
+    background-color: rgb(51, 20, 143);
     color: rgb(255, 255, 255);
   }
 
   .navbar.is-primary .navbar-dropdown a.navbar-item.is-active {
-    background-color: rgb(119, 3, 252);
+    background-color: rgb(51, 20, 143);
     color: rgb(255, 255, 255);
   }
 }
@@ -2701,7 +2701,7 @@ a.navbar-item.is-active,
   color: rgb(119, 3, 252);
 }
 
-.navbar-link:not(.is-arcolumnsless)::after {
+.navbar-link:not(.is-arrowless)::after {
   border-color: rgb(119, 3, 252);
 }
 
@@ -2786,16 +2786,16 @@ a.navbar-item.is-active,
 }
 
 .panel.is-primary .panel-heading {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
 .panel.is-primary .panel-tabs a.is-active {
-  border-bottom-color: rgb(119, 3, 252);
+  border-bottom-color: rgb(51, 20, 143);
 }
 
 .panel.is-primary .panel-block.is-active .panel-icon {
-  color: rgb(119, 3, 252);
+  color: rgb(51, 20, 143);
 }
 
 .panel.is-link .panel-heading {
@@ -3076,7 +3076,7 @@ a.navbar-item.is-active,
 }
 
 .hero.is-primary {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -3095,7 +3095,7 @@ a.navbar-item.is-active,
 
 @media screen and (max-width: 1023px) {
   .hero.is-primary .navbar-menu {
-    background-color: rgb(119, 3, 252);
+    background-color: rgb(51, 20, 143);
   }
 }
 
@@ -3108,7 +3108,7 @@ a.navbar-item.is-active,
 .hero.is-primary a.navbar-item.is-active,
 .hero.is-primary .navbar-link:hover,
 .hero.is-primary .navbar-link.is-active {
-  background-color: rgb(119, 3, 252);
+  background-color: rgb(51, 20, 143);
   color: rgb(255, 255, 255);
 }
 
@@ -3132,7 +3132,7 @@ a.navbar-item.is-active,
 .hero.is-primary .tabs.is-toggle li.is-active a:hover {
   background-color: rgb(255, 255, 255);
   border-color: rgb(255, 255, 255);
-  color: rgb(119, 3, 252);
+  color: rgb(51, 20, 143);
 }
 
 .hero.is-link {
@@ -3436,10 +3436,10 @@ a.navbar-item.is-active,
 }
 
 :root {
-  --gradient-primary-start-color: rgb(119, 3, 252);
-  --gradient-accent-end-color: rgb(119, 3, 252);
+  --gradient-primary-start-color: rgb(51, 20, 143);
+  --gradient-accent-end-color: rgb(51, 20, 143);
 }
 
 .link.has-underline::after {
-  background: rgb(119, 3, 252);
+  background: rgb(51, 20, 143);
 }

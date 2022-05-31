@@ -511,6 +511,7 @@ meta:
                         placeholder="DNI"
                         required
                         maxlength="8"
+                        @keydown="filterKey"
                         @keyup="valname"
                       />
                     </Control>

@@ -139,6 +139,10 @@ const iconoCurrenly = ref(false)
 onMounted(() => {
   init()
 })
+
+function selecionar(e) {
+  console.log(e.target)
+}
 </script>
 
 <template>
@@ -189,6 +193,7 @@ onMounted(() => {
             type="text"
             @keydown="filterKey"
             @keyup="emitFiatAmount"
+            @click="selecionar"
           />
           <div v-if="iconoCurrenly" class="sign-fiatamount">
             <i

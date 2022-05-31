@@ -8,7 +8,7 @@
     "source.fixAll.eslint": true
   },
   "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "octref.vetur",
     "editor.formatOnSave": true
   },
   "prettier.enable": false,
