@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, inject } from 'vue'
 import axios from 'axios'
 
 import { useRoute } from 'vue-router'
@@ -69,6 +69,7 @@ function MandarDatos() {
         if (email.value.length > 0) {
           if (numdoc.value.length > 0) {
             if (passwd.value.length > 0) {
+              console.log('el archivo puede pasar')
             } else {
               textAlertValidationPassword.value = 'El password es requerido'
               isValidPassword.value = false
@@ -99,7 +100,7 @@ const DNILogin = ref({
   numdoc: '',
 })
 const textAlertValidationDNIlogin = ref('')
-// const validationDNIlogin = ref(true)
+
 const isValidADNIlogin = ref(true)
 
 const loginButtonLoader = ref(false)
@@ -117,6 +118,7 @@ function valDniLoign(e) {
 }
 
 function Login() {
+  console.log(DNILogin.value)
   loginButtonLoader.value = true
   axios
     .post('http://127.0.0.1:8000/api/v1/session/username', DNILogin.value)
@@ -143,6 +145,7 @@ function inyectarDatos(e) {
   fiatJson.value.session.passwd = passwd.value
 
   buttonRegister.value = true
+  console.log(fiatJson.value)
 
   axios
     .post('http://127.0.0.1:8000/api/v1/session/register', fiatJson.value)
@@ -288,11 +291,11 @@ function copy() {
 }
 
 const textAlertValidationName = ref('')
-// const validationName = ref(true)
+const validationName = ref(true)
 const isValidName = ref(true)
 
 const textAlertValidationCorreo = ref('')
-// const validationCorreo = ref(true)
+const validationCorreo = ref(true)
 const isValidACorreo = ref(true)
 
 const textAlertValidationDNI = ref('')
@@ -304,7 +307,7 @@ const isValidPassword = ref(true)
 // const validationPassword = ref(true)
 
 const textAlertValidationApellido = ref('')
-// const validationApellido = ref(true)
+const validationApellido = ref(true)
 const isValidApellido = ref(true)
 
 // function asd(){
@@ -375,7 +378,8 @@ const fiatAmount = ref()
 const criptoCx = ref()
 const criptoAmount = ref()
 
-// const resJson = inject('resJson')
+const resJson = inject('resJson')
+console.log(resJson)
 
 function RetunQuer() {
   let codigoT = route.query
