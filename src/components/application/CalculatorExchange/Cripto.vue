@@ -26,6 +26,31 @@ function emitCryptoCurrency(value) {
 
 function emitCryptoAmount(e) {
   emit('cryptoAmount', e.target.value)
+
+  let selected = window.getSelection().toString()
+  if (selected === e.target.value && e.target.value.length >= 6) {
+    if (e.keyCode === 49 || e.keyCode === 97) {
+      e.target.value = 1
+    } else if (e.keyCode === 50 || e.keyCode === 98) {
+      e.target.value = 2
+    } else if (e.keyCode === 51 || e.keyCode === 99) {
+      e.target.value = 3
+    } else if (e.keyCode === 52 || e.keyCode === 100) {
+      e.target.value = 4
+    } else if (e.keyCode === 53 || e.keyCode === 101) {
+      e.target.value = 5
+    } else if (e.keyCode === 54 || e.keyCode === 102) {
+      e.target.value = 6
+    } else if (e.keyCode === 55 || e.keyCode === 103) {
+      e.target.value = 7
+    } else if (e.keyCode === 56 || e.keyCode === 104) {
+      e.target.value = 8
+    } else if (e.keyCode === 57 || e.keyCode === 105) {
+      e.target.value = 9
+    } else if (e.keyCode === 48 || e.keyCode === 96) {
+      e.target.value = 0
+    }
+  }
 }
 function init() {
   // let defaultValue = cryptoCurrencies.value[0].id
@@ -58,7 +83,7 @@ function filterKey(e) {
   let especiales = [37, 39, 8, 190, 110]
   let separadorComas = TotalDevengado.split('.', 2)
 
-  let max = 25806.8
+  let max = 99999.8
   // let mxlengt=String(max).length
   let decimal = 10
 
