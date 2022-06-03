@@ -3,7 +3,7 @@ import { ref, onMounted, inject } from 'vue'
 import axios from 'axios'
 
 import { useRoute } from 'vue-router'
-
+import { registerData } from '/@src/utils/api/backOffice'
 const route = useRoute()
 
 let currentDate = ref('')
@@ -12,88 +12,65 @@ let time = ref('')
 
 const copyTrue = ref(false)
 
-const firstname = ref('')
-const lastname = ref('')
-const email = ref('')
-
-const typedoc = ref('DNI')
-
-const numdoc = ref('')
-
-const passwd = ref('')
-
-let fiatJson = ref({
-  customer: {
-    firstname: '',
-    lastname: '',
-    email: '',
-  },
-  session: {
-    typedoc: '',
-    numdoc: 0,
-    passwd: '',
-  },
-})
-
 const buttonRegister = ref(false)
 
-function MandarDatos() {
-  // if (firstname.value.length>0 && lastname.value.length>0 && email.value.length>0 && numdoc.value.length>0 && passwd.value.length>0){
+// function MandarDatos() {
+//   // if (firstname.value.length>0 && lastname.value.length>0 && email.value.length>0 && numdoc.value.length>0 && passwd.value.length>0){
 
-  //     console.log("el archivo puede pasar")
+//   //     console.log("el archivo puede pasar")
 
-  // }else{
-  //    console.log("el archivo no puede pasar")
-  //     isValidName.value=false
-  // }
-  if (
-    firstname.value.length == 0 &&
-    lastname.value.length == 0 &&
-    email.value.length == 0 &&
-    numdoc.value.length == 0 &&
-    passwd.value.length == 0
-  ) {
-    textAlertValidationPassword.value = 'El password es requerido'
-    isValidPassword.value = false
-    textAlertValidationDNI.value = 'El DNI es requerido'
-    isValidADNI.value = false
-    textAlertValidationCorreo.value = 'El Correo es requerido'
-    isValidACorreo.value = false
-    textAlertValidationApellido.value = 'El Apellido es requerido'
-    isValidApellido.value = false
-    textAlertValidationName.value = 'El nombre es requerido'
-    isValidName.value = false
-  } else {
-    if (firstname.value.length > 0) {
-      if (lastname.value.length > 0) {
-        if (email.value.length > 0) {
-          if (numdoc.value.length > 0) {
-            if (passwd.value.length > 0) {
-              console.log('el archivo puede pasar')
-            } else {
-              textAlertValidationPassword.value = 'El password es requerido'
-              isValidPassword.value = false
-            }
-          } else {
-            textAlertValidationDNI.value = 'El DNI es requerido'
-            isValidADNI.value = false
-          }
-        } else {
-          textAlertValidationCorreo.value = 'El Correo es requerido'
-          isValidACorreo.value = false
-        }
-      } else {
-        textAlertValidationApellido.value = 'El Apellido es requerido'
-        isValidApellido.value = false
-      }
-    } else {
-      textAlertValidationName.value = 'El nombre es requerido'
-      isValidName.value = false
+//   // }else{
+//   //    console.log("el archivo no puede pasar")
+//   //     isValidName.value=false
+//   // }
+//   if (
+//     firstname.value.length == 0 &&
+//     lastname.value.length == 0 &&
+//     email.value.length == 0 &&
+//     numdoc.value.length == 0 &&
+//     passwd.value.length == 0
+//   ) {
+//     textAlertValidationPassword.value = 'El password es requerido'
+//     isValidPassword.value = false
+//     textAlertValidationDNI.value = 'El DNI es requerido'
+//     isValidADNI.value = false
+//     textAlertValidationCorreo.value = 'El Correo es requerido'
+//     isValidACorreo.value = false
+//     textAlertValidationApellido.value = 'El Apellido es requerido'
+//     isValidApellido.value = false
+//     textAlertValidationName.value = 'El nombre es requerido'
+//     isValidName.value = false
+//   } else {
+//     if (firstname.value.length > 0) {
+//       if (lastname.value.length > 0) {
+//         if (email.value.length > 0) {
+//           if (numdoc.value.length > 0) {
+//             if (passwd.value.length > 0) {
+//               console.log('el archivo puede pasar')
+//             } else {
+//               textAlertValidationPassword.value = 'El password es requerido'
+//               isValidPassword.value = false
+//             }
+//           } else {
+//             textAlertValidationDNI.value = 'El DNI es requerido'
+//             isValidADNI.value = false
+//           }
+//         } else {
+//           textAlertValidationCorreo.value = 'El Correo es requerido'
+//           isValidACorreo.value = false
+//         }
+//       } else {
+//         textAlertValidationApellido.value = 'El Apellido es requerido'
+//         isValidApellido.value = false
+//       }
+//     } else {
+//       textAlertValidationName.value = 'El nombre es requerido'
+//       isValidName.value = false
 
-      console.log('el archivo no puede pasar')
-    }
-  }
-}
+//       console.log('el archivo no puede pasar')
+//     }
+//   }
+// }
 
 const DNILogin = ref({
   typedoc: 'DNI',
@@ -134,83 +111,8 @@ function Login() {
       loginButtonLoader.value = false
     })
 }
-function inyectarDatos(e) {
-  // e.preventDefault();
 
-  fiatJson.value.customer.firstname = firstname.value
-  fiatJson.value.customer.lastname = lastname.value
-  fiatJson.value.customer.email = email.value
-  fiatJson.value.session.typedoc = typedoc.value
-  fiatJson.value.session.numdoc = numdoc.value
-  fiatJson.value.session.passwd = passwd.value
-
-  buttonRegister.value = true
-  console.log(fiatJson.value)
-
-  axios
-    .post('http://127.0.0.1:8000/api/v1/session/register', fiatJson.value)
-    .then((res) => {
-      e.preventDefault()
-      location.href = 'http://criptobank.pe/login'
-      console.log(res.data)
-      buttonRegister.value = false
-      console.log(res.data)
-    })
-    .catch((error) => {
-      console.log(error.response.data.message)
-      buttonRegister.value = false
-      MandarDatos()
-    })
-}
-let ButtonAviable = ref(false)
-function valname(e) {
-  ButtonAviable.value = true
-
-  if (e.target.name === 'nombre') {
-    textAlertValidationName.value = 'El nombre es requerido'
-    let data = e.target.value
-    isValidName.value = false
-    if (data) {
-      ButtonAviable.value = false
-      isValidName.value = true
-    }
-  } else if (e.target.name === 'apellido') {
-    let data = e.target.value
-    textAlertValidationApellido.value = 'El Apellido es requerido'
-    isValidApellido.value = false
-    if (data) {
-      isValidApellido.value = true
-    }
-  } else if (e.target.name === 'correo') {
-    let data = e.target.value
-    textAlertValidationCorreo.value = 'El Correo es requerido'
-    isValidACorreo.value = false
-
-    if (data) {
-      isValidACorreo.value = true
-
-      if (!data.includes('@')) {
-        textAlertValidationCorreo.value = 'El correo requiere de "@" y ".'
-        isValidACorreo.value = false
-      }
-    }
-  } else if (e.target.name === 'DNI') {
-    let data = e.target.value
-    textAlertValidationDNI.value = 'El DNI requiere de 8 digitos'
-    isValidADNI.value = false
-
-    if (data.length > 7) {
-      isValidADNI.value = true
-    }
-  } else if (e.target.name === 'passW') {
-    let data = e.target.value
-    textAlertValidationPassword.value = 'El password es requerido'
-    isValidPassword.value = false
-    if (data) {
-      isValidPassword.value = true
-    }
-  }
-}
+// let ButtonAviable = ref(false)
 
 function loadTimer() {
   const today = new Date()
@@ -290,85 +192,26 @@ function copy() {
   }
 }
 
-const textAlertValidationName = ref('')
-const validationName = ref(true)
-const isValidName = ref(true)
+// const textAlertValidationName = ref('')
+// // const validationName = ref(true)
+// const isValidName = ref(true)
 
-const textAlertValidationCorreo = ref('')
-const validationCorreo = ref(true)
-const isValidACorreo = ref(true)
+// const textAlertValidationCorreo = ref('')
+// // const validationCorreo = ref(true)
+// const isValidACorreo = ref(true)
 
-const textAlertValidationDNI = ref('')
-// const validationDNI = ref(true)
-const isValidADNI = ref(true)
+// const textAlertValidationDNI = ref('')
+// // const validationDNI = ref(true)
+// const isValidADNI = ref(true)
 
-const textAlertValidationPassword = ref('')
-const isValidPassword = ref(true)
-// const validationPassword = ref(true)
+// const textAlertValidationPassword = ref('')
+// const isValidPassword = ref(true)
+// // const validationPassword = ref(true)
 
-const textAlertValidationApellido = ref('')
-const validationApellido = ref(true)
-const isValidApellido = ref(true)
+// const textAlertValidationApellido = ref('')
+// // const validationApellido = ref(true)
+// const isValidApellido = ref(true)
 
-// function asd(){
-//   function validadionName(e) {
-//   let data = e.target.value
-//   // console.log(data)
-//   textAlertValidationName.value = 'El nombre es requerido'
-
-//   isValidName.value = false
-//   if (data) {
-//     isValidName.value = true
-//     console.log('hola')
-//   }
-// }
-// function validadionApellido(e) {
-//   let data = e.target.value
-//   console.log(data)
-//   textAlertValidationApellido.value = 'El Apellido es requerido'
-//   isValidApellido.value = false
-//   if (data) {
-//     isValidApellido.value = true
-//   }
-// }
-// function validarDNI(e){
-//   let data = e.target.value
-//   textAlertValidationDNI.value = 'El DNI es requerido'
-//   isValidADNI.value = false
-//   if(data){
-//       isValidADNI.value = true
-//   }
-// }
-// function validarPassword(e){
-//   let data = e.target.value
-//   textAlertValidationPassword.value = 'El password es requerido'
-//   isValidPassword.value = false
-//   if(data){
-//       isValidPassword.value = true
-//   }
-// }
-// function validadionCorreo(e) {
-//   let data = e.target.value
-//   textAlertValidationCorreo.value = 'El Correo es requerido'
-//   isValidACorreo.value = false
-
-//   if (data) {
-//     isValidACorreo.value = true
-//     console.log(data)
-//     if (!data.includes('@')) {
-//       textAlertValidationCorreo.value = 'El correo requiere de "@" y ".'
-//       isValidACorreo.value = false
-//     }
-//   }
-// }
-// }
-
-//
-
-// const Link=ref("http://criptobank.pe/login")
-//
-
-//
 const successRes = ref('')
 const Code = ref('')
 const tc = ref('')
@@ -401,7 +244,209 @@ function RetunQuer() {
 
   criptoAmount.value = ArrayCode[7]
 }
+
+const objtArray = ref([
+  {
+    name: 'nombre',
+    valuetext: '',
+    validation: false,
+    isvalid: false,
+    errorText: 'El nombre es requerido',
+    espaciado: true,
+  },
+  {
+    name: 'apellido',
+    valuetext: '',
+    validation: false,
+    isvalid: false,
+    errorText: 'El apellido es requerido',
+    espaciado: true,
+  },
+  {
+    name: 'correo',
+    valuetext: '',
+    validation: false,
+    isvalid: false,
+    errorText: 'El correo es requerido',
+    espaciado: true,
+  },
+  {
+    name: 'DNI',
+    valuetext: '',
+    validation: false,
+    isvalid: false,
+    errorText: 'El DNI es requerido',
+    espaciado: true,
+  },
+  {
+    name: 'contrasena',
+    valuetext: '',
+    validation: false,
+    isvalid: false,
+    errorText: 'La password es requerido',
+    espaciado: true,
+  },
+])
+function valueNaN(e) {
+  if (e.target.name === 'nombre') {
+    firstname.value = e.target.value
+    objtArray.value[0].errorText = 'El nombre es requerido'
+    let data = e.target.value
+    objtArray.value[0].isvalid = false
+    objtArray.value[0].validation = true
+
+    objtArray.value[0].espaciado = false
+    if (data) {
+      // ButtonAviable.value = false
+      objtArray.value[0].isvalid = true
+
+      objtArray.value[0].espaciado = true
+    }
+  } else if (e.target.name === 'apellido') {
+    lastname.value = e.target.value
+    objtArray.value[1].errorText = 'El apellido es requerido'
+    let data = e.target.value
+    objtArray.value[1].validation = true
+    objtArray.value[1].isvalid = false
+
+    objtArray.value[1].espaciado = false
+    if (data) {
+      // ButtonAviable.value = false
+      objtArray.value[1].isvalid = true
+
+      objtArray.value[1].espaciado = true
+    }
+  } else if (e.target.name === 'correo') {
+    email.value = e.target.value
+    objtArray.value[2].errorText = 'El correo es requerido'
+    let data = e.target.value
+    objtArray.value[2].validation = true
+    objtArray.value[2].isvalid = false
+
+    objtArray.value[2].espaciado = false
+    if (data) {
+      // ButtonAviable.value = false
+      objtArray.value[2].isvalid = true
+
+      objtArray.value[2].espaciado = true
+
+      if (!data.includes('@')) {
+        objtArray.value[2].errorText = 'El correo requiere de "@" y ".'
+        objtArray.value[2].isvalid = false
+
+        objtArray.value[2].espaciado = false
+      }
+    }
+  } else if (e.target.name === 'DNI') {
+    numdoc.value = e.target.value
+    objtArray.value[3].errorText = 'El DNI requiere de 8 digitos'
+    let data = e.target.value
+    objtArray.value[3].validation = true
+    objtArray.value[3].isvalid = false
+
+    objtArray.value[3].espaciado = false
+    if (data.length === 8) {
+      // ButtonAviable.value = false
+      objtArray.value[3].isvalid = true
+
+      objtArray.value[3].espaciado = true
+    }
+  } else if (e.target.name === 'passW') {
+    passwd.value = e.target.value
+    objtArray.value[4].errorText = 'El password es requerido'
+    let data = e.target.value
+    objtArray.value[4].validation = true
+    objtArray.value[4].isvalid = false
+
+    objtArray.value[4].espaciado = false
+    if (data) {
+      // ButtonAviable.value = false
+      objtArray.value[4].isvalid = true
+
+      objtArray.value[4].espaciado = true
+    }
+  }
+}
+
+const firstname = ref('')
+const lastname = ref('')
+const email = ref('')
+
+const typedoc = ref('DNI')
+
+const numdoc = ref('')
+
+const passwd = ref('')
+
+let fiatJson = ref({
+  customer: {
+    firstname: '',
+    lastname: '',
+    email: '',
+  },
+  session: {
+    typedoc: '',
+    numdoc: '',
+    passwd: '',
+  },
+})
+const inyectarDatos = async () => {
+  // e.preventDefault();
+
+  fiatJson.value.customer.firstname = firstname.value
+  fiatJson.value.customer.lastname = lastname.value
+  fiatJson.value.customer.email = email.value
+  fiatJson.value.session.typedoc = typedoc.value
+  fiatJson.value.session.numdoc = numdoc.value
+  fiatJson.value.session.passwd = passwd.value
+
+  buttonRegister.value = true
+
+  let respuesta = await registerData(fiatJson.value)
+
+  if (respuesta) {
+    location.href = 'http://criptobank.pe/login'
+    console.log('respuesta')
+    buttonRegister.value = false
+  } else {
+    buttonRegister.value = false
+    console.error(error)
+  }
+  // axios
+  //   .post('http://127.0.0.1:8000/api/v1/session/register', fiatJson.value)
+  //   .then((res) => {
+  //     e.preventDefault()
+  //     location.href = 'http://criptobank.pe/login'
+  //     console.log(res.data)
+  //     buttonRegister.value = false
+  //     console.log(res.data)
+  //   })
+  //   .catch((error) => {
+  //     console.log(error.response.data.message)
+  //     buttonRegister.value = false
+
+  //   })
+}
+
+function funcion() {
+  const result = objtArray.value.filter((val) =>
+    val.isvalid === false ? (val.validation = true) : null
+  )
+  console.log(result)
+  const textLengt = objtArray.value.filter((val) =>
+    val.isvalid === false ? (val.espaciado = false) : null
+  )
+  console.log(textLengt)
+  inyectarDatos()
+}
+// watch(objtArray.value,(value ,anterior)=>{
+//     // if(){
+
+//     //   console.log(value.valuetext1)
+//     // }
+// })
 onMounted(() => {
+  console.log(objtArray.value)
   loadTimer()
   RetunQuer()
 })
@@ -412,7 +457,7 @@ meta:
   layout: default
 </route>
 
-<template>
+<template  #body>
   <section>
     <div class="banner">
       <div class="illustration">
@@ -437,6 +482,58 @@ meta:
                   Ingresa tus datos o inicia sesión para adquirir las
                   criptomonedas en tu wallet.
                 </p>
+                <!-- <div class="prueba">
+                    <Control
+                      :error="objtArray[0].errorText"
+                      :validation="objtArray[0].validation"
+                      :is-valid="objtArray[0].isvalid"
+                    >
+                      <VInput
+                        v-model="objtArray[0].valuetext"
+                        type="text"
+                        class="radius"
+                         name="text1"
+                        placeholder="Nombres"
+                        required
+                       
+                        @keyup="valueNaN"
+                      />
+                    </Control>
+                    <Control
+                      :error="objtArray[1].errorText"
+                      :validation="objtArray[1].validation"
+                      :is-valid="objtArray[1].isvalid"
+                    >
+                      <VInput
+                        v-model="objtArray[1].valuetext"
+                        type="text"
+                        class="radius"
+                         name="text2"
+                        placeholder="Nombres"
+                        required
+                        @keyup="valueNaN"
+                      />
+                    </Control>
+                    <Control
+                      :error="objtArray[2].errorText"
+                      :validation="objtArray[2].validation"
+                      :is-valid="objtArray[2].isvalid"
+                    >
+                      <VInput
+                        v-model="objtArray[2].valuetext"
+                        type="text"
+                        class="radius"
+                         name="text3"
+                        placeholder="Nombres"
+                        required
+                        
+                        @keyup="valueNaN"
+                      />
+                    </Control>
+                    <Button @click="funcion">
+                      pasar datos
+                    </Button>
+                </div> -->
               </div>
               <div class="Register-login-div columns">
                 <div class="register-Div column">
@@ -445,66 +542,75 @@ meta:
                   </div>
                   <div class="container-input-register">
                     <Control
-                      :error="textAlertValidationName"
-                      :validation="validationName"
-                      :is-valid="isValidName"
+                      :error="objtArray[0].errorText"
+                      :validation="objtArray[0].validation"
+                      :is-valid="objtArray[0].isvalid"
                     >
                       <VInput
-                        v-model="firstname"
+                        v-model="objtArray[0].valuetext"
                         type="text"
                         class="radius"
                         name="nombre"
                         placeholder="Nombres"
                         required
                         @keydown="filterNumber"
-                        @keyup="valname"
+                        @keyup="valueNaN"
                       />
                     </Control>
-                    <div v-if="isValidName" class="espaciado-plano"></div>
+                    <div
+                      v-if="objtArray[0].espaciado"
+                      class="espaciado-plano"
+                    ></div>
                     <Control
-                      :validation="validationApellido"
-                      :is-valid="isValidApellido"
-                      :error="textAlertValidationApellido"
+                      :error="objtArray[1].errorText"
+                      :validation="objtArray[1].validation"
+                      :is-valid="objtArray[1].isvalid"
                     >
                       <VInput
-                        v-model="lastname"
+                        v-model="objtArray[1].valuetext"
                         type="text"
                         class="radius"
                         name="apellido"
                         placeholder="Apellidos"
                         required
                         @keydown="filterNumber"
-                        @keyup="valname"
+                        @keyup="valueNaN"
                       />
                     </Control>
-                    <div v-if="isValidApellido" class="espaciado-plano"></div>
+                    <div
+                      v-if="objtArray[1].espaciado"
+                      class="espaciado-plano"
+                    ></div>
                     <Control
-                      :validation="validationCorreo"
-                      :is-valid="isValidACorreo"
-                      :error="textAlertValidationCorreo"
+                      :error="objtArray[2].errorText"
+                      :validation="objtArray[2].validation"
+                      :is-valid="objtArray[2].isvalid"
                     >
                       <VInput
-                        v-model="email"
+                        v-model="objtArray[2].valuetext"
                         type="email"
                         required
                         name="correo"
                         class="radius"
                         placeholder="Correo electronico"
-                        @keyup="valname"
+                        @keyup="valueNaN"
                       />
                     </Control>
-                    <div v-if="isValidACorreo" class="espaciado-plano"></div>
+                    <div
+                      v-if="objtArray[2].espaciado"
+                      class="espaciado-plano"
+                    ></div>
                     <br />
                     <br />
                     <br />
                     <br />
                     <Control
-                      validation
-                      :is-valid="isValidADNI"
-                      :error="textAlertValidationDNI"
+                      :error="objtArray[3].errorText"
+                      :validation="objtArray[3].validation"
+                      :is-valid="objtArray[3].isvalid"
                     >
                       <VInput
-                        v-model="numdoc"
+                        v-model="objtArray[3].valuetext"
                         type="text"
                         name="DNI"
                         class="radius"
@@ -512,32 +618,40 @@ meta:
                         required
                         maxlength="8"
                         @keydown="filterKey"
-                        @keyup="valname"
+                        @keyup="valueNaN"
                       />
                     </Control>
-                    <div v-if="isValidADNI" class="espaciado-plano"></div>
+                    <div
+                      v-if="objtArray[3].espaciado"
+                      class="espaciado-plano"
+                    ></div>
                     <Control
-                      validation
-                      :is-valid="isValidPassword"
-                      :error="textAlertValidationPassword"
+                      :error="objtArray[4].errorText"
+                      :validation="objtArray[4].validation"
+                      :is-valid="objtArray[4].isvalid"
                     >
                       <VInput
-                        v-model="passwd"
+                        v-model="objtArray[4].valuetext"
                         name="passW"
                         type="password"
                         class="radius"
                         placeholder="Crear contrasena"
-                        @keyup="valname"
+                        @keyup="valueNaN"
                       />
                     </Control>
-                    <div v-if="isValidPassword" class="espaciado-plano"></div>
+                    <div
+                      v-if="objtArray[4].espaciado"
+                      class="espaciado-plano"
+                    ></div>
                     <div class="is flex is-justify-content-end">
-                      <div class="white">
+                      <div class="">
+                        <!-- cambio white -->
                         <Button
                           size="medium"
-                          class="button is-primary is-rounded is-raised fullBsum"
+                          class="button is-rounded is-raised"
                           :loading="buttonRegister"
-                          @click="inyectarDatos"
+                          color="link"
+                          @click="funcion"
                         >
                           Registrate
                         </Button>
@@ -574,7 +688,8 @@ meta:
                         size="medium"
                         :loading="loginButtonLoader"
                         :disabled="loginButtonAviable"
-                        class="button is-primary is-rounded is-raised mt-4 fullBsum"
+                        color="link"
+                        class="button is-rounded is-raised mt-4"
                         @click="Login"
                       >
                         Iniciar sesion
@@ -613,7 +728,7 @@ meta:
                   <p class="number-en-res">{{ criptoCx }} {{ criptoAmount }}</p>
                 </div>
               </div>
-              <hr width="100%" />
+              <hr width="100%" class="new1" />
               <div class="">
                 <div class="is-flex is-justify-content-space-between my-2">
                   <p class="code-Tras">Código de transacción:</p>
@@ -652,6 +767,9 @@ meta:
   height: 22px;
   width: 100%;
 }
+.new1 {
+  border-top: 1px solid #903eff;
+}
 .text-true-copy {
   font-size: 12px;
   color: #903eff;
@@ -683,14 +801,14 @@ meta:
   font-size: 36px;
   font-weight: 600;
   line-height: normal;
-  color: #6042f9;
+  color: var(--link);
 }
 .sub-EMP {
   font-family: 'Open Sans', sans-serif !important;
   font-size: 24px !important;
   line-height: 34px !important;
   font-weight: 500 !important;
-  color: #4f457c;
+  color: #283252;
 }
 .input-Title {
   color: var(--unnamed-color-33276a);
@@ -701,7 +819,7 @@ meta:
   font-weight: 500;
   line-height: normal;
 
-  color: #33276a;
+  color: #283252;
   opacity: 1;
 }
 .colorFecha {
@@ -712,25 +830,25 @@ meta:
   border-radius: 12px !important;
   // margin: 7.5px 0;
 }
-.fullBsum {
-  font-family: 'Open Sans', sans-serif !important;
-  border-radius: 18px !important;
-  font-weight: 600;
-  border: 0 !important;
-  background: linear-gradient(45deg, #903eff 0%, #3e19ff 100%) !important;
-  // background-image: linear-gradient(45deg, rgb(144, 62, 255) 0%, rgb(62, 25, 255) 100%);
-}
-.fullBsum:hover {
-  color: #fff;
-  border: 0 !important;
-  background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
-}
+// .fullBsum {
+//   font-family: 'Open Sans', sans-serif !important;
+//   border-radius: 18px !important;
+//   font-weight: 600;
+//   border: 0 !important;
+//   background: linear-gradient(45deg, #903eff 0%, #3e19ff 100%) !important;
+//   // background-image: linear-gradient(45deg, rgb(144, 62, 255) 0%, rgb(62, 25, 255) 100%);
+// }
+// .fullBsum:hover {
+//   color: #fff;
+//   border: 0 !important;
+//   background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
+// }
 
 // .banner {
 //   padding-top: 265px !important;
 // }
 .title-env-res {
-  color: #6042f9;
+  color: #7703fc;
   font-size: 18px;
   align-items: center;
   display: flex;
@@ -742,7 +860,7 @@ meta:
   font-size: 24px;
 }
 .code-Tras {
-  color: #6129eb;
+  color: #7703fc;
   font-size: 14.4px;
 }
 .number-tras {

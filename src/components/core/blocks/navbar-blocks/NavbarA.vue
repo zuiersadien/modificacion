@@ -36,7 +36,10 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
   <nav class="navbar is-transparent" :class="navbarClasses">
     <div class="container">
       <div class="navbar-brand">
-        <RouterLink :to="{ name: 'index' }" class="navbar-item">
+        <!-- <RouterLink :to="{ name: 'index' }" class="navbar-item">
+          <img class="navbar-logo" src="/assets/logo/logo.svg" alt="logo" />
+        </RouterLink> -->
+        <RouterLink to="/" class="navbar-item">
           <img class="navbar-logo" src="/assets/logo/logo.svg" alt="logo" />
         </RouterLink>
         <div
@@ -57,24 +60,20 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
           >
             <ThemeToggle />
           </div>
-          <RouterLink :to="{ name: 'index' }" class="navbar-item has-naver">
+          <!-- <RouterLink :to="{ name: 'index' }" class="navbar-item has-naver  mr-4 ml-4" >
+            Inicio
+          </RouterLink> -->
+          <RouterLink to="/" class="navbar-item has-naver mr-4 ml-4">
             Inicio
           </RouterLink>
-          <RouterLink :to="{ name: 'index' }" class="navbar-item has-naver">
+          <RouterLink to="nosotros" class="navbar-item has-naver mr-4 ml-4">
             Nosotros
           </RouterLink>
-          <RouterLink :to="{ name: 'index' }" class="navbar-item has-naver">
+          <RouterLink to="contactos" class="navbar-item has-naver mr-4 ml-4">
             Contacto
           </RouterLink>
           <div class="navbar-item">
-            <Button
-              color="primary"
-              class="NavBarButton"
-              rounded
-              raised
-              bold
-              custom
-            >
+            <Button color="link" rounded raised bold custom size="large">
               Empecemos!
             </Button>
           </div>
@@ -128,13 +127,13 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
 
   .navbar-item {
     font-family: var(--font);
-    color: var(--navbar-link-color-medium);
+    color: #283252;
     transition: color 0.3s;
     background: none;
     border: none;
 
     &:hover {
-      color: var(--primary);
+      color: var(--link);
     }
 
     &.has-naver {
@@ -149,7 +148,7 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
         transform-origin: right center;
         height: 3px;
         border-radius: 50px;
-        background: var(--primary);
+        background: var(--link);
         transform: scale(0, 1);
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }

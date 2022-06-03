@@ -297,13 +297,13 @@ onMounted(() => {
 
 .btn-primary {
   color: #fff !important;
-  background-color: #5156be;
-  border-color: #5156be;
+  background-color: #7703fc;
+  border-color: #7703fc;
   box-shadow: 0 0 0 0.15rem rgb(107 111 200 / 50%);
   transition: 0.2s all ease-in-out !important;
 }
 .btn-primary:hover {
-  background-color: #4549a2;
-  border-color: #414598;
+  background-color: #7703fc;
+  border-color: #7703fc;
 }
 </style>

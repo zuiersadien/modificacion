@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import CriptoVue from './Cripto.vue'
 import FiatVue from './Fiat.vue'
+// import { getArticles } from '../../../utils/api/article'
+import { CallBackOffice, sendQuoteBuy } from '/@src/utils/api/backOffice'
 
 // import {useRoute} from "vue-router"
 import { ref, onMounted, watch } from 'vue'
-import axios from 'axios'
-
+// import axios from 'axios'
+import { provide } from 'vue'
 type InputDefaultCalculatorExchangeType = 'fiat' | 'crypto'
 type StatesCalulatorType = 'loading' | 'success' | 'error'
 export type FiatCurrencyType = 'PEN' | 'USD'
@@ -40,12 +42,15 @@ let params = ref({})
 let fiatJson = ref({
   fiat: {
     currency: '',
-    amount: '',
+    amount: 0,
   },
 })
-import { provide } from 'vue'
+// let prueba = ref('')
+
 const resJson = ref('12321')
+
 provide('resJson', resJson)
+
 watch(fiatAmount, (value) => {
   if (isNaN(value)) {
     fiatAmount.value = 0
@@ -70,45 +75,61 @@ onMounted(() => {
 })
 
 const getParams = async () => {
-  state.value = 'loading'
-  // let urlAPI = import.meta.env.VITE_APP_API
-  let urlAPI = 'https://criptobank.pe/api'
-  axios
-    .get(urlAPI + '/params')
-    .then((response) => {
-      state.value = 'success'
-      params.value = response.data
-      tcPenUsd.value = params.value.tc.penusd
-    })
-    .catch((error) => {
-      state.value = 'error'
-      if (!error.response) {
-        console.log(error)
-      } else {
-        console.log(error.response.data.message)
-      }
-    })
+  let response = await CallBackOffice()
+  console.log(response)
+  state.value = 'success'
+  params.value = response
+  tcPenUsd.value = params.value.tc.penusd
+
+  // state.value = 'loading'
+  // // let urlAPI = import.meta.env.VITE_APP_API
+  // let urlAPI = 'https://criptobank.pe/api'
+  // axios
+  //   .get(urlAPI + '/params')
+  //   .then((response) => {
+  //     state.value = 'success'
+  //     params.value = response.data
+  //     tcPenUsd.value = params.value.tc.penusd
+  //   })
+  //   .catch((error) => {
+  //     state.value = 'error'
+  //     if (!error.response) {
+  //       console.log(error)
+  //     } else {
+  //       console.log(error.response.data.message)
+  //     }
+  //   })
 }
 
 const Buttonloading = ref(false)
 
-function IngresoDeDatos() {
+// const IngresoDeDatos = async () => {
+async function IngresoDeDatos() {
   Buttonloading.value = true
-
   fiatJson.value.fiat.currency = fiatCurrency.value
   fiatJson.value.fiat.amount = fiatAmount.value
 
-  axios
-    .post('http://127.0.0.1:8000/api/v1/quotation/buy', fiatJson.value)
-    .then((res) => {
-      let respuesta = res.data
+  let respuesta = await sendQuoteBuy(fiatJson.value)
 
-      Buttonloading.value = false
-      location.href = `summary/summary?success=${respuesta.success}&code=${respuesta.code}&tc=${respuesta.tc}&Expires=${respuesta.expires}&FiCurrenly=${respuesta.fiat.currency}&FiAmout=${respuesta.fiat.amount}&CryAmount=${respuesta.crypto.amount}&CriptoCX=${respuesta.crypto.cx}`
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+  try {
+    Buttonloading.value = false
+    location.href = `summary/summary?success=${respuesta.success}&code=${respuesta.code}&tc=${respuesta.tc}&Expires=${respuesta.expires}&FiCurrenly=${respuesta.fiat.currency}&FiAmout=${respuesta.fiat.amount}&CryAmount=${respuesta.crypto.amount}&CriptoCX=${respuesta.crypto.cx}`
+    console.log('respuesta')
+  } catch (error) {
+    console.error(error)
+  }
+  // axios
+  //   .post('http://127.0.0.1:8000/api/v1/quotation/buy', fiatJson.value)
+  //   .then((res) => {
+  //     let respuesta = res.data
+
+  //     Buttonloading.value = false
+  //     // location.href = `summary/summary?success=${respuesta.success}&code=${respuesta.code}&tc=${respuesta.tc}&Expires=${respuesta.expires}&FiCurrenly=${respuesta.fiat.currency}&FiAmout=${respuesta.fiat.amount}&CryAmount=${respuesta.crypto.amount}&CriptoCX=${respuesta.crypto.cx}`
+  //     console.log(respuesta)
+  //   })
+  //   .catch((error) => {
+  //     console.error(error)
+  //   })
 }
 
 function loadTimer() {
@@ -357,12 +378,12 @@ const modalLargeOpen = ref()
         rounded
         :disabled="ButtonAviable"
         class="mt-4 full"
-        color="primary"
+        color="link"
         :loading="Buttonloading"
         type="submit"
         @click="IngresoDeDatos"
       >
-        Comprar
+        COMPRAR
       </Button>
     </div>
 
@@ -468,18 +489,17 @@ const modalLargeOpen = ref()
   width: 100%;
   font-weight: 600;
   border: none !important;
-  background: linear-gradient(45deg, #903eff 0%, #3e19ff 100%) !important;
-  // background-image: linear-gradient(45deg, rgb(144, 62, 255) 0%, rgb(62, 25, 255) 100%);
+
   &:focus {
     box-shadow: none !important;
   }
 }
 
-.full:hover {
-  color: #fff;
-  border: none !important;
-  background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
-}
+// .full:hover {
+//   color: #fff;
+//   border: none !important;
+//   background: linear-gradient(45deg, #3e19ff 0%, #903eff 100%) !important;
+// }
 
 .input.size-lg[data-v-76af6636] {
   color: var(--input-base-color) !important;

@@ -1,31 +1,31 @@
 export const genericFaq = [
   {
-    title: 'How does it work?',
+    title: '¿Que es un StableCoin?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis est tam dissimile homini. Quae diligentissime contra Aristonem dicuntur a Chryippo. Qua tu etiam inprudens utebare non numquam. Paria sunt igitur. Idemne, quod iucunde.',
   },
   {
-    title: "What's included with membership?",
+    title: '¿Cómo funciona la plataforma?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis est tam dissimile homini. Quae diligentissime contra Aristonem dicuntur a Chryippo. Qua tu etiam inprudens utebare non numquam. Paria sunt igitur. Idemne, quod iucunde.',
   },
   {
-    title: 'All the free API services really unlimited?',
+    title: '¿Cómo vendo mis USDT de mi wallet?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis est tam dissimile homini. Quae diligentissime contra Aristonem dicuntur a Chryippo. Qua tu etiam inprudens utebare non numquam. Paria sunt igitur. Idemne, quod iucunde.',
   },
   {
-    title: 'How does billing work?',
+    title: '¿Qué son las redes Blockchain?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis est tam dissimile homini. Quae diligentissime contra Aristonem dicuntur a Chryippo. Qua tu etiam inprudens utebare non numquam. Paria sunt igitur. Idemne, quod iucunde.',
   },
   {
-    title: 'Can I sign up for dedicated support?',
+    title: '¿Cómo sé que redes soporta mi Wallet/Exchange?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis est tam dissimile homini. Quae diligentissime contra Aristonem dicuntur a Chryippo. Qua tu etiam inprudens utebare non numquam. Paria sunt igitur. Idemne, quod iucunde.',
   },
   {
-    title: 'How do I upgrade my account?',
+    title: '¿Qué son las criptomonedas?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis est tam dissimile homini. Quae diligentissime contra Aristonem dicuntur a Chryippo. Qua tu etiam inprudens utebare non numquam. Paria sunt igitur. Idemne, quod iucunde.',
   },
