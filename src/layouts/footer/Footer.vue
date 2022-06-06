@@ -57,8 +57,20 @@ const footerClasses = computed(() => [
     <FooterCta v-if="props.content.cta" :content="props.content.cta" />
     <div class="container">
       <div
-        class="columns footer-columns is-bordered pt-4 pb-6 is-flex-direction-row-reverse is-justify-content-space-evenly"
+        class="columns footer-columns is-bordered pt-4 pb-6 is-flex-direction-row is-justify-content-space-evenly is-flex-wrap-wrap"
       >
+        <div class="column is-two-fifth mr-5">
+          <div class="social-block">
+            <img src="/assets/logo/logo.svg" class="logo-color" alt="" />
+
+            <div v-for="(parrafo, i) in props.content.presentation" :key="i">
+              <p class="whiteRegister">
+                {{ parrafo.parrafo }}
+              </p>
+              <br />
+            </div>
+          </div>
+        </div>
         <div
           v-for="(column, index) in props.content.columns"
           :key="index"
@@ -84,92 +96,13 @@ const footerClasses = computed(() => [
             </ul>
           </div>
         </div>
-        <!-- <div
-         class="column is-one-fifth"
-        >
-          <div class="footer-column">
-            <Subtitle
-              :size="6"
-              weight="thin"
-              tag="h4"
-              leading
-              inverted
-              uppercase
-            >
-              <span>asdasdasdasdasd</span>
-            </Subtitle>
-            <ul class="footer-column-list">
-              <li>
-                <RouterLink to="" class="footer-link">
-                  asdasdasd
-                </RouterLink>
-              </li>
-            </ul>
-          </div>
-
-        </div> -->
-
-        <div class="column is-two-fifth mr-5">
-          <div class="social-block">
-            <img src="/assets/logo/logo.svg" class="logo-color" alt="" />
-            <!-- <Field>
-              <Control icon="feather:mail">
-                <VInput placeholder="Subscribe" inverted />
-              </Control>
-            </Field>
-            <Field>
-              <Control>
-                <Button color="primary" fullwidth>Subscribe</Button>
-              </Control>
-            </Field> -->
-
-            <div v-for="(parrafo, i) in props.content.presentation" :key="i">
-              <p class="whiteRegister">
-                {{ parrafo.parrafo }}
-              </p>
-              <br />
-            </div>
-          </div>
-        </div>
       </div>
       <div class="columns is-vcentered pt-2 pb-2 is-flex-direction-row-reverse">
         <div class="column is-8">
           <div
             class="is-flex d-column-mobile d-column-tablet-p is-align-items-center is-flex-direction-row-reverse"
           >
-            <!-- <a class="footer-logo-left" href="#">
-              <img
-                class="small:mx-auto large:mx-0"
-                src="/assets/logo/logo.svg"
-                alt="logo"
-              />
-              <span class="footer-logo-text">Vulk</span>
-            </a> -->
-            <!-- <ul class="py-2">
-              <li
-                v-for="(link, l) in content.links"
-                :key="l"
-                class="inline-block px-2"
-              >
-                <RouterLink :to="link.to" class="footer-link rem-90">
-                  {{ link.label }}
-                  <ul>asdasd</ul>
-                </RouterLink>
-              </li>
-            </ul> -->
             <ul class="py-2">
-              <!-- <li>
-                <RouterLink to="/abc" class="footer-link rem-90">
-                     <i class="iconify iconoModify" data-icon="bi:youtube"></i>
-                </RouterLink>
-                <RouterLink to="/abc" class="footer-link rem-90">
-                     <i class="iconify iconoModify" data-icon="bi:facebook"></i>
-                </RouterLink>
-                <RouterLink to="/abc" class="footer-link rem-90">
-                     <i class="iconify iconoModify" data-icon="bi:instagram"></i>
-                </RouterLink>
-              </li> -->
-
               <RouterLink
                 v-for="(social, s) in props.content.socials"
                 :key="s"

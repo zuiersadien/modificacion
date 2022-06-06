@@ -63,13 +63,22 @@ const navbarMenuClasses = computed(() => [isNavbarOpen.value && `is-active`])
           <!-- <RouterLink :to="{ name: 'index' }" class="navbar-item has-naver  mr-4 ml-4" >
             Inicio
           </RouterLink> -->
-          <RouterLink to="/" class="navbar-item has-naver mr-4 ml-4">
+          <RouterLink
+            :to="{ name: 'index' }"
+            class="navbar-item has-naver mr-4 ml-4"
+          >
             Inicio
           </RouterLink>
-          <RouterLink to="nosotros" class="navbar-item has-naver mr-4 ml-4">
+          <RouterLink
+            :to="{ name: 'nosotros' }"
+            class="navbar-item has-naver mr-4 ml-4"
+          >
             Nosotros
           </RouterLink>
-          <RouterLink to="contactos" class="navbar-item has-naver mr-4 ml-4">
+          <RouterLink
+            :to="{ name: 'contactos' }"
+            class="navbar-item has-naver mr-4 ml-4"
+          >
             Contacto
           </RouterLink>
           <div class="navbar-item">

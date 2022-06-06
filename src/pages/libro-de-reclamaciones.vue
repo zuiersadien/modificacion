@@ -5,7 +5,105 @@
 // import { plantValues } from '/@src/data/blocks/advanced/values'
 import { footer } from '/@src/data/footer'
 import { ref } from 'vue'
+import { VueRecaptcha } from 'vue-recaptcha'
 const modalLargeOpen = ref(false)
+
+// const claim=ref({
+
+//   fullname: "Victor Hugo Castro Contreras",
+//   numdoc: "07474181",
+//   address: "Av avenida 123, cercado de ciudad, Departamento, Provincia.",
+//   email: "hugocastro@gmail.com",
+//   mobile: 93999494,
+//   amountRequest: 414.2,
+//   descriptionAmount: "No se recibieron los USDT que se solicitaron en la transaccion BOBB020223",
+//   type: "QUEJA",
+//   detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisi urna, malesuada ac mi vitae, viverra vulputate diam. Mauris cursus, turpis eget sodales lacinia, arcu mauris interdum.",
+//   orderDetail: "In nisi urna, malesuada ac mi vitae, viverra vulputate diam. Mauris cursus, turpis eget sodales lacinia, arcu Suspendisse malesuada metus dapibus nunc sagittis, in tincidunt nunc auctor."
+// })
+
+// const objtArray = ref([
+//   {
+//     id: 'fullname',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'El nombre es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'numdoc',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'El apellido es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'address',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'El correo es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'email',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'El DNI es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'mobile',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'La password es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'amountRequest',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'La password es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'descriptionAmount',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'La password es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'type',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'El DNI es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'detail',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'La password es requerido',
+//     espaciado: true,
+//   },
+//   {
+//     id: 'orderDetail',
+//     valuetext: '',
+//     validation: false,
+//     isvalid: false,
+//     errorText: 'La password es requerido',
+//     espaciado: true,
+//   },
+// ])
 </script>
 
 <template>
@@ -26,10 +124,6 @@ const modalLargeOpen = ref(false)
             <p class="colorLinkReclamo has-text-weight-bold">
               ¿Deseas consultar el estado de tu reclamo?
             </p>
-            <!-- <a @click="modalLargeOpen = true">
-                Ingrese aquí
-            </a> -->
-            <!-- <Button bold @click="modalLargeOpen = true">Ingrese aquí</Button> -->
           </div>
 
           <Section class="formulario">
@@ -69,9 +163,11 @@ const modalLargeOpen = ref(false)
                       >
                         <p class="colorLinkReclamo">Nombres completos</p>
                       </div>
-                      <div class="column is-8-tablet is-12-mobile is-8-desktop">
+                      <Control
+                        class="column is-8-tablet is-12-mobile is-8-desktop"
+                      >
                         <VInput type="text" />
-                      </div>
+                      </Control>
                     </div>
                   </div>
                   <div class="column is-5-desktop is-12-mobile is-5-tablet">
@@ -83,9 +179,11 @@ const modalLargeOpen = ref(false)
                       >
                         <p class="colorLinkReclamo">DNI / RUC / CE</p>
                       </div>
-                      <div class="column is-8-tablet is-12-mobile is-8-desktop">
+                      <Control
+                        class="column is-8-tablet is-12-mobile is-8-desktop"
+                      >
                         <VInput type="text" />
-                      </div>
+                      </Control>
                     </div>
                   </div>
                 </div>
@@ -98,11 +196,11 @@ const modalLargeOpen = ref(false)
                       >
                         <p class="colorLinkReclamo">Dirección</p>
                       </div>
-                      <div
+                      <Control
                         class="column is-10-tablet is-12-mobile is-10-desktop"
                       >
                         <VInput type="text" />
-                      </div>
+                      </Control>
                     </div>
                   </div>
                 </div>
@@ -115,9 +213,11 @@ const modalLargeOpen = ref(false)
                       >
                         <p class="colorLinkReclamo">Correo</p>
                       </div>
-                      <div class="column is-8-tablet is-8-desktop is-8-tablet">
+                      <Control
+                        class="column is-8-tablet is-8-desktop is-8-tablet"
+                      >
                         <VInput type="text" />
-                      </div>
+                      </Control>
                     </div>
                   </div>
                   <div class="column is-6-desktop is-12-mobile">
@@ -127,9 +227,11 @@ const modalLargeOpen = ref(false)
                       >
                         <p class="colorLinkReclamo">Teléfono / Celular</p>
                       </div>
-                      <div class="column is-8-tablet is-8-desktop is-12-mobile">
+                      <Control
+                        class="column is-8-tablet is-8-desktop is-12-mobile"
+                      >
                         <VInput type="text" />
-                      </div>
+                      </Control>
                     </div>
                   </div>
                 </div>
@@ -150,9 +252,11 @@ const modalLargeOpen = ref(false)
                       >
                         <p class="colorLinkReclamo">Monto reclamado</p>
                       </div>
-                      <div class="column is-3-tablet is-12-mobile is-3-desktop">
+                      <Control
+                        class="column is-3-tablet is-12-mobile is-3-desktop"
+                      >
                         <VInput type="text" />
-                      </div>
+                      </Control>
                     </div>
                   </div>
                 </div>
@@ -165,11 +269,11 @@ const modalLargeOpen = ref(false)
                       >
                         <p class="colorLinkReclamo">Descripción</p>
                       </div>
-                      <div
+                      <Control
                         class="column is-10 is-12-mobile is-10-tablet is-10-desktop"
                       >
                         <VInput type="text" />
-                      </div>
+                      </Control>
                     </div>
                   </div>
                 </div>
@@ -198,7 +302,7 @@ const modalLargeOpen = ref(false)
                   />
                 </div>
 
-                <p class="colorLinkReclamo mb-3">Detalle</p>
+                <p class="colorLinkReclamo mt-4">Detalle</p>
                 <Control>
                   <VTextarea
                     v-model="textareaValue"
@@ -206,7 +310,7 @@ const modalLargeOpen = ref(false)
                     placeholder="Write something..."
                   />
                 </Control>
-                <p class="colorLinkReclamo mb-3">Pedido</p>
+                <p class="colorLinkReclamo mt-3">Pedido</p>
                 <Control>
                   <VTextarea
                     v-model="textareaValue"
@@ -215,6 +319,12 @@ const modalLargeOpen = ref(false)
                   />
                 </Control>
               </Container>
+              <div class="mt-3 is-flex is-justify-content-end">
+                <vue-recaptcha
+                  sitekey="6LezKUwgAAAAAHkaidXgsTMV5WDopSmhcCA1viJ8"
+                  class="bgrecaptch"
+                ></vue-recaptcha>
+              </div>
               <div class="is-flex is-justify-content-end is-flex-wrap-wrap">
                 <Button
                   size="medium"
@@ -315,6 +425,11 @@ const modalLargeOpen = ref(false)
   </section>
 </template>
 <style  lang="scss" >
+.bgrecaptch {
+  border: #e5e5e5 solid 1px;
+  border-radius: 2px;
+  padding: 2px;
+}
 .centradoLogo {
   margin: 0 auto;
 }

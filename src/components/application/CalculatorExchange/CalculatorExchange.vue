@@ -77,28 +77,11 @@ onMounted(() => {
 const getParams = async () => {
   let response = await CallBackOffice()
   console.log(response)
+
   state.value = 'success'
   params.value = response
-  tcPenUsd.value = params.value.tc.penusd
-
-  // state.value = 'loading'
-  // // let urlAPI = import.meta.env.VITE_APP_API
-  // let urlAPI = 'https://criptobank.pe/api'
-  // axios
-  //   .get(urlAPI + '/params')
-  //   .then((response) => {
-  //     state.value = 'success'
-  //     params.value = response.data
-  //     tcPenUsd.value = params.value.tc.penusd
-  //   })
-  //   .catch((error) => {
-  //     state.value = 'error'
-  //     if (!error.response) {
-  //       console.log(error)
-  //     } else {
-  //       console.log(error.response.data.message)
-  //     }
-  //   })
+  tcPenUsd.value = params.value.tc.penusdt
+  console.log(tcPenUsd.value)
 }
 
 const Buttonloading = ref(false)
@@ -113,7 +96,7 @@ async function IngresoDeDatos() {
 
   try {
     Buttonloading.value = false
-    location.href = `summary/summary?success=${respuesta.success}&code=${respuesta.code}&tc=${respuesta.tc}&Expires=${respuesta.expires}&FiCurrenly=${respuesta.fiat.currency}&FiAmout=${respuesta.fiat.amount}&CryAmount=${respuesta.crypto.amount}&CriptoCX=${respuesta.crypto.cx}`
+    location.href = `summary/${respuesta.code}`
     console.log('respuesta')
   } catch (error) {
     console.error(error)
@@ -231,11 +214,11 @@ const updateCryptoAmountFromFiat = async (fiatAmount) => {
   let fiatCharge = await params.value.fiatCharge.find(
     (fiat) => fiat.code === fiatCurrency.value
   )
-  let charge = 1 + fiatCharge.chargePercentage / 100
+  let charge = 1 + fiatCharge.codePercentage / 100
 
   switch (fiatCurrency.value) {
     case 'PEN':
-      totalUSDT = amount / params.value.tc.penusd / charge
+      totalUSDT = amount / params.value.tc.penusdt / charge
       break
 
     case 'USD':
@@ -261,11 +244,11 @@ const updateFiatAmountFromCrypto = (cryptoAmount) => {
   let fiatCharge = params.value.fiatCharge.find(
     (fiat) => fiat.code === fiatCurrency.value
   )
-  let charge = 1 + fiatCharge.chargePercentage / 100
+  let charge = 1 + fiatCharge.codePercentage / 100
 
   switch (fiatCurrency.value) {
     case 'PEN':
-      totalUSD = amount * params.value.tc.penusd * charge
+      totalUSD = amount * params.value.tc.penusdt * charge
       break
 
     case 'USD':

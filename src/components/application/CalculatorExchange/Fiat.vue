@@ -227,6 +227,7 @@ onMounted(() => {
             class="iconoInput"
             size="lg "
             type="text"
+            maxlength="10"
             @keydown="filterKey"
             @keyup="emitFiatAmount"
           />
