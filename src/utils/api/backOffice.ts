@@ -64,3 +64,13 @@ export const CallPrivacyPolicies = async () => {
   console.log(jres)
   return jres
 }
+export const pushClainStore = async (request: object) => {
+  return axios
+    .post(`${api_url}/complaint/store`, request)
+    .then((res) => {
+      return res.data
+    })
+    .catch((error) => {
+      return error.response.data
+    })
+}

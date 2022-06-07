@@ -7,8 +7,10 @@
   --primary: #7703fc;
   --success: #16df95;
   --warning: #f2b736;
-  --white: white; }
-
+  --white: white; 
+  --check:rgba(87, 181, 74, 1)
+}
+ 
 :root {
   --black--10--rgba: rgb(10 10 10 / 10%);
   --black--2--rgba: rgb(10 10 10 / 2%);
