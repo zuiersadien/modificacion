@@ -74,3 +74,13 @@ export const pushClainStore = async (request: object) => {
       return error.response.data
     })
 }
+export const complaintGet = async (request: object) => {
+  return axios
+    .post(`${api_url}/complaint/get`, request)
+    .then((res) => {
+      return res.data
+    })
+    .catch((error) => {
+      return error.response.data
+    })
+}

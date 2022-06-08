@@ -38,6 +38,7 @@
     "cobe": "0.4.1",
     "compression": "1.7.4",
     "date-fns": "2.28.0",
+    "jspdf": "^2.5.1",
     "mapbox-gl": "2.7.0",
     "nprogress": "0.2.0",
     "pinia": "2.0.11",
@@ -60,6 +61,7 @@
     "vue3-carousel": "0.1.36",
     "vue3-markdown-it": "1.0.10",
     "vue3-popper": "1.4.2",
+    "vue3-print-nb": "^0.1.4",
     "vue3-scroll-spy": "1.0.8"
   },
   "devDependencies": {

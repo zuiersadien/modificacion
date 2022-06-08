@@ -1,6 +1,8 @@
 import { createApp as createClientApp } from 'vue'
 import { createHead } from '@vueuse/head'
 import { createPinia } from 'pinia'
+// import VueHtmlToPaper from 'vue-html-to-paper';
+import print from 'vue3-print-nb'
 
 import { createRouter } from '/@src/router'
 import VulkApp from '/@src/VulkApp.vue'
@@ -25,6 +27,8 @@ export async function createApp() {
 
   const pinia = createPinia()
   app.use(pinia)
+
+  app.use(print)
 
   const context = {
     app,

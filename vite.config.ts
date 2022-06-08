@@ -23,7 +23,6 @@ const plugins = [
       ssr: true,
     },
   }),
-
   /**
    * vite-plugin-vue-i18n plugin does i18n resources pre-compilation / optimizations
    *

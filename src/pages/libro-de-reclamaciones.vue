@@ -2,35 +2,142 @@
 import { footer } from '/@src/data/footer'
 import { ref, onMounted } from 'vue'
 import { VueRecaptcha } from 'vue-recaptcha'
+import { jsPDF } from 'jspdf'
 
-import { pushClainStore } from '/@src/utils/api/backOffice'
+import { pushClainStore, complaintGet } from '/@src/utils/api/backOffice'
 
 const modalLargeOpen = ref(false)
 // const textPolicies = ref('')
 const responseClainStore = ref('')
+const stringResNewDate = ref('')
 
 const callingPushClainStore = async () => {
+  buttonLoader.value = true
   let respuesta = await pushClainStore(claim.value)
   responseClainStore.value = respuesta
-  console.log(responseClainStore.value)
+
+  let date = responseClainStore.value.created_at
+
+  console.log(respuesta)
+  if (respuesta.success) {
+    objtArray.value.filter((val) =>
+      val.disabled === false ? (val.disabled = true) : null
+    )
+    stylesData(date)
+    buttonLoader.value = false
+  } else {
+    buttonLoader.value = false
+  }
+}
+const stylesData = (date = String) => {
+  const event = new Date()
+
+  const resNewDate = {
+    weak: '',
+    month: '',
+    hours: '',
+    date: 0,
+    age: 0,
+  }
+  let NewDate = new Date(date.split('T14:')[0])
+  let dayWeak = [
+    'domingo',
+    'lunes',
+    'martes',
+    'miercoles',
+    'jueves',
+    'viernes',
+    'sabado',
+  ]
+
+  let month = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ]
+  resNewDate.month = month[NewDate.getMonth()]
+  resNewDate.weak = dayWeak[NewDate.getDay()]
+  resNewDate.date = NewDate.getDate()
+  resNewDate.age = NewDate.getFullYear()
+  resNewDate.hours = event.toLocaleTimeString('en-US')
+
+  stringResNewDate.value = `${resNewDate.weak} ${resNewDate.date} de ${resNewDate.month} del ${resNewDate.age},${resNewDate.hours} `
+}
+const buttonLoader = ref(false)
+
+const buttonLoaderCompalintGet = ref(false)
+
+const complaintGetJson = ref({
+  code: 'R2206-000078',
+
+  numdoc: '07474181',
+})
+const ResMessage = ref({})
+
+const callingcomplaintGet = async () => {
+  let respuesta = await complaintGet(complaintGetJson.value)
+  buttonLoaderCompalintGet.value = true
+  if (respuesta.success) {
+    objtArray.value[0].valuetext = respuesta.fullname
+    objtArray.value[1].valuetext = respuesta.numdoc
+    objtArray.value[2].valuetext = respuesta.address
+    objtArray.value[3].valuetext = respuesta.email
+    objtArray.value[4].valuetext = respuesta.mobile
+    objtArray.value[5].valuetext = respuesta.amountRequest
+    objtArray.value[6].valuetext = respuesta.descriptionAmount
+    objtArray.value[7].valuetext = respuesta.address
+    objtArray.value[8].valuetext = respuesta.orderDetail
+    objtArray.value[9].valuetext = respuesta.detail
+    buttonLoaderCompalintGet.value = false
+    const textLengt = objtArray.value.filter((val) =>
+      val.disabled === false ? (val.disabled = true) : null
+    )
+    modalLargeOpen.value = false
+
+    console.log(textLengt)
+  } else {
+    ResMessage.value = respuesta
+    console.log(respuesta.address)
+    buttonLoaderCompalintGet.value = false
+  }
 }
 
+// const claim = ref({
+//   fullname: 'Victor Hugo Castro Contreras',
+//   numdoc: '07474181',
+//   address: 'Av avenida 123, cercado de ciudad, Departamento, Provincia.',
+//   email: 'hugocastro@gmail.com',
+//   mobile: 939929494,
+//   amountRequest: 414.2,
+//   descriptionAmount:
+//     'No se recibieron los USDT que se solicitaron en la transaccion BOBB020223',
+//   type: 'QUEJA',
+//   detail:
+//     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisi urna, malesuada ac mi vitae, viverra vulputate diam. Mauris cursus, turpis eget sodales lacinia, arcu mauris interdum.',
+//   orderDetail:
+//     'In nisi urna, malesuada ac mi vitae, viverra vulputate diam. Mauris cursus, turpis eget sodales lacinia, arcu Suspendisse malesuada metus dapibus nunc sagittis, in tincidunt nunc auctor.',
+// })
 const claim = ref({
-  fullname: 'Victor Hugo Castro Contreras',
-  numdoc: '07474181',
-  address: 'Av avenida 123, cercado de ciudad, Departamento, Provincia.',
-  email: 'hugocastro@gmail.com',
-  mobile: 939929494,
-  amountRequest: 414.2,
-  descriptionAmount:
-    'No se recibieron los USDT que se solicitaron en la transaccion BOBB020223',
-  type: 'QUEJA',
-  detail:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisi urna, malesuada ac mi vitae, viverra vulputate diam. Mauris cursus, turpis eget sodales lacinia, arcu mauris interdum.',
-  orderDetail:
-    'In nisi urna, malesuada ac mi vitae, viverra vulputate diam. Mauris cursus, turpis eget sodales lacinia, arcu Suspendisse malesuada metus dapibus nunc sagittis, in tincidunt nunc auctor.',
+  fullname: '',
+  numdoc: '',
+  address: '',
+  email: '',
+  mobile: '',
+  amountRequest: 0,
+  descriptionAmount: '',
+  type: 'RECLAMO',
+  detail: '',
+  orderDetail: '',
 })
-
 const objtArray = ref([
   {
     id: 'fullname',
@@ -39,14 +146,16 @@ const objtArray = ref([
     isvalid: false,
     errorText: 'El nombre es requerido',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'numdoc',
     valuetext: '',
     validation: false,
     isvalid: false,
-    errorText: 'El NUN de documento es requerido',
+    errorText: 'El documento es requerido',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'address',
@@ -55,6 +164,7 @@ const objtArray = ref([
     isvalid: false,
     errorText: 'La direccion es requerido',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'email',
@@ -63,6 +173,7 @@ const objtArray = ref([
     isvalid: false,
     errorText: 'El correo es requerido',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'mobile',
@@ -71,14 +182,16 @@ const objtArray = ref([
     isvalid: false,
     errorText: 'El movil es requerido',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'amountRequest',
     valuetext: '',
     validation: false,
     isvalid: false,
-    errorText: 'El monto reclamado es requerido',
+    errorText: '',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'descriptionAmount',
@@ -87,14 +200,16 @@ const objtArray = ref([
     isvalid: false,
     errorText: 'La descripcion es requerido',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'type',
-    valuetext: '',
+    valuetext: 'RECLAMO',
     validation: false,
     isvalid: false,
     errorText: 'El DNI es requerido',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'detail',
@@ -103,6 +218,7 @@ const objtArray = ref([
     isvalid: false,
     errorText: 'Los detalles son requeridos',
     espaciado: true,
+    disabled: false,
   },
   {
     id: 'orderDetail',
@@ -111,6 +227,7 @@ const objtArray = ref([
     isvalid: false,
     errorText: 'El pedido es requerido',
     espaciado: true,
+    disabled: false,
   },
 ])
 const Resourse = () => {
@@ -206,7 +323,7 @@ function valueNaN(e) {
       objtArray.value[4].espaciado = true
     }
   } else if (e.target.name === 'amountRequest') {
-    claim.value.amountRequest = e.target.value
+    claim.value.amountRequest = Number(e.target.value)
     objtArray.value[5].errorText = 'El password es requerido'
     let data = e.target.value
     objtArray.value[5].validation = true
@@ -287,9 +404,24 @@ function funcion() {
   const textLengt = objtArray.value.filter((val) =>
     val.isvalid === false ? (val.espaciado = false) : null
   )
+
   console.log(textLengt)
-  console.log(claim.value)
   callingPushClainStore()
+}
+const cleanForm = () => {
+  const result = objtArray.value.map((val) => {
+    val.valuetext = ''
+    val.isvalid = false
+    val.validation = false
+    val.espaciado = true
+  })
+  console.log(result)
+}
+const doc = new jsPDF()
+
+const downloadPdf = () => {
+  doc.text('<p><>Hello world!', 10, 10)
+  doc.save('a4.pdf')
 }
 
 // const  print= async()=> {
@@ -310,6 +442,7 @@ function funcion() {
               subtitle="Formulario online"
             />
           </Container>
+
           <div
             v-if="!responseClainStore.success"
             class="is-flex is-justify-content-end is-align-items-end is-flex-direction-column"
@@ -317,6 +450,7 @@ function funcion() {
             <p class="colorLinkReclamo has-text-weight-bold">
               ¿Deseas consultar el estado de tu reclamo?
             </p>
+
             <Button
               class="p-0 button-ingrese-aqui"
               @click="modalLargeOpen = true"
@@ -336,8 +470,8 @@ function funcion() {
                 {{ responseClainStore.message }}
               </p>
             </div>
-            <div>
-              <Button class="button-color mx-2">
+            <div class="is-flex is-align-items-center is-align-content-center">
+              <Button class="button-color mx-2" @click="downloadPdf">
                 <IconBox size="medium " class="button-colorBox" rounded>
                   <i
                     class="iconify has-text-link"
@@ -345,7 +479,7 @@ function funcion() {
                   ></i>
                 </IconBox>
               </Button>
-              <Button class="button-color mx-2">
+              <Button v-print="'#printMe'" class="button-color mx-2">
                 <IconBox size="medium" class="button-colorBox" rounded>
                   <i class="iconify has-text-link" data-icon="fa:print"></i>
                 </IconBox>
@@ -354,69 +488,77 @@ function funcion() {
           </div>
 
           <Section class="formulario">
-            <div
-              class="columns is-flex is-justify-content-space-between mb-12 is-flex-wrap-wrap-reverse"
-            >
-              <div class="column is-9-desktop">
-                <div class="colorLinkReclamo">
-                  <div class="is-flex">
-                    <p class="titleForm has-text-weight-bold mr-20">
-                      INNOVADORA DIGITAL S.A.C.
-                    </p>
-                    <div class="is-flex ml-20">
-                      <p class="titleForm has-text-weight-bold">
-                        ESTADO ACTUAL:
-                      </p>
-                      <p class="color-responseClain ml-1">EN PROCESO</p>
-                    </div>
-                  </div>
-
-                  20378890161
-                  <br />
-                  Calle Vinatea Reynoso 525 urb. Simón Bolivar, JLByR, Arequipa,
-                  Arequipa
-                </div>
-              </div>
-
+            <div id="printMe">
               <div
-                class="column is-3-desktop is-flex is-justify-content-space-between centradoLogo is-flex is-flex-direction-column"
+                class="columns is-flex is-justify-content-space-between mb-12 is-flex-wrap-wrap-reverse"
               >
-                <img
-                  src="/public/assets/logo/logo-dark.svg "
-                  alt="logo"
-                  class=""
-                />
+                <div class="column is-9-desktop is-9-tablet is-12-mobile">
+                  <div class="colorLinkReclamo">
+                    <div class="is-flex columns is-flex-wrap-wrap-reverse m-0">
+                      <p
+                        class="titleForm has-text-weight-bold column is-12-mobile p-0"
+                      >
+                        INNOVADORA DIGITAL S.A.C.
+                      </p>
+                      <div
+                        v-if="responseClainStore.success"
+                        class="is-flex column is-12-mobile p-0 is-flex-wrap-wrap is-justify-content-center is-align-items-center"
+                      >
+                        <p class="titleForm has-text-weight-bold">
+                          ESTADO ACTUAL:
+                        </p>
+                        <p class="color-responseClain ml-1 has-text-centered">
+                          EN PROCESO
+                        </p>
+                      </div>
+                    </div>
+
+                    20378890161
+                    <br />
+                    Calle Vinatea Reynoso 525 urb. Simón Bolivar, JLByR,
+                    Arequipa, Arequipa
+                  </div>
+                </div>
+
                 <div
-                  class="is-flex is-flex-direction-column mt-2 has-text-link"
+                  class="column is-3-desktop is-3-tablet is-12-mobile is-flex is-justify-content-space-between centradoLogo is-flex is-flex-direction-column"
                 >
-                  <h4 class="has-text-right has-text-weight-bold is-size-5">
-                    {{ responseClainStore.code }}
-                  </h4>
-                  <p class="has-text-right is-size-7">
-                    {{ responseClainStore.created_at }}
-                  </p>
+                  <img
+                    src="/public/assets/logo/logo-dark.svg "
+                    alt="logo"
+                    class=""
+                  />
+                  <div
+                    v-if="responseClainStore.success"
+                    class="is-flex is-flex-direction-column mt-2 has-text-link"
+                  >
+                    <h4 class="has-text-right has-text-weight-bold is-size-5">
+                      {{ responseClainStore.code }}
+                    </h4>
+                    <p class="has-text-right is-size-7">
+                      Registrado : {{ stringResNewDate }}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
               <Container class="Reclamos">
                 <h3 class="titleForm has-text-weight-bold">
                   1. IDENTIFICACIÓN DEL CONSUMIDOR RECLAMANTE
                 </h3>
 
                 <div class="columns is-flex is-flex-wrap-wrap m-0">
-                  <div class="column is-7-desktop is-12-mobile is-7-tablet">
+                  <div class="column is-7-desktop is-12-mobile is-6-tablet">
                     <div
                       class="columns backp is-justify-content-space-between is-flex is-flex-wrap-wrap"
                     >
                       <div
-                        class="column p-1 is-4-tablet is-4-desktop is-12-mobile is-flex is-justify-content-start is-align-items-center"
+                        class="column p-1 is-6-tablet is-4-desktop is-12-mobile is-flex is-justify-content-start is-align-items-center"
                       >
                         <p class="colorLinkReclamo mb-5">Nombres completos</p>
                       </div>
 
                       <Control
-                        class="column p-1 is-8-tablet is-12-mobile is-8-desktop"
+                        class="column p-1 is-6-tablet is-12-mobile is-8-desktop"
                         :error="objtArray[0].errorText"
                         :validation="objtArray[0].validation"
                         :is-valid="objtArray[0].isvalid"
@@ -425,6 +567,7 @@ function funcion() {
                           v-model="objtArray[0].valuetext"
                           type="text"
                           name="fullname"
+                          :disabled="objtArray[0].disabled"
                           @keyup="valueNaN"
                         />
                         <div
@@ -434,17 +577,17 @@ function funcion() {
                       </Control>
                     </div>
                   </div>
-                  <div class="column is-5-desktop is-12-mobile is-5-tablet">
+                  <div class="column is-5-desktop is-12-mobile is-6-tablet">
                     <div
                       class="columns backr is-justify-content-space-between is-flex is-flex-wrap-wrap"
                     >
                       <div
-                        class="column p-1 is-4-tablet is-4-desktop is-12-mobile is-flex is-justify-content-start is-align-items-center"
+                        class="column p-1 is-5-tablet is-4-desktop is-12-mobile is-flex is-justify-content-start is-align-items-center"
                       >
                         <p class="colorLinkReclamo mb-5">DNI / RUC / CE</p>
                       </div>
                       <Control
-                        class="column p-1 is-8-tablet is-12-mobile is-8-desktop"
+                        class="column p-1 is-7-tablet is-12-mobile is-8-desktop"
                         :error="objtArray[1].errorText"
                         :validation="objtArray[1].validation"
                         :is-valid="objtArray[1].isvalid"
@@ -453,6 +596,7 @@ function funcion() {
                           v-model="objtArray[1].valuetext"
                           type="text"
                           name="numdoc"
+                          :disabled="objtArray[1].disabled"
                           @keyup="valueNaN"
                         />
                         <div
@@ -482,6 +626,7 @@ function funcion() {
                           v-model="objtArray[2].valuetext"
                           type="text"
                           name="address"
+                          :disabled="objtArray[2].disabled"
                           @keyup="valueNaN"
                         />
                         <div
@@ -511,6 +656,7 @@ function funcion() {
                           v-model="objtArray[3].valuetext"
                           type="text"
                           name="email"
+                          :disabled="objtArray[3].disabled"
                           @keyup="valueNaN"
                         />
                         <div
@@ -523,12 +669,12 @@ function funcion() {
                   <div class="column is-6-desktop is-12-mobile">
                     <div class="columns backr is-flex is-flex-wrap-wrap">
                       <div
-                        class="column p-1 is-4-tablet is-12-mobile is-4-desktop is-flex is-justify-content-start is-align-items-center"
+                        class="column p-1 is-5-tablet is-12-mobile is-4-desktop is-flex is-justify-content-start is-align-items-center"
                       >
-                        <p class="colorLinkReclamo mb-5">Teléfono / Celular</p>
+                        <p class="colorLinkReclamo mb-5">Teléfono/Celular</p>
                       </div>
                       <Control
-                        class="column p-1 is-8-tablet is-8-desktop is-12-mobile"
+                        class="column p-1 is-7-tablet is-8-desktop is-12-mobile"
                         :error="objtArray[4].errorText"
                         :validation="objtArray[4].validation"
                         :is-valid="objtArray[4].isvalid"
@@ -537,6 +683,7 @@ function funcion() {
                           v-model="objtArray[4].valuetext"
                           type="text"
                           name="mobile"
+                          :disabled="objtArray[4].disabled"
                           @keyup="valueNaN"
                         />
                         <div
@@ -556,16 +703,16 @@ function funcion() {
                 </h3>
                 <br />
 
-                <div class="columns is-flex">
+                <div class="columns is-flex m-0">
                   <div class="column">
                     <div class="columns backp is-flex-wrap-wrap is-flex">
                       <div
-                        class="column p-1 is-2-tablet is-2-desktop is-flex is-12-mobile is-justify-content-start is-align-items-center"
+                        class="column p-1 is-3-tablet is-2-desktop is-flex is-12-mobile is-justify-content-start is-align-items-center"
                       >
                         <p class="colorLinkReclamo mb-5">Monto reclamado</p>
                       </div>
                       <Control
-                        class="column p-1 is-3-tablet is-12-mobile is-3-desktop"
+                        class="column p-1 is-4-tablet is-12-mobile is-3-desktop"
                         :error="objtArray[5].errorText"
                         :validation="objtArray[5].validation"
                         :is-valid="objtArray[5].isvalid"
@@ -574,6 +721,7 @@ function funcion() {
                           v-model="objtArray[5].valuetext"
                           type="text"
                           name="amountRequest"
+                          :disabled="objtArray[5].disabled"
                           @keyup="valueNaN"
                         />
                         <div
@@ -585,16 +733,16 @@ function funcion() {
                   </div>
                 </div>
 
-                <div class="columns is-flex">
+                <div class="columns is-flex m-0">
                   <div class="column">
                     <div class="columns p-1 backp is-flex-wrap-wrap is-flex">
                       <div
-                        class="column p-1 is-2-tablet is-2-desktop is-12-mobile is-flex is-justify-content-start is-align-items-center"
+                        class="column p-1 is-3-tablet is-2-desktop is-12-mobile is-flex is-justify-content-start is-align-items-center"
                       >
                         <p class="colorLinkReclamo mb-5">Descripción</p>
                       </div>
                       <Control
-                        class="column p-1 is-10 is-12-mobile is-10-tablet is-10-desktop"
+                        class="column p-1 is-12-mobile is-9-tablet is-10-desktop"
                         :error="objtArray[6].errorText"
                         :validation="objtArray[6].validation"
                         :is-valid="objtArray[6].isvalid"
@@ -603,6 +751,7 @@ function funcion() {
                           v-model="objtArray[6].valuetext"
                           type="text"
                           name="descriptionAmount"
+                          :disabled="objtArray[6].disabled"
                           @keyup="valueNaN"
                         />
                         <div
@@ -616,25 +765,27 @@ function funcion() {
 
                 <br />
               </Container>
-
               <Container class="Reclamos">
                 <h3 class="titleForm has-text-weight-bold">
                   2. IDENTIFICACIÓN DEL SERVICIO CONTRATADO
                 </h3>
 
-                <div class="my-3">
+                <div class="my-1 if-flex">
                   <Radio
-                    name="radio-1"
+                    name="radio_first"
                     label="Reclamo"
                     group="radio-group-1"
                     color="default"
+                    @click="claim.type = 'RECLAMO'"
                   />
 
                   <Radio
-                    name="radio-1"
+                    value="value_2"
+                    name="radio_first"
                     label="Queja"
-                    group="radio-group-1"
+                    group="radio-group-2"
                     color="default"
+                    @click="claim.type = 'QUEJA'"
                   />
                 </div>
 
@@ -649,6 +800,7 @@ function funcion() {
                     name="detail"
                     :resize="false"
                     placeholder="Write something..."
+                    :disabled="objtArray[8].disabled"
                     @keyup="valueNaN"
                   />
                   <div
@@ -667,15 +819,17 @@ function funcion() {
                     :resize="false"
                     placeholder="Write something..."
                     name="orderDetail"
+                    :disabled="objtArray[9].disabled"
                     @keyup="valueNaN"
                   />
-                  <div
-                    v-if="objtArray[9].espaciado"
-                    class="espaciado-plano"
-                  ></div>
                 </Control>
               </Container>
-              <div class="mt-3 is-flex is-justify-content-end">
+            </div>
+            <div v-if="objtArray[9].espaciado" class="espaciado-plano"></div>
+            <div v-if="!responseClainStore.success">
+              <div
+                class="mt-3 is-flex is-justify-content-end columns is-6-mobile"
+              >
                 <vue-recaptcha
                   sitekey="6LezKUwgAAAAAHkaidXgsTMV5WDopSmhcCA1viJ8"
                   class="bgrecaptch"
@@ -688,6 +842,7 @@ function funcion() {
                   color="link"
                   rounded
                   class="mx-4 my-5"
+                  @click="cleanForm"
                 >
                   Limpiar formulario
                 </Button>
@@ -696,6 +851,7 @@ function funcion() {
                   color="link"
                   size="medium"
                   rounded
+                  :loading="buttonLoader"
                   class="my-5 mx-4"
                   @click="funcion"
                 >
@@ -731,7 +887,7 @@ function funcion() {
       <template #content>
         <PlaceholderSection
           title="Hola!"
-          class="px-6 my-8"
+          class="px-6 my-3"
           subtitle="Para verificar el estado de tu reclamo es necesario que ingreses el código de reclamo y el nro de DNI/RUC/CE."
         ></PlaceholderSection>
         <div>
@@ -743,14 +899,20 @@ function funcion() {
                 class="columns backp is-flex is-flex-wrap-wrap is-flex-direction-column"
               >
                 <div
-                  class="column is-12-tablet is-12-desktop is-12-mobile is-flex is-justify-content-center is-align-items-center"
+                  class="column is-12-tablet is-12-desktop is-12-mobile is-flex is-align-items-center"
                 >
                   <p class="colorLinkReclamo">Código de reclamo</p>
                 </div>
                 <Control
                   class="column is-12-tablet is-12-desktop is-12-mobile py-0 is-flex is-justify-content-center"
                 >
-                  <VInput type="text" size="lg " rounded class="" />
+                  <VInput
+                    v-model="complaintGetJson.code"
+                    type="text"
+                    size="lg"
+                    rounded
+                    class=""
+                  />
                 </Control>
               </div>
             </div>
@@ -759,14 +921,19 @@ function funcion() {
                 class="columns backr is-flex is-flex-wrap-wrap is-flex-direction-column"
               >
                 <div
-                  class="column is-12-tablet is-12-mobile is-12-desktop is-flex is-justify-content-center is-align-items-center"
+                  class="column is-12-tablet is-12-mobile is-12-desktop is-flex is-align-items-center"
                 >
                   <p class="colorLinkReclamo">Nro de DNI/RUC/CE</p>
                 </div>
                 <Control
                   class="column is-12-tablet is-12-desktop py-0 is-12-mobile"
                 >
-                  <VInput type="text" size="lg " rounded />
+                  <VInput
+                    v-model="complaintGetJson.numdoc"
+                    type="text"
+                    size="lg "
+                    rounded
+                  />
                 </Control>
               </div>
             </div>
@@ -775,10 +942,27 @@ function funcion() {
       </template>
 
       <template #action>
-        <div>
-          <Button color="link" size="large" class="mt-10 p-5" :long="2" raised>
-            Consultar estado
-          </Button>
+        <div class="is-flex is-flex-direction-column">
+          <div class="is-flex is-justify-content-center">
+            <Button
+              color="link"
+              size="large"
+              class="mt-10 p-5 is-size-6"
+              :loading="buttonLoaderCompalintGet"
+              :long="2"
+              raised
+              @click="callingcomplaintGet"
+            >
+              Consultar estado
+            </Button>
+          </div>
+
+          <div v-if="!ResMessage.success">
+            <span class="is-size-7 has-text-danger">
+              {{ ResMessage.message }}
+            </span>
+          </div>
+          <div v-else></div>
         </div>
       </template>
     </Modal>
@@ -806,9 +990,12 @@ function funcion() {
   color: #57b54a !important;
 }
 .bgrecaptch {
-  border: #e5e5e5 solid 1px;
-  border-radius: 2px;
-  padding: 2px;
+  // border: #e5e5e5 solid 1px;
+  // border-radius: 2px;
+  // padding: 2px;
+  & div {
+    width: 1px;
+  }
 }
 .espaciado-plano {
   height: 22px;
@@ -820,6 +1007,7 @@ function funcion() {
 .formulario {
   border: #e5e5e5 1px solid;
   border-radius: 25px;
+  transition: all 1s ease !important;
 }
 
 .titleForm {
